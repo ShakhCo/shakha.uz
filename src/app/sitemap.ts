@@ -7,6 +7,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return allUrls().map((url) => ({
     url,
     changeFrequency: "monthly",
-    priority: url.endsWith(".uz/en/") || /\/(en|uz|ru)\/$/.test(url) ? 1 : 0.8,
+    priority: /\/(en|uz|ru)\/$/.test(url) ? 1 : 0.8,
   }));
 }

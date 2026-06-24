@@ -13,6 +13,15 @@ export function Reveal({
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
+    // Show immediately for users who prefer reduced motion
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setShown(true);
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(

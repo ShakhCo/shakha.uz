@@ -4,7 +4,7 @@ Multilingual (en/uz/ru) statically-exported portfolio built with Next.js 15. Thr
 
 ## Design system
 
-Typography: **Space Grotesk** (headings) + **IBM Plex Sans / IBM Plex Mono** (body/code). Accent: ultramarine signal (`#3B52F6`). Aesthetic: clean light "systems spec sheet" — technical, editorial, reduced ornamentation.
+Typography: **Space Grotesk** (headings) + **IBM Plex Sans / IBM Plex Mono** (body/code). Accent: ultramarine signal (`#1d3be8`). Aesthetic: clean light "systems spec sheet" — technical, editorial, reduced ornamentation.
 
 ## Develop
 
@@ -46,8 +46,8 @@ src/
   app/
     [locale]/       # en / uz / ru — Home, Projects, About, Contact pages
                     # + per-page opengraph-image routes
-    sitemap.xml.ts  # build-time sitemap (12 URLs)
-    robots.txt.ts   # robots
+    sitemap.ts      # build-time sitemap (12 URLs)
+    robots.ts       # robots
   lib/
     data/           # single source of truth for all content
     i18n/           # typed dictionaries per locale

@@ -38,7 +38,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             href={c.href}
             target={c.href.startsWith("http") ? "_blank" : undefined}
             rel="noopener noreferrer"
-            className="group rounded-md border border-[var(--color-line)] bg-[var(--color-surface)] p-6 transition-transform hover:-translate-y-0.5 hover:border-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-signal)]"
+            className="group rounded-md border border-[var(--color-line)] bg-[var(--color-surface)] p-6 transition-transform hover:-translate-y-0.5 hover:border-[var(--color-ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-signal)]"
           >
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-muted)]">{c.label}</p>
             <p className="mt-2 font-display text-lg font-semibold text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-signal)]">
