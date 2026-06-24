@@ -1,0 +1,100 @@
+# shakha.uz — Nginx static-export config example
+#
+# Deploy: copy the `out/` directory produced by `npm run build` to the server root:
+#   rsync -av --delete out/ user@server:/var/www/shakha.uz/out/
+#
+# The build uses `trailingSlash: true`, so every page is a directory with an
+# index.html inside (e.g. /en/projects/ → /en/projects/index.html).
+
+server {
+    listen 80;
+    server_name shakha.uz www.shakha.uz;
+
+    # Redirect HTTP → HTTPS (enable once TLS is configured)
+    # return 301 https://$host$request_uri;
+
+    root /var/www/shakha.uz/out;
+    index index.html;
+
+    # ------------------------------------------------------------------
+    # OG images: Next.js emits these as extension-less PNG files at paths
+    # like /en/opengraph-image, /en/projects/opengraph-image, etc.
+    # Without an explicit type Nginx sends application/octet-stream, which
+    # breaks social-media crawlers (Twitter, Open Graph). Force image/png.
+    # Must appear BEFORE the generic location / block.
+    # ------------------------------------------------------------------
+    location ~ /opengraph-image$ {
+        default_type image/png;
+        add_header Content-Type image/png;
+        try_files $uri =404;
+    }
+
+    # Redirect bare root → /en/ (the default locale)
+    location = / {
+        return 302 /en/;
+    }
+
+    # sitemap and robots are plain files in out/
+    location = /sitemap.xml {
+        try_files $uri =404;
+        add_header Content-Type application/xml;
+    }
+
+    location = /robots.txt {
+        try_files $uri =404;
+        add_header Content-Type text/plain;
+    }
+
+    # Long cache for content-hashed Next.js assets
+    location /_next/static/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # General static-export serving
+    # trailingSlash: true → try directory index first, then .html, then 404
+    location / {
+        try_files $uri $uri/ $uri.html =404;
+    }
+
+    # Custom 404 page (generated at build time)
+    error_page 404 /en/404.html;
+}
+
+# ------------------------------------------------------------------
+# HTTPS server block (uncomment and adjust after certbot / manual cert)
+# ------------------------------------------------------------------
+# server {
+#     listen 443 ssl http2;
+#     server_name shakha.uz www.shakha.uz;
+#
+#     ssl_certificate     /etc/letsencrypt/live/shakha.uz/fullchain.pem;
+#     ssl_certificate_key /etc/letsencrypt/live/shakha.uz/privkey.pem;
+#     include             /etc/letsencrypt/options-ssl-nginx.conf;
+#     ssl_dhparam         /etc/letsencrypt/ssl-dhparams.pem;
+#
+#     root  /var/www/shakha.uz/out;
+#     index index.html;
+#
+#     location ~ /opengraph-image$ {
+#         default_type image/png;
+#         add_header Content-Type image/png;
+#         try_files $uri =404;
+#     }
+#
+#     location = / { return 302 /en/; }
+#
+#     location = /sitemap.xml { try_files $uri =404; add_header Content-Type application/xml; }
+#     location = /robots.txt  { try_files $uri =404; add_header Content-Type text/plain; }
+#
+#     location /_next/static/ {
+#         expires 1y;
+#         add_header Cache-Control "public, immutable";
+#     }
+#
+#     location / {
+#         try_files $uri $uri/ $uri.html =404;
+#     }
+#
+#     error_page 404 /en/404.html;
+# }
