@@ -38,6 +38,16 @@ export const en = {
     letsTalk: "Let's build something",
   },
   projects: { role: "Role", stack: "Stack", visit: "Visit site" },
+  projectPage: {
+    back: "All projects",
+    overview: "Overview",
+    highlights: "Highlights",
+    builtWith: "Built with",
+    role: "Role",
+    visit: "Visit site",
+    viewCode: "View code",
+    next: "Next project",
+  },
   contact: {
     title: "Let's talk",
     intro: "Looking for an ambitious team building products thousands of businesses depend on. Reach out through any channel below.",

@@ -22,6 +22,17 @@ describe("data integrity", () => {
     }
   });
 
+  it("every project has fully localized category, overview, and highlights", () => {
+    for (const p of PROJECTS) {
+      expect(hasAllLocales(p.category), `${p.slug} category`).toBe(true);
+      expect(hasAllLocales(p.overview), `${p.slug} overview`).toBe(true);
+      expect(p.highlights.length, `${p.slug} highlights non-empty`).toBeGreaterThan(0);
+      for (const h of p.highlights) {
+        expect(hasAllLocales(h), `${p.slug} highlight bullet`).toBe(true);
+      }
+    }
+  });
+
   it("every experience item and its bullets are fully localized", () => {
     for (const e of EXPERIENCE) {
       expect(hasAllLocales(e.role), e.org).toBe(true);

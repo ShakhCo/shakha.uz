@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import type { Locale } from "@/lib/i18n/config";
 import type { Project } from "@/lib/data/projects";
@@ -12,7 +13,10 @@ export function ProjectCard({
   dict: Dictionary;
 }) {
   return (
-    <article className="group flex h-full flex-col rounded-[20px] bg-[var(--color-bg-alt)] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] md:p-10">
+    <Link
+      href={`/${locale}/projects/${project.slug}/`}
+      className="group flex h-full flex-col rounded-[20px] bg-[var(--color-bg-alt)] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] md:p-10"
+    >
       {/* Role */}
       <p className="text-sm text-[var(--color-muted)]">
         {project.role[locale]}
@@ -40,19 +44,12 @@ export function ProjectCard({
         ))}
       </ul>
 
-      {/* Visit link */}
-      {project.url && (
-        <div className="mt-6">
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-hover)]"
-          >
-            {dict.projects.visit} ↗
-          </a>
-        </div>
-      )}
-    </article>
+      {/* Navigate affordance */}
+      <div className="mt-6">
+        <span className="text-sm font-medium text-[var(--color-accent)]">
+          {dict.projects.visit} →
+        </span>
+      </div>
+    </Link>
   );
 }

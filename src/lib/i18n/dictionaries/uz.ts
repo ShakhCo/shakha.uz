@@ -40,6 +40,16 @@ export const uz: Dictionary = {
     letsTalk: "Keling, nimadir yarataylik",
   },
   projects: { role: "Rol", stack: "Texnologiyalar", visit: "Saytga o'tish" },
+  projectPage: {
+    back: "Barcha loyihalar",
+    overview: "Umumiy ma'lumot",
+    highlights: "Asosiy jihatlar",
+    builtWith: "Texnologiyalar",
+    role: "Rol",
+    visit: "Saytga o'tish",
+    viewCode: "Kodni ko'rish",
+    next: "Keyingi loyiha",
+  },
   contact: {
     title: "Keling, gaplashaylik",
     intro: "Minglab bizneslar ishonadigan mahsulotlarni yaratayotgan ambitsiyali jamoa qidiryapman. Quyidagi har qanday kanal orqali bog'laning.",
