@@ -1,26 +1,20 @@
 import type { Locale } from "@/lib/i18n/config";
 import type { ExperienceItem } from "@/lib/data/experience";
 
-export function ExperienceItemRow({ item, locale, index }: { item: ExperienceItem; locale: Locale; index: number }) {
-  const num = String(index + 1).padStart(2, "0");
+export function ExperienceItemRow({ item, locale }: { item: ExperienceItem; locale: Locale; index: number }) {
   return (
-    <div className="relative border-l border-[var(--color-line)] pl-8 pb-12 last:pb-0">
-      {/* Mono numbered index in signal */}
-      <span
-        className="absolute -left-4 top-0 font-mono text-xs font-medium leading-none text-[var(--color-signal)]"
-        aria-hidden="true"
-      >
-        {num}
-      </span>
+    <div className="border-t border-[var(--color-line)] pt-8 pb-10 last:pb-0">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h3 className="font-display text-xl font-semibold">{item.role[locale]}</h3>
-        <span className="font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-muted)]">{item.period}</span>
+        <h3 className="text-2xl font-semibold tracking-[-0.01em] text-[var(--color-ink)] md:text-3xl">
+          {item.role[locale]}
+        </h3>
+        <span className="text-sm text-[var(--color-muted)]">{item.period}</span>
       </div>
-      <p className="mt-1 font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-signal)]">{item.org}</p>
-      <ul className="mt-3 space-y-2 pl-0 text-base leading-relaxed text-[var(--color-muted)]">
+      <p className="mt-1 text-sm text-[var(--color-muted)]">{item.org}</p>
+      <ul className="mt-4 space-y-2 text-base leading-relaxed text-[var(--color-muted)] md:text-lg">
         {item.bullets.map((b, i) => (
           <li key={i} className="flex gap-2">
-            <span className="mt-[0.4em] shrink-0 text-[var(--color-line)]">◦</span>
+            <span className="mt-[0.45em] shrink-0 text-[var(--color-line)]">–</span>
             <span>{b[locale]}</span>
           </li>
         ))}

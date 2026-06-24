@@ -27,22 +27,27 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   ];
 
   return (
-    <Section className="py-16 md:py-24">
-      <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-signal)]">▦ {dict.contact.title}</span>
-      <h1 className="mt-3 font-display text-4xl font-semibold md:text-6xl">{dict.contact.title}</h1>
-      <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]">{dict.contact.intro}</p>
-      <div className="mt-12 grid gap-4 sm:grid-cols-2">
+    <Section className="py-24 md:py-32">
+      <div className="max-w-2xl">
+        <h1 className="text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
+          {dict.contact.title}
+        </h1>
+        <p className="mt-6 text-xl leading-relaxed text-[var(--color-muted)] md:text-2xl">
+          {dict.contact.intro}
+        </p>
+      </div>
+      <div className="mt-16 grid gap-4 sm:grid-cols-2">
         {cards.map((c) => (
           <a
             key={c.label}
             href={c.href}
             target={c.href.startsWith("http") ? "_blank" : undefined}
             rel="noopener noreferrer"
-            className="group rounded-md border border-[var(--color-line)] bg-[var(--color-surface)] p-6 transition-transform hover:-translate-y-0.5 hover:border-[var(--color-ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-signal)]"
+            className="group rounded-[20px] bg-[var(--color-bg-alt)] p-8 transition-shadow hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
           >
-            <p className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-muted)]">{c.label}</p>
-            <p className="mt-2 font-display text-lg font-semibold text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-signal)]">
-              {c.value} ↗
+            <p className="text-sm font-medium text-[var(--color-muted)]">{c.label}</p>
+            <p className="mt-3 text-xl font-semibold text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+              {c.value}
             </p>
           </a>
         ))}
