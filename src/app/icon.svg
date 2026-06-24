@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#17171b"/>
+  <rect width="64" height="64" rx="14" fill="#1d1d1f"/>
   <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
-        font-family="Georgia, serif" font-size="34" fill="#f1f0eb" font-weight="700">S</text>
-  <circle cx="48" cy="44" r="3" fill="#1d3be8"/>
+        font-family="Georgia, serif" font-size="34" fill="#ffffff" font-weight="700">S</text>
+  <circle cx="48" cy="44" r="3" fill="#0071e3"/>
 </svg>

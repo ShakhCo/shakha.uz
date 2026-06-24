@@ -21,9 +21,9 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
           key={l}
           href={swap(l)}
           aria-current={l === locale ? "true" : undefined}
-          className={`rounded px-2 py-1 font-mono text-xs transition-colors ${
+          className={`rounded px-2 py-1 text-sm transition-colors ${
             l === locale
-              ? "text-[var(--color-signal)] font-medium"
+              ? "font-medium text-[var(--color-ink)]"
               : "text-[var(--color-muted)] hover:text-[var(--color-ink)]"
           }`}
         >

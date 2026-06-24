@@ -9,11 +9,11 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
     <footer className="mt-24 border-t border-[var(--color-line)]">
       <div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-12 md:flex-row md:items-center md:justify-between md:px-8">
-        <div className="font-mono text-xs text-[var(--color-muted)]">
+        <div className="text-sm text-[var(--color-muted)]">
           <p>{dict.footer.built}</p>
           <p>© {year} Shakhzodbek Sharipov. {dict.footer.rights}</p>
         </div>
-        <ul className="flex flex-wrap gap-4 font-mono text-xs text-[var(--color-muted)]">
+        <ul className="flex flex-wrap gap-4 text-sm text-[var(--color-muted)]">
           <li>
             <Link href={`${base}/projects/`} className="transition-colors hover:text-[var(--color-ink)]">
               {dict.nav.projects}

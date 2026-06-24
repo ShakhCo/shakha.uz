@@ -13,15 +13,15 @@ export function Nav({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     { href: `${base}/contact/`, label: dict.nav.contact },
   ];
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[var(--color-paper)]/85 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-white/85 backdrop-blur">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 md:px-8">
         <Link
           href={`${base}/`}
-          className="font-display text-lg font-bold tracking-tight"
+          className="text-lg font-semibold text-[var(--color-ink)]"
         >
-          Shakhzodbek<span className="text-[var(--color-signal)]">.</span>
+          Shakhzodbek
         </Link>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <NavLinks links={links} />
           <LocaleSwitcher locale={locale} />
         </div>

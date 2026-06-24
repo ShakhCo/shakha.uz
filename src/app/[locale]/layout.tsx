@@ -1,29 +1,15 @@
 import { notFound } from "next/navigation";
-import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Onest } from "next/font/google";
 import { LOCALES, isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { SITE_URL, SOCIALS, CONTACT } from "@/lib/site";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const sans = IBM_Plex_Sans({
+const sans = Onest({
   subsets: ["latin", "latin-ext", "cyrillic"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
-  display: "swap",
-});
-
-const mono = IBM_Plex_Mono({
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
   display: "swap",
 });
 
@@ -54,7 +40,7 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale} className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+    <html lang={locale} className={sans.variable}>
       <body>
         <script
           type="application/ld+json"
