@@ -9,9 +9,9 @@ function hasAllLocales(obj: Record<string, string>) {
 }
 
 describe("data integrity", () => {
-  it("has exactly 5 projects with unique slugs", () => {
-    expect(PROJECTS).toHaveLength(5);
-    expect(new Set(PROJECTS.map((p) => p.slug)).size).toBe(5);
+  it("has 9 projects with unique slugs", () => {
+    expect(PROJECTS).toHaveLength(9);
+    expect(new Set(PROJECTS.map((p) => p.slug)).size).toBe(9);
   });
 
   it("every project has all locales for role and description", () => {

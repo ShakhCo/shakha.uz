@@ -37,7 +37,7 @@ export default async function Home({
   if (!isLocale(locale)) notFound();
   const l = locale as Locale;
   const dict = getDictionary(l);
-  const featured = PROJECTS.slice(0, 3);
+  const featured = PROJECTS.slice(0, 4);
 
   return (
     <>
