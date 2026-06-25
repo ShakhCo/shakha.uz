@@ -36,47 +36,45 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </p>
       </Section>
 
-      {/* Experience band — bg-alt */}
-      <div className="bg-[var(--color-bg-alt)]">
-        <Section className="py-24 md:py-32">
-          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
-            {dict.sections.experience}
-          </h2>
-          <div className="mt-12">
-            {EXPERIENCE.map((e, i) => (
-              <ExperienceItemRow key={i} item={e} locale={l} index={i} />
-            ))}
-          </div>
-        </Section>
-      </div>
-
-      {/* Tech stack band — white (logo tiles, like home) */}
+      {/* Experience band — white */}
       <Section className="py-24 md:py-32">
         <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
-          {dict.sections.skills}
+          {dict.sections.experience}
         </h2>
-        <div className="mt-12 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
-          {SKILLS.flatMap((g) => g.items).map((s) => (
-            <SkillTile key={s} name={s} label={s} />
+        <div className="mt-12">
+          {EXPERIENCE.map((e, i) => (
+            <ExperienceItemRow key={i} item={e} locale={l} index={i} />
           ))}
         </div>
       </Section>
 
-      {/* Education band — bg-alt */}
+      {/* Tech stack band — bg-alt (so the white tiles are visible) */}
       <div className="bg-[var(--color-bg-alt)]">
         <Section className="py-24 md:py-32">
           <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
-            {dict.sections.education}
+            {dict.sections.skills}
           </h2>
-          <div className="mt-12 space-y-4">
-            {EDUCATION.map((item) => (
-              <Reveal key={item.slug}>
-                <EducationCard item={item} locale={l} />
-              </Reveal>
+          <div className="mt-12 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+            {SKILLS.flatMap((g) => g.items).map((s) => (
+              <SkillTile key={s} name={s} label={s} />
             ))}
           </div>
         </Section>
       </div>
+
+      {/* Education band — white */}
+      <Section className="py-24 md:py-32">
+        <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
+          {dict.sections.education}
+        </h2>
+        <div className="mt-12 space-y-4">
+          {EDUCATION.map((item) => (
+            <Reveal key={item.slug}>
+              <EducationCard item={item} locale={l} />
+            </Reveal>
+          ))}
+        </div>
+      </Section>
     </>
   );
 }
