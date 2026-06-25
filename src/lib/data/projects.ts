@@ -44,7 +44,7 @@ export const PROJECTS: Project[] = [
     },
     year: "2025 — Present",
     github: null,
-    image: "/projects/bookup.png",
+    image: "/projects/bookup.avif",
     overview: {
       en: "BookUp started from a simple frustration: small service businesses — barbershops, salons, billiards clubs — were juggling bookings across Telegram chats and paper notebooks. I built an all-in-one platform so an owner can run the whole business from their phone while customers book online in a few taps. It now powers 20+ businesses.",
       uz: "BookUp oddiy muammodan boshlandi: kichik xizmat bizneslari — sartaroshxonalar, salonlar, bilyard klublar — Telegram chatlar va qog'oz daftarlar orqali bandlovlarni boshqarardi. Men egasi telefonidan biznesni boshqarishi, mijozlar esa bir necha tugma bosish bilan onlayn bron qilishi uchun yagona platforma yaratdim. Hozir 20+ biznesga xizmat qiladi.",
@@ -157,7 +157,7 @@ export const PROJECTS: Project[] = [
     },
     year: null,
     github: null,
-    image: "/projects/mypolis.png",
+    image: "/projects/mypolis.avif",
     overview: {
       en: "Buying insurance in Uzbekistan meant visiting each company separately or relying on a broker. MyPolis changes that — it's an online marketplace where customers compare and buy OSAGO, KASKO, and Travel policies from multiple insurers in one place. I built the whole thing: storefront, backend integrations with three insurance APIs, and the admin panel that operations teams use daily.",
       uz: "O'zbekistonda sug'urta sotib olish har bir kompaniyaga alohida borishni yoki brokka tayanishni anglatardi. MyPolis buni o'zgartiradi — mijozlar bir joyda bir nechta sug'urtachilardan OSAGO, KASKO va sayohat polislarini taqqoslab sotib oladigan onlayn marketpleys. Men hammasini yaratdim: do'kon sayti, uchta sug'urta APIsi bilan backend integratsiyalari va operatsiya jamoalari har kuni foydalanadigan admin panel.",
@@ -260,7 +260,7 @@ export const PROJECTS: Project[] = [
     },
     year: null,
     github: null,
-    image: "/projects/automations.png",
+    image: "/projects/automations.avif",
     overview: {
       en: "Businesses were losing leads in their Instagram comments and DMs — too many messages, not enough time. Automations.uz lets them set keyword rules, AI-powered replies, and interactive ice-breaker menus that engage followers automatically. I built the platform and also published a Python SDK on PyPI so developers can build their own bots on top of the same API.",
       uz: "Bizneslar Instagram izohlari va DMlarida lidlarini yo'qotardi — juda ko'p xabar, vaqt esa yetishmas edi. Automations.uz ularga avtomatik ravishda obunachilarni jalb qiladigan kalit so'z qoidalari, AI javoblar va interaktiv ice-breaker menyularni sozlash imkonini beradi. Men platformani yaratdim va ishlab chiquvchilar xuddi shu API ustida o'z botlarini yaratishlari uchun PyPI'da Python SDK nashr etdim.",
@@ -367,7 +367,7 @@ export const PROJECTS: Project[] = [
     },
     year: "2022 — Present",
     github: null,
-    image: "/projects/interrail.jpg",
+    image: "/projects/interrail.avif",
     overview: {
       en: "InterRail is a suite of ERP and CRM systems I built from scratch for an international rail-freight logistics company operating across Central Asia and Russia. Before these tools existed, the team tracked orders, contracts, and KPIs in spreadsheets. Now everything — from inquiry through shipment to financial settlement — lives in one place, used daily across 6+ countries.",
       uz: "InterRail — men O'rta Osiyo va Rossiyada faoliyat yurituvchi xalqaro temir yo'l yuk logistikasi kompaniyasi uchun noldan qurilgan ERP va CRM tizimlari to'plami. Bu vositalar paydo bo'lgunga qadar, jamoa buyurtmalar, shartnomalar va KPIlarni elektron jadvalda kuzatardi. Endi hamma narsa — so'rovdan jo'natmaga va moliyaviy hisob-kitobgacha — bir joyda, 6+ davlatda har kuni ishlatiladi.",
@@ -470,7 +470,7 @@ export const PROJECTS: Project[] = [
     },
     year: null,
     github: null,
-    image: "/projects/dombirobod-city.jpg",
+    image: "/projects/dombirobod-city.avif",
     overview: {
       en: "Real estate developers need a site that does more than list apartments — it has to make buyers feel confident before they visit. I built the Do'mbirobod City landing page from Figma designs, giving prospective buyers interactive floor plans, a virtual tour, and a price calculator so they can explore the property at their own pace.",
       uz: "Ko'chmas mulk ishlab chiqaruvchilar kvartiralarni ro'yxatga olishdan ko'proq narsa qiladigan saytga muhtoj — u tashrif buyurishdan oldin xaridorlarga ishonch hosil qilishi kerak. Men Figma dizaynlaridan Do'mbirobod City landing sahifasini yaratdim, potentsial xaridorlarga interaktiv reja ko'rgazmasi, virtual sayohat va narx kalkulyatori berdim, shunda ular mulkni o'z jadvalida ko'rib chiqishi mumkin.",
@@ -560,7 +560,7 @@ export const PROJECTS: Project[] = [
     },
     year: null,
     github: null,
-    image: "/projects/baxtiyor-oila.jpg",
+    image: "/projects/baxtiyor-oila.avif",
     overview: {
       en: "Baxtiyor Oila is a matchmaking platform built for the Uzbek diaspora in Germany — a community with limited ways to meet compatible partners within their culture. The whole service lives inside Telegram as a Mini App, so users don't need to download anything. A matching algorithm surfaces compatible profiles, and a Python bot keeps users notified of new matches.",
       uz: "Baxtiyor Oila — Germaniyadagi o'zbek diasporas uchun yaratilgan tanishuv platformasi — o'z madaniyati doirasida mos sheriklarga duch kelishning cheklangan yo'llari bor jamoa. Butun xizmat Telegram ichida Mini Ilova sifatida joylashgan, shuning uchun foydalanuvchilar hech narsani yuklab olishiga hojat yo'q. Moslashtirish algoritmi mos profillarni ko'rsatadi va Python boti foydalanuvchilarga yangi moslashtiruvchilar haqida xabar beradi.",
