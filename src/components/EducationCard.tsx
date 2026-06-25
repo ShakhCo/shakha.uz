@@ -14,7 +14,7 @@ export function EducationCard({
   return (
     <Link
       href={`/${locale}/education/${item.slug}/`}
-      className="group flex items-center gap-5 rounded-2xl bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-[var(--color-line)] border border-transparent md:gap-6 md:p-8"
+      className="group flex items-center gap-5 rounded-2xl bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-[var(--color-line)] border border-transparent sm:p-6 md:gap-6 md:p-8"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

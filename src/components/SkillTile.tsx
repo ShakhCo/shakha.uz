@@ -33,7 +33,7 @@ export function SkillTile({ name, label }: SkillTileProps) {
           />
         )}
       </span>
-      <span className="text-xs font-medium leading-tight text-[var(--color-ink)]">
+      <span className="break-words text-xs font-medium leading-tight text-[var(--color-ink)]">
         {label}
       </span>
     </div>

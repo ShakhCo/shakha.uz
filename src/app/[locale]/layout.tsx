@@ -85,7 +85,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={sans.variable}>
-      <body>
+      <body className="overflow-x-hidden">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -40,7 +40,7 @@ export function ProjectCard({
       </BrowserFrame>
 
       {/* Card body */}
-      <div className="flex flex-1 flex-col p-8 md:p-10">
+      <div className="flex flex-1 flex-col p-5 sm:p-7 md:p-10">
         {/* Role */}
         <p className="text-sm text-[var(--color-muted)]">
           {project.role[locale]}

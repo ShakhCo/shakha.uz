@@ -21,7 +21,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
   const dict = getDictionary(l);
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-6 py-24 md:px-8 md:py-32">
+    <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
       <h1 className="text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
         {dict.nav.projects}
       </h1>
@@ -29,7 +29,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         {dict.meta.projects.description}
       </p>
       <div
-        className="mt-16 rounded-[28px] p-5 sm:p-8 md:p-10"
+        className="mt-16 rounded-[28px] p-3 sm:p-8 md:p-10"
         style={{ backgroundImage: "linear-gradient(135deg, #5b6cff 0%, #a855f7 50%, #ec4899 100%)" }}
       >
         <div className="grid gap-5 md:grid-cols-2 md:gap-6">

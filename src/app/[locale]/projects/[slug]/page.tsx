@@ -63,7 +63,7 @@ export default async function ProjectDetailPage({
           <p className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]">
             {project.category[l]}
           </p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
+          <h1 className="mt-3 break-words text-3xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] sm:text-4xl md:text-6xl">
             {project.name}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]">
@@ -136,7 +136,7 @@ export default async function ProjectDetailPage({
 
       {/* ── Overview band — alt (or white if no image) ── */}
       <div className={project.image ? "bg-white" : "bg-[var(--color-bg-alt)]"}>
-        <Section className="pb-24 pt-12 md:pb-32 md:pt-16">
+        <Section className="pb-16 pt-8 sm:pb-24 sm:pt-12 md:pb-32 md:pt-16">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
               {dict.projectPage.overview}
@@ -150,7 +150,7 @@ export default async function ProjectDetailPage({
 
       {/* ── What I built band — alternating ── */}
       <div className={project.image ? "bg-[var(--color-bg-alt)]" : "bg-white"}>
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
               {dict.projectPage.whatIBuilt}
@@ -174,7 +174,7 @@ export default async function ProjectDetailPage({
 
       {/* ── Architecture band — alternating ── */}
       <div className={project.image ? "bg-white" : "bg-[var(--color-bg-alt)]"}>
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
               {dict.projectPage.architecture}
@@ -188,7 +188,7 @@ export default async function ProjectDetailPage({
 
       {/* ── Under the hood band — accent-adjacent alt ── */}
       <div className={project.image ? "bg-[var(--color-bg-alt)]" : "bg-white"}>
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
               {dict.projectPage.underTheHood}
@@ -217,7 +217,7 @@ export default async function ProjectDetailPage({
       {/* ── What I learned band — alternating (after Under the hood) ── */}
       {project.learnings.length > 0 && (
         <div className={project.image ? "bg-white" : "bg-[var(--color-bg-alt)]"}>
-          <Section className="py-24 md:py-32">
+          <Section className="py-16 sm:py-24 md:py-32">
             <Reveal>
               <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
                 {dict.projectPage.learnings}
@@ -242,7 +242,7 @@ export default async function ProjectDetailPage({
 
       {/* ── Built with band — alt ── */}
       <div className={project.image ? "bg-[var(--color-bg-alt)]" : "bg-white"}>
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
               {dict.projectPage.builtWith}
@@ -280,14 +280,14 @@ export default async function ProjectDetailPage({
           <Reveal>
             <Link
               href={`/${l}/projects/${nextProject.slug}/`}
-              className="group block rounded-[24px] border border-[var(--color-line)] bg-[var(--color-bg-alt)] p-8 transition-all duration-300 hover:border-[var(--color-ink)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.07)] md:p-12"
+              className="group block rounded-[24px] border border-[var(--color-line)] bg-[var(--color-bg-alt)] p-5 transition-all duration-300 hover:border-[var(--color-ink)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.07)] sm:p-8 md:p-12"
             >
               <div className="flex items-center justify-between gap-6">
                 <div className="min-w-0">
                   <p className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]">
                     {dict.projectPage.next}
                   </p>
-                  <h2 className="mt-3 truncate text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
+                  <h2 className="mt-3 break-words text-2xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] sm:text-3xl md:text-5xl">
                     {nextProject.name}
                   </h2>
                   <p className="mt-2 text-sm text-[var(--color-muted)] md:text-base">

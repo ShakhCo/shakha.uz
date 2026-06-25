@@ -30,7 +30,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   ];
 
   return (
-    <Section className="py-24 md:py-32">
+    <Section className="py-16 sm:py-24 md:py-32">
       <div className="max-w-2xl">
         <h1 className="text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
           {dict.contact.title}
@@ -46,14 +46,14 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             href={c.href}
             target={c.href.startsWith("http") ? "_blank" : undefined}
             rel="noopener noreferrer"
-            className="group flex items-center gap-5 rounded-[20px] bg-[var(--color-bg-alt)] p-8 transition-shadow hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+            className="group flex min-w-0 items-center gap-5 overflow-hidden rounded-[20px] bg-[var(--color-bg-alt)] p-5 transition-shadow hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] sm:p-8"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
               <c.Icon className="h-6 w-6" style={{ color: c.color }} aria-hidden />
             </span>
             <div className="min-w-0">
               <p className="text-sm font-medium text-[var(--color-muted)]">{c.label}</p>
-              <p className="mt-1 truncate text-xl font-semibold text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+              <p className="mt-1 truncate text-base font-semibold text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-xl">
                 {c.value}
               </p>
             </div>

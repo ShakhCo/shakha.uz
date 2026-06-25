@@ -56,7 +56,7 @@ export default async function EducationDetailPage({
           <p className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]">
             {item.school}
           </p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
+          <h1 className="mt-3 break-words text-3xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] sm:text-4xl md:text-6xl">
             {item.degree[l]}
           </h1>
           <p className="mt-4 text-lg text-[var(--color-muted)]">
@@ -112,7 +112,7 @@ export default async function EducationDetailPage({
 
       {/* ── Overview band — alt ── */}
       <div className="bg-[var(--color-bg-alt)]">
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
               {dict.educationPage.overview}
@@ -126,7 +126,7 @@ export default async function EducationDetailPage({
 
       {/* ── What I learned band — white ── */}
       <div className="bg-white">
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
               {dict.educationPage.whatILearned}
@@ -150,7 +150,7 @@ export default async function EducationDetailPage({
 
       {/* ── Key modules band — alt ── */}
       <div className="bg-[var(--color-bg-alt)]">
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
               {dict.educationPage.modules}

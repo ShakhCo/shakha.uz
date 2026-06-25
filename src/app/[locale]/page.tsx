@@ -58,7 +58,7 @@ export default async function Home({
     <>
       {/* Hero — centered, spacious */}
       <div className="bg-[var(--color-bg)]">
-        <Section className="pb-24 pt-24 md:pb-32 md:pt-32">
+        <Section className="pb-16 pt-16 sm:pb-24 sm:pt-24 md:pb-32 md:pt-32">
           <div className="mx-auto max-w-3xl text-center">
             {/* Role label */}
             <p className="text-sm font-medium text-[var(--color-muted)]">
@@ -66,7 +66,7 @@ export default async function Home({
             </p>
 
             {/* Hero h1 */}
-            <h1 className="mt-6 text-5xl font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--color-ink)] sm:text-6xl md:text-7xl lg:text-[5.25rem]">
+            <h1 className="mt-6 break-words text-4xl font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--color-ink)] sm:text-5xl md:text-7xl lg:text-[5.25rem]">
               {dict.hero.title}
             </h1>
 
@@ -97,14 +97,14 @@ export default async function Home({
 
       {/* StatStrip — alt band */}
       <div className="bg-[var(--color-bg-alt)]">
-        <Section className="py-16 md:py-20">
+        <Section className="py-12 md:py-20">
           <StatStrip dict={dict} />
         </Section>
       </div>
 
       {/* Featured projects — white band */}
       <div className="bg-[var(--color-bg)]">
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <div className="flex items-baseline justify-between">
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
               {dict.sections.featured}
@@ -128,7 +128,7 @@ export default async function Home({
 
       {/* Skills snapshot — alt band */}
       <div className="bg-[var(--color-bg-alt)]">
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
             {dict.sections.skills}
           </h2>
@@ -142,7 +142,7 @@ export default async function Home({
 
       {/* Experience — white band */}
       <div className="bg-[var(--color-bg)]">
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
             {dict.sections.experience}
           </h2>
@@ -156,7 +156,7 @@ export default async function Home({
 
       {/* Education — alt band */}
       <div className="bg-[var(--color-bg-alt)]">
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
             {dict.sections.education}
           </h2>

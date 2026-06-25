@@ -8,7 +8,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = 2026;
   return (
     <footer className="mt-24 border-t border-[var(--color-line)]">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-12 md:flex-row md:items-center md:justify-between md:px-8">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 sm:px-6 md:flex-row md:items-center md:justify-between md:px-8">
         <div className="text-sm text-[var(--color-muted)]">
           <p>{dict.footer.built}</p>
           <p>© {year} Shakhzodbek Sharipov. {dict.footer.rights}</p>

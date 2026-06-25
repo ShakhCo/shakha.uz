@@ -43,7 +43,7 @@ export default async function BlogIndexPage({
   const dict = getDictionary(l);
 
   return (
-    <Section className="py-24 md:py-32">
+    <Section className="py-16 sm:py-24 md:py-32">
       <Reveal>
         <h1 className="text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
           {dict.blogPage.title}
@@ -54,7 +54,7 @@ export default async function BlogIndexPage({
       </Reveal>
 
       <div
-        className="mt-16 rounded-[28px] p-5 sm:p-8 md:p-10"
+        className="mt-16 rounded-[28px] p-3 sm:p-8 md:p-10"
         style={{ backgroundImage: "linear-gradient(135deg, #5b6cff 0%, #a855f7 50%, #ec4899 100%)" }}
       >
         <div className="flex flex-col gap-5">
@@ -62,7 +62,7 @@ export default async function BlogIndexPage({
             <Reveal key={post.slug}>
               <Link
                 href={`/${l}/blog/${post.slug}/`}
-                className="group block rounded-[18px] bg-white p-7 shadow-[0_6px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_rgba(0,0,0,0.2)] md:p-9"
+                className="group block rounded-[18px] bg-white p-5 shadow-[0_6px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_rgba(0,0,0,0.2)] sm:p-7 md:p-9"
               >
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">

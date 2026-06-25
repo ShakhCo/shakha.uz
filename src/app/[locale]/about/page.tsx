@@ -27,7 +27,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   return (
     <>
       {/* Hero band — white */}
-      <Section className="py-24 md:py-32">
+      <Section className="py-16 sm:py-24 md:py-32">
         <h1 className="text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
           {dict.nav.about}
         </h1>
@@ -38,7 +38,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       {/* Tech stack band — bg-alt (logo tiles, white tiles pop on gray) */}
       <div className="bg-[var(--color-bg-alt)]">
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
             {dict.sections.skills}
           </h2>
@@ -51,7 +51,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       </div>
 
       {/* Experience band — white */}
-      <Section className="py-24 md:py-32">
+      <Section className="py-16 sm:py-24 md:py-32">
         <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
           {dict.sections.experience}
         </h2>
@@ -64,7 +64,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       {/* Education band — bg-alt */}
       <div className="bg-[var(--color-bg-alt)]">
-        <Section className="py-24 md:py-32">
+        <Section className="py-16 sm:py-24 md:py-32">
           <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
             {dict.sections.education}
           </h2>
