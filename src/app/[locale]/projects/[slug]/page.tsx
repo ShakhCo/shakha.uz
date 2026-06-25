@@ -58,16 +58,8 @@ export default async function ProjectDetailPage({
       {/* ── Header band — white ── */}
       <Section className="py-24 md:py-32">
         <Reveal>
-          {/* Back link */}
-          <Link
-            href={`/${l}/projects/`}
-            className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-hover)]"
-          >
-            ← {dict.projectPage.back}
-          </Link>
-
-          {/* Two-column hero: eyebrow + title (left) · description + actions (right) */}
-          <div className="mt-10 grid gap-8 md:mt-12 md:grid-cols-2 md:gap-12 lg:gap-16">
+          {/* Two-column hero: eyebrow + title + description (left) · meta (right) */}
+          <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
             {/* Left — eyebrow + big title + description */}
             <div>
               <p className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]">
@@ -87,28 +79,16 @@ export default async function ProjectDetailPage({
                 {project.role[l]}
                 {project.year ? ` · ${project.year}` : ""}
               </p>
-              {(project.url || project.github) && (
-                <div className="mt-6 flex flex-wrap gap-3">
-                  {project.url && (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-full bg-[var(--color-accent)] px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[var(--color-accent-hover)]"
-                    >
-                      {dict.projectPage.visit} ↗
-                    </a>
-                  )}
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-full border border-[var(--color-line)] px-6 py-3 text-base font-medium text-[var(--color-ink)] transition-colors hover:bg-[var(--color-bg-alt)]"
-                    >
-                      {dict.projectPage.viewCode} ↗
-                    </a>
-                  )}
+              {project.github && (
+                <div className="mt-6">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-[var(--color-line)] px-6 py-3 text-base font-medium text-[var(--color-ink)] transition-colors hover:bg-[var(--color-bg-alt)]"
+                  >
+                    {dict.projectPage.viewCode} ↗
+                  </a>
                 </div>
               )}
             </div>
@@ -121,19 +101,46 @@ export default async function ProjectDetailPage({
         <div className="bg-white">
           <Section className="pb-12 pt-2 md:pb-20 md:pt-4">
             <div className="rounded-[28px] bg-[linear-gradient(135deg,#5b6cff_0%,#a855f7_48%,#ec4899_100%)] p-4 sm:p-8 md:p-14 lg:p-20">
-              <BrowserFrame
-                url={project.url}
-                className="mx-auto max-w-4xl rounded-[14px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.45)] ring-1 ring-black/5"
-              >
-                <div className="aspect-[16/10] w-full overflow-hidden bg-white">
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-top"
-                  />
-                </div>
-              </BrowserFrame>
+              {project.url ? (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${dict.projectPage.visit} — ${project.name}`}
+                  className="group relative mx-auto block max-w-4xl overflow-hidden rounded-[14px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.45)] ring-1 ring-black/5"
+                >
+                  <BrowserFrame url={project.url}>
+                    <div className="aspect-[16/10] w-full overflow-hidden bg-white">
+                      <img
+                        src={project.image}
+                        alt={project.name}
+                        loading="lazy"
+                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  </BrowserFrame>
+                  {/* Centered Visit button on hover */}
+                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#1d1d1f]/0 opacity-0 transition-all duration-300 group-hover:bg-[#1d1d1f]/35 group-hover:opacity-100">
+                    <span className="rounded-full bg-white px-7 py-3.5 text-base font-medium text-[var(--color-ink)] shadow-lg">
+                      {dict.projectPage.visit} ↗
+                    </span>
+                  </div>
+                </a>
+              ) : (
+                <BrowserFrame
+                  url={project.url}
+                  className="mx-auto max-w-4xl rounded-[14px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.45)] ring-1 ring-black/5"
+                >
+                  <div className="aspect-[16/10] w-full overflow-hidden bg-white">
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-top"
+                    />
+                  </div>
+                </BrowserFrame>
+              )}
             </div>
           </Section>
         </div>
