@@ -56,43 +56,30 @@ export default async function ProjectDetailPage({
   return (
     <>
       {/* ── Header band — white ── */}
-      <Section className="py-24 md:py-32">
+      <Section className="pb-8 pt-20 md:pb-10 md:pt-28">
         <Reveal>
-          {/* Two-column hero: eyebrow + title + description (left) · meta (right) */}
-          <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
-            {/* Left — eyebrow + big title + description */}
-            <div>
-              <p className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]">
-                {project.category[l]}
-              </p>
-              <h1 className="mt-3 text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
-                {project.name}
-              </h1>
-              <p className="mt-5 text-lg leading-relaxed text-[var(--color-muted)]">
-                {project.description[l]}
-              </p>
+          {/* Eyebrow + title + description */}
+          <p className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]">
+            {project.category[l]}
+          </p>
+          <h1 className="mt-3 text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
+            {project.name}
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]">
+            {project.description[l]}
+          </p>
+          {project.github && (
+            <div className="mt-8">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-[var(--color-line)] px-6 py-3 text-base font-medium text-[var(--color-ink)] transition-colors hover:bg-[var(--color-bg-alt)]"
+              >
+                {dict.projectPage.viewCode} ↗
+              </a>
             </div>
-
-            {/* Right — role/year + action buttons */}
-            <div className="flex flex-col justify-center">
-              <p className="text-sm text-[var(--color-muted)]">
-                {project.role[l]}
-                {project.year ? ` · ${project.year}` : ""}
-              </p>
-              {project.github && (
-                <div className="mt-6">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-full border border-[var(--color-line)] px-6 py-3 text-base font-medium text-[var(--color-ink)] transition-colors hover:bg-[var(--color-bg-alt)]"
-                  >
-                    {dict.projectPage.viewCode} ↗
-                  </a>
-                </div>
-              )}
-            </div>
-          </div>
+          )}
         </Reveal>
       </Section>
 
