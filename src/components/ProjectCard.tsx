@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import type { Locale } from "@/lib/i18n/config";
 import type { Project } from "@/lib/data/projects";
+import { BrowserFrame } from "./BrowserFrame";
 
 export function ProjectCard({
   project,
@@ -17,28 +18,25 @@ export function ProjectCard({
       href={`/${locale}/projects/${project.slug}/`}
       className="group flex h-full flex-col rounded-[20px] bg-[var(--color-bg-alt)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] overflow-hidden"
     >
-      {/* Thumbnail — image or tasteful fallback */}
-      {project.image ? (
-        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-t-[14px]">
-          <img
-            src={project.image}
-            alt={project.name}
-            loading="lazy"
-            className="h-full w-full object-cover object-top transition-all duration-500 [filter:saturate(0.8)_brightness(0.93)] group-hover:scale-[1.02] group-hover:[filter:saturate(1)_brightness(1)]"
-          />
-          {/* Rest-dim overlay that clears on hover */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[var(--color-ink)]/[0.12] transition-opacity duration-500 group-hover:opacity-0"
-          />
-        </div>
-      ) : (
-        <div className="aspect-[16/10] w-full flex items-center justify-center rounded-t-[14px] bg-[var(--color-bg)] border-b border-[var(--color-line)]">
-          <span className="text-base font-semibold text-[var(--color-muted)] px-6 text-center leading-snug">
-            {project.name}
-          </span>
-        </div>
-      )}
+      {/* Thumbnail — bright screenshot in a browser-window frame (or fallback) */}
+      <BrowserFrame url={project.url}>
+        {project.image ? (
+          <div className="aspect-[16/10] w-full overflow-hidden bg-white">
+            <img
+              src={project.image}
+              alt={project.name}
+              loading="lazy"
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+          </div>
+        ) : (
+          <div className="flex aspect-[16/10] w-full items-center justify-center bg-[var(--color-bg)]">
+            <span className="px-6 text-center text-base font-semibold leading-snug text-[var(--color-muted)]">
+              {project.name}
+            </span>
+          </div>
+        )}
+      </BrowserFrame>
 
       {/* Card body */}
       <div className="flex flex-1 flex-col p-8 md:p-10">

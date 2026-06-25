@@ -7,6 +7,7 @@ import { buildMetadata } from "@/lib/seo";
 import { PROJECTS } from "@/lib/data/projects";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
+import { BrowserFrame } from "@/components/BrowserFrame";
 
 export function generateStaticParams(): { locale: string; slug: string }[] {
   const params: { locale: string; slug: string }[] = [];
@@ -113,14 +114,19 @@ export default async function ProjectDetailPage({
       {project.image && (
         <div className="bg-[var(--color-bg-alt)]">
           <Section className="py-10 md:py-14">
-            <div className="aspect-[16/10] w-full overflow-hidden rounded-[20px] border border-[var(--color-line)]">
-              <img
-                src={project.image}
-                alt={project.name}
-                loading="lazy"
-                className="h-full w-full object-cover object-top"
-              />
-            </div>
+            <BrowserFrame
+              url={project.url}
+              className="rounded-[16px] border border-[var(--color-line)] shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+            >
+              <div className="aspect-[16/10] w-full overflow-hidden bg-white">
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-top"
+                />
+              </div>
+            </BrowserFrame>
           </Section>
         </div>
       )}
