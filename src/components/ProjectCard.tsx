@@ -28,10 +28,10 @@ export function ProjectCard({
               loading="lazy"
               className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
             />
-            {/* Soft bottom fade so the screenshot dissolves instead of hard-cropping */}
+            {/* Soft dark bottom fade for depth */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-b from-transparent to-white"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-b from-transparent to-[#1d1d1f]/70"
             />
           </div>
         ) : (
