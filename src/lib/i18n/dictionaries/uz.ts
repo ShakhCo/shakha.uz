@@ -46,6 +46,7 @@ export const uz: Dictionary = {
     whatIBuilt: "Men nima qildim",
     architecture: "Arxitektura",
     underTheHood: "Ichki tuzilishi",
+    learnings: "Men nimani o'rgandim",
     builtWith: "Texnologiyalar",
     role: "Rol",
     visit: "Saytga o'tish",

@@ -213,8 +213,34 @@ export default async function ProjectDetailPage({
         </Section>
       </div>
 
+      {/* ── What I learned band — alternating (after Under the hood) ── */}
+      {project.learnings.length > 0 && (
+        <div className={project.image ? "bg-white" : "bg-[var(--color-bg-alt)]"}>
+          <Section className="py-24 md:py-32">
+            <Reveal>
+              <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
+                {dict.projectPage.learnings}
+              </h2>
+              <ul className="mt-8 space-y-5">
+                {project.learnings.map((item, i) => (
+                  <li key={i} className="flex gap-4">
+                    <span
+                      className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]"
+                      aria-hidden="true"
+                    />
+                    <p className="text-base leading-relaxed text-[var(--color-ink)] md:text-lg">
+                      {item[l]}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </Section>
+        </div>
+      )}
+
       {/* ── Built with band — alt ── */}
-      <div className={project.image ? "bg-white" : "bg-[var(--color-bg-alt)]"}>
+      <div className={project.image ? "bg-[var(--color-bg-alt)]" : "bg-white"}>
         <Section className="py-24 md:py-32">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">

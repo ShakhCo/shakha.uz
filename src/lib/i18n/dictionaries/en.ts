@@ -44,6 +44,7 @@ export const en = {
     whatIBuilt: "What I built",
     architecture: "Architecture",
     underTheHood: "Under the hood",
+    learnings: "What I learned",
     builtWith: "Built with",
     role: "Role",
     visit: "Visit site",

@@ -43,6 +43,15 @@ describe("data integrity", () => {
     }
   });
 
+  it("every project learnings is a non-empty array with each bullet fully localized", () => {
+    for (const p of PROJECTS) {
+      expect(p.learnings.length, `${p.slug} learnings non-empty`).toBeGreaterThan(0);
+      for (const item of p.learnings) {
+        expect(hasAllLocales(item), `${p.slug} learnings bullet`).toBe(true);
+      }
+    }
+  });
+
   it("every project stackGroups are non-empty with fully localized labels and non-empty items", () => {
     for (const p of PROJECTS) {
       expect(p.stackGroups.length, `${p.slug} stackGroups non-empty`).toBeGreaterThan(0);

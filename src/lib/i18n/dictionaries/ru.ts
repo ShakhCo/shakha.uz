@@ -46,6 +46,7 @@ export const ru: Dictionary = {
     whatIBuilt: "Что я сделал",
     architecture: "Архитектура",
     underTheHood: "Под капотом",
+    learnings: "Чему я научился",
     builtWith: "Технологии",
     role: "Роль",
     visit: "Открыть сайт",
