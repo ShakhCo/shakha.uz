@@ -4,7 +4,6 @@ import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { buildMetadata } from "@/lib/seo";
 import { PROJECTS } from "@/lib/data/projects";
-import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { ProjectCard } from "@/components/ProjectCard";
 
@@ -22,20 +21,25 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
   const dict = getDictionary(l);
 
   return (
-    <Section className="py-24 md:py-32">
+    <div className="mx-auto w-full max-w-6xl px-6 py-24 md:px-8 md:py-32">
       <h1 className="text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
         {dict.nav.projects}
       </h1>
       <p className="mt-6 max-w-2xl text-xl leading-relaxed text-[var(--color-muted)] md:text-2xl">
         {dict.meta.projects.description}
       </p>
-      <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
-        {PROJECTS.map((p) => (
-          <Reveal key={p.slug}>
-            <ProjectCard project={p} locale={l} dict={dict} />
-          </Reveal>
-        ))}
+      <div
+        className="mt-16 rounded-[28px] p-5 sm:p-8 md:p-10"
+        style={{ backgroundImage: "linear-gradient(135deg, #5b6cff 0%, #a855f7 50%, #ec4899 100%)" }}
+      >
+        <div className="grid gap-5 md:grid-cols-2 md:gap-6">
+          {PROJECTS.map((p) => (
+            <Reveal key={p.slug}>
+              <ProjectCard project={p} locale={l} dict={dict} />
+            </Reveal>
+          ))}
+        </div>
       </div>
-    </Section>
+    </div>
   );
 }
