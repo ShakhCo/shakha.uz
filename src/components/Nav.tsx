@@ -15,7 +15,7 @@ export function Nav({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   ];
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-white/85 backdrop-blur">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 md:px-8">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-8">
         <Link
           href={`${base}/`}
           className="text-lg font-semibold text-[var(--color-ink)]"
