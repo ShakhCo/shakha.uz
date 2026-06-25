@@ -1,7 +1,7 @@
 import type { Dictionary } from "./en";
 
 export const uz: Dictionary = {
-  nav: { home: "Bosh sahifa", projects: "Loyihalar", about: "Men haqimda", contact: "Aloqa" },
+  nav: { home: "Bosh sahifa", projects: "Loyihalar", blog: "Blog", about: "Men haqimda", contact: "Aloqa" },
   metaBar: { role: "Full-Stack muhandis", availability: "Ishga tayyor" },
   meta: {
     home: {
@@ -20,6 +20,10 @@ export const uz: Dictionary = {
     contact: {
       title: "Aloqa — Shakhzodbek Sharipov",
       description: "Shakhzodbek Sharipov bilan bog'laning.",
+    },
+    blog: {
+      title: "Blog — Shakhzodbek Sharipov",
+      description: "Dasturiy ta'minot yaratish bo'yicha eslatmalar — arxitektura, to'lovlar va haqiqiy mahsulotlarni yetkazib berish saboqlari.",
     },
   },
   hero: {
@@ -52,6 +56,13 @@ export const uz: Dictionary = {
     visit: "Saytga o'tish",
     viewCode: "Kodni ko'rish",
     next: "Keyingi loyiha",
+  },
+  blogPage: {
+    title: "Blog",
+    lede: "Dasturiy ta'minot yaratish bo'yicha eslatmalar — arxitektura, to'lovlar va haqiqiy mahsulotlarni yetkazib berish saboqlari.",
+    readingTime: "daqiqa o'qish",
+    backToBlog: "Barcha maqolalar",
+    postedOn: "Nashr etilgan",
   },
   educationPage: {
     overview: "Umumiy ma'lumot",

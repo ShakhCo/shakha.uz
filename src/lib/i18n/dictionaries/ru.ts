@@ -1,7 +1,7 @@
 import type { Dictionary } from "./en";
 
 export const ru: Dictionary = {
-  nav: { home: "Главная", projects: "Проекты", about: "Обо мне", contact: "Контакты" },
+  nav: { home: "Главная", projects: "Проекты", blog: "Блог", about: "Обо мне", contact: "Контакты" },
   metaBar: { role: "Full-Stack инженер", availability: "Открыт к работе" },
   meta: {
     home: {
@@ -20,6 +20,10 @@ export const ru: Dictionary = {
     contact: {
       title: "Контакты — Шахзодбек Шарипов",
       description: "Свяжитесь с Шахзодбеком Шариповым.",
+    },
+    blog: {
+      title: "Блог — Шахзодбек Шарипов",
+      description: "Заметки о разработке — архитектура, платежи и уроки из реальных проектов.",
     },
   },
   hero: {
@@ -52,6 +56,13 @@ export const ru: Dictionary = {
     visit: "Открыть сайт",
     viewCode: "Посмотреть код",
     next: "Следующий проект",
+  },
+  blogPage: {
+    title: "Блог",
+    lede: "Заметки о разработке программного обеспечения — архитектура, платежи и уроки из реальных проектов.",
+    readingTime: "мин чтения",
+    backToBlog: "Все посты",
+    postedOn: "Опубликовано",
   },
   educationPage: {
     overview: "Обзор",

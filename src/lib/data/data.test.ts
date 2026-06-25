@@ -3,6 +3,7 @@ import { LOCALES } from "@/lib/i18n/config";
 import { PROJECTS } from "./projects";
 import { EXPERIENCE, EDUCATION } from "./experience";
 import { SKILLS } from "./skills";
+import { POSTS } from "./blog";
 
 function hasAllLocales(obj: Record<string, string>) {
   return LOCALES.every((l) => typeof obj[l] === "string" && obj[l].length > 0);
@@ -94,6 +95,27 @@ describe("data integrity", () => {
     for (const s of SKILLS) {
       expect(hasAllLocales(s.label)).toBe(true);
       expect(s.items.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("POSTS has 3 items with unique slugs", () => {
+    expect(POSTS).toHaveLength(3);
+    expect(new Set(POSTS.map((p) => p.slug)).size).toBe(3);
+  });
+
+  it("every post has localized title, excerpt, and content (all non-empty)", () => {
+    for (const post of POSTS) {
+      expect(hasAllLocales(post.title), `${post.slug} title`).toBe(true);
+      expect(hasAllLocales(post.excerpt), `${post.slug} excerpt`).toBe(true);
+      expect(hasAllLocales(post.content), `${post.slug} content`).toBe(true);
+    }
+  });
+
+  it("every post has non-empty tags, positive readingMinutes, and a valid ISO date", () => {
+    for (const post of POSTS) {
+      expect(post.tags.length, `${post.slug} tags`).toBeGreaterThan(0);
+      expect(post.readingMinutes, `${post.slug} readingMinutes`).toBeGreaterThan(0);
+      expect(/^\d{4}-\d{2}-\d{2}$/.test(post.date), `${post.slug} date format`).toBe(true);
     }
   });
 });

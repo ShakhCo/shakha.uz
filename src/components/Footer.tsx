@@ -20,6 +20,11 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </Link>
           </li>
           <li>
+            <Link href={`${base}/blog/`} className="transition-colors hover:text-[var(--color-ink)]">
+              {dict.nav.blog}
+            </Link>
+          </li>
+          <li>
             <Link href={`${base}/about/`} className="transition-colors hover:text-[var(--color-ink)]">
               {dict.nav.about}
             </Link>

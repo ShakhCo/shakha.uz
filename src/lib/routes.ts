@@ -3,8 +3,9 @@ import { SITE_URL } from "@/lib/site";
 import { localizedPath } from "@/lib/seo";
 import { PROJECTS } from "@/lib/data/projects";
 import { EDUCATION } from "@/lib/data/experience";
+import { POSTS } from "@/lib/data/blog";
 
-export const ROUTE_PATHS = ["", "projects", "about", "contact"] as const;
+export const ROUTE_PATHS = ["", "projects", "blog", "about", "contact"] as const;
 
 export function allUrls(): string[] {
   const urls: string[] = [];
@@ -21,6 +22,11 @@ export function allUrls(): string[] {
   for (const locale of LOCALES) {
     for (const item of EDUCATION) {
       urls.push(`${SITE_URL}${localizedPath(locale, `education/${item.slug}`)}`);
+    }
+  }
+  for (const locale of LOCALES) {
+    for (const post of POSTS) {
+      urls.push(`${SITE_URL}${localizedPath(locale, `blog/${post.slug}`)}`);
     }
   }
   return urls;

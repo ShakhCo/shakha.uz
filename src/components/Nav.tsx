@@ -9,6 +9,7 @@ export function Nav({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const links = [
     { href: `${base}/`, label: dict.nav.home },
     { href: `${base}/projects/`, label: dict.nav.projects },
+    { href: `${base}/blog/`, label: dict.nav.blog },
     { href: `${base}/about/`, label: dict.nav.about },
     { href: `${base}/contact/`, label: dict.nav.contact },
   ];

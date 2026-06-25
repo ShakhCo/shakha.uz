@@ -1,5 +1,5 @@
 export const en = {
-  nav: { home: "Home", projects: "Projects", about: "About", contact: "Contact" },
+  nav: { home: "Home", projects: "Projects", blog: "Blog", about: "About", contact: "Contact" },
   metaBar: { role: "Full-Stack Engineer", availability: "Open to work" },
   meta: {
     home: {
@@ -18,6 +18,10 @@ export const en = {
     contact: {
       title: "Contact — Shakhzodbek Sharipov",
       description: "Get in touch with Shakhzodbek Sharipov.",
+    },
+    blog: {
+      title: "Blog — Shakhzodbek Sharipov",
+      description: "Notes on building software — architecture, payments, and lessons from shipping real products.",
     },
   },
   hero: {
@@ -50,6 +54,13 @@ export const en = {
     visit: "Visit site",
     viewCode: "View code",
     next: "Next project",
+  },
+  blogPage: {
+    title: "Blog",
+    lede: "Notes on building software — architecture, payments, and lessons from shipping real products.",
+    readingTime: "min read",
+    backToBlog: "All posts",
+    postedOn: "Published",
   },
   educationPage: {
     overview: "Overview",
