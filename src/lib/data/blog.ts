@@ -15,7 +15,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: "shipping-with-ai",
     gradient: "linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%)",
-    date: "2025-11-05",
+    date: "2026-05-12",
     tags: ["AI", "Workflow", "Claude Code"],
     readingMinutes: 5,
     title: {
@@ -157,7 +157,7 @@ Bu yaxshi asbob. Undan foydalaning. Shunchaki u siz uchun o'ylasin dema.`,
   {
     slug: "telegram-mini-apps",
     gradient: "linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #8b5cf6 100%)",
-    date: "2025-10-18",
+    date: "2026-03-20",
     tags: ["Telegram", "Mobile", "Product"],
     readingMinutes: 5,
     title: {
@@ -370,7 +370,7 @@ function verifyInitData(initData: string, botToken: string): boolean {
   {
     slug: "erp-nobody-screenshots",
     gradient: "linear-gradient(135deg, #10b981 0%, #0ea5e9 50%, #6366f1 100%)",
-    date: "2025-10-02",
+    date: "2026-02-08",
     tags: ["ERP", "Internal tools", "Career"],
     readingMinutes: 5,
     title: {
@@ -540,7 +540,7 @@ InterRail — логистическая и инфраструктурная к�
   {
     slug: "boring-tech-postgres",
     gradient: "linear-gradient(135deg, #5b6cff 0%, #a855f7 50%, #ec4899 100%)",
-    date: "2025-09-20",
+    date: "2025-12-15",
     tags: ["Postgres", "Architecture", "Opinion"],
     readingMinutes: 4,
     title: {
@@ -713,7 +713,7 @@ ORDER BY b.starts_at;
   {
     slug: "designing-multi-tenant-saas",
     gradient: "linear-gradient(135deg, #5b6cff 0%, #a855f7 50%, #ec4899 100%)",
-    date: "2025-09-12",
+    date: "2025-10-30",
     tags: ["SaaS", "Architecture", "Multi-tenancy", "Next.js"],
     readingMinutes: 6,
     title: {
@@ -931,7 +931,7 @@ ID тенанта должен быть в токене аутентификац
   {
     slug: "prepaid-wallet-billing-with-payme",
     gradient: "linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #8b5cf6 100%)",
-    date: "2025-08-20",
+    date: "2025-09-18",
     tags: ["Payments", "Billing", "Payme", "NestJS"],
     readingMinutes: 5,
     title: {
@@ -1210,7 +1210,7 @@ async performTransaction(params: PaymeParams) {
   {
     slug: "zero-dependency-websocket-server",
     gradient: "linear-gradient(135deg, #10b981 0%, #0ea5e9 50%, #6366f1 100%)",
-    date: "2025-07-30",
+    date: "2025-08-05",
     tags: ["Node.js", "WebSocket", "Networking", "From scratch"],
     readingMinutes: 7,
     title: {

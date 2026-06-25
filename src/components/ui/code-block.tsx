@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Terminal, CodeWindow } from "./terminal";
+import { CodeWindow } from "./terminal";
 
 const SHELL_LANGS = new Set([
   "bash",
@@ -56,15 +56,10 @@ export function CodeBlock({
   // Trim trailing newline that remark always appends
   codeText = codeText.replace(/\n$/, "");
 
-  if (lang && SHELL_LANGS.has(lang)) {
-    // Split into non-empty lines as separate commands
-    const commands = codeText
-      .split("\n")
-      .filter((l) => l.trim().length > 0);
-    return <Terminal commands={commands} title="bash" />;
-  }
-
-  return <CodeWindow code={codeText} language={lang} />;
+  // Render all code blocks in a static terminal window so the code is always
+  // visible (the animated Terminal is kept for explicit command demos only).
+  const title = lang && SHELL_LANGS.has(lang) ? "bash" : undefined;
+  return <CodeWindow code={codeText} language={lang} title={title} />;
 }
 
 // ---------------------------------------------------------------------------
