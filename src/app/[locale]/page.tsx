@@ -11,7 +11,7 @@ import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { StatStrip } from "@/components/StatStrip";
 import { ProjectCard } from "@/components/ProjectCard";
-import { SkillPill } from "@/components/SkillPill";
+import { SkillTile } from "@/components/SkillTile";
 
 export async function generateMetadata({
   params,
@@ -118,9 +118,9 @@ export default async function Home({
           <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
             {dict.sections.skills}
           </h2>
-          <div className="mt-10 flex flex-wrap gap-2">
+          <div className="mt-10 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
             {SKILLS.flatMap((g) => g.items).map((s) => (
-              <SkillPill key={s} name={s} label={s} />
+              <SkillTile key={s} name={s} label={s} />
             ))}
           </div>
         </Section>
