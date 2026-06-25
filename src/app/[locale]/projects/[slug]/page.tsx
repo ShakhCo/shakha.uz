@@ -86,7 +86,7 @@ export default async function ProjectDetailPage({
       {/* ── Screenshot band — screenshot floating on a gradient stage ── */}
       {project.image && (
         <div className="bg-white">
-          <Section className="pb-12 pt-2 md:pb-20 md:pt-4">
+          <Section className="pb-6 pt-2 md:pb-8 md:pt-4">
             <div className="rounded-[28px] bg-[linear-gradient(135deg,#5b6cff_0%,#a855f7_48%,#ec4899_100%)] p-4 sm:p-8 md:p-14 lg:p-20">
               {project.url ? (
                 <a
@@ -135,7 +135,7 @@ export default async function ProjectDetailPage({
 
       {/* ── Overview band — alt (or white if no image) ── */}
       <div className={project.image ? "bg-white" : "bg-[var(--color-bg-alt)]"}>
-        <Section className="py-24 md:py-32">
+        <Section className="pb-24 pt-12 md:pb-32 md:pt-16">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
               {dict.projectPage.overview}
