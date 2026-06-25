@@ -3,6 +3,7 @@ import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import type { Locale } from "@/lib/i18n/config";
 import type { Project } from "@/lib/data/projects";
 import { BrowserFrame } from "./BrowserFrame";
+import { TechIcon } from "@/lib/skill-icons";
 
 export function ProjectCard({
   project,
@@ -60,8 +61,9 @@ export function ProjectCard({
           {project.tags.map((t) => (
             <li
               key={t}
-              className="rounded-full border border-[var(--color-line)] bg-white px-3 py-1 text-sm text-[var(--color-muted)]"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-line)] bg-white px-3 py-1 text-sm text-[var(--color-muted)]"
             >
+              <TechIcon name={t} />
               {t}
             </li>
           ))}

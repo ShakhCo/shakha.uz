@@ -8,6 +8,7 @@ import { PROJECTS } from "@/lib/data/projects";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { BrowserFrame } from "@/components/BrowserFrame";
+import { TechIcon } from "@/lib/skill-icons";
 
 export function generateStaticParams(): { locale: string; slug: string }[] {
   const params: { locale: string; slug: string }[] = [];
@@ -259,8 +260,9 @@ export default async function ProjectDetailPage({
                     {group.items.map((item) => (
                       <li
                         key={item}
-                        className="rounded-lg border border-[var(--color-line)] bg-white px-3.5 py-1.5 text-sm font-medium text-[var(--color-ink)] shadow-[0_1px_2px_rgba(0,0,0,0.03)]"
+                        className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-line)] bg-white px-3.5 py-1.5 text-sm font-medium text-[var(--color-ink)] shadow-[0_1px_2px_rgba(0,0,0,0.03)]"
                       >
+                        <TechIcon name={item} />
                         {item}
                       </li>
                     ))}
