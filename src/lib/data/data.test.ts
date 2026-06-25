@@ -83,6 +83,10 @@ describe("data integrity", () => {
         expect(hasAllLocales(bullet), `${item.slug} learned bullet`).toBe(true);
       }
       expect(item.modules.length, `${item.slug} modules non-empty`).toBeGreaterThan(0);
+      for (const mod of item.modules) {
+        expect(mod.name.length, `${item.slug} module name non-empty`).toBeGreaterThan(0);
+        expect(hasAllLocales(mod.description), `${item.slug} module description localized`).toBe(true);
+      }
     }
   });
 

@@ -81,7 +81,7 @@ export type EducationItem = {
   cover: string;
   overview: Localized;
   learned: Localized[];
-  modules: string[];
+  modules: { name: string; description: Localized }[];
 };
 
 export const EDUCATION: EducationItem[] = [
@@ -125,14 +125,70 @@ export const EDUCATION: EducationItem[] = [
       },
     ],
     modules: [
-      "Computer Science Fundamentals",
-      "Distributed Systems and Cloud Computing",
-      "Software Quality, Performance and Testing",
-      "Database Systems Development",
-      "Algorithms and Data Structures",
-      "Operating Systems",
-      "Software Engineering",
-      "Cybersecurity",
+      {
+        name: "Computer Science Fundamentals",
+        description: {
+          en: "The groundwork of computing — programming, problem analysis, and how software is designed and built — the base everything else stands on.",
+          uz: "Hisoblashning asosi — dasturlash, muammo tahlili va dasturiy ta'minot qanday loyihalanishi va qurilishi — boshqa hamma narsa shu poydevorga tayanadi.",
+          ru: "Основа вычислений — программирование, анализ задач и принципы проектирования и построения программного обеспечения — фундамент, на котором строится всё остальное.",
+        },
+      },
+      {
+        name: "Algorithms and Data Structures",
+        description: {
+          en: "How to organise, store and retrieve data efficiently, designing algorithms and reasoning about their time and space complexity.",
+          uz: "Ma'lumotlarni samarali tashkil qilish, saqlash va olish, algoritmlarni loyihalash va ularning vaqt hamda xotira murakkabligi haqida fikr yuritish.",
+          ru: "Как эффективно организовывать, хранить и извлекать данные, проектировать алгоритмы и анализировать их временну́ю и пространственную сложность.",
+        },
+      },
+      {
+        name: "Database Systems Development",
+        description: {
+          en: "Designing and building relational databases end to end: conceptual data modelling, logical models, and querying — building a real database, not just theory.",
+          uz: "Relatsion ma'lumotlar bazalarini boshidan oxirigacha loyihalash va qurish: kontseptual ma'lumot modellashtirish, mantiqiy modellar va so'rovlar — faqat nazariya emas, haqiqiy ma'lumotlar bazasi qurish.",
+          ru: "Проектирование и построение реляционных баз данных от начала до конца: концептуальное моделирование данных, логические модели и запросы — не просто теория, а создание реальной базы данных.",
+        },
+      },
+      {
+        name: "Operating Systems",
+        description: {
+          en: "How modern operating systems work underneath: processes and threads, file systems and access modes, plus containers and virtualisation.",
+          uz: "Zamonaviy operatsion tizimlar qanday ishlashi: jarayonlar va oqimlar, fayl tizimlari va kirish rejimlari, shuningdek konteynerlar va virtuallashtirishni o'rganish.",
+          ru: "Как работают современные операционные системы изнутри: процессы и потоки, файловые системы и режимы доступа, а также контейнеры и виртуализация.",
+        },
+      },
+      {
+        name: "Software Engineering",
+        description: {
+          en: "Building software the disciplined way — from requirements and design through implementation and delivery, working in teams like real products are built.",
+          uz: "Dasturiy ta'minotni intizomli usulda qurish — talablar va loyihalashdan amalga oshirish va yetkazib berishgacha, haqiqiy mahsulotlar qurilgandek jamoa bo'lib ishlash.",
+          ru: "Создание программного обеспечения с соблюдением дисциплины — от требований и проектирования через реализацию и поставку, командная работа как при создании реальных продуктов.",
+        },
+      },
+      {
+        name: "Software Quality, Performance and Testing",
+        description: {
+          en: "Software testing and analysis in depth: principles and techniques plus quality management — test cycles, code reviews, test plans, tooling and quality metrics.",
+          uz: "Dasturiy ta'minotni chuqur sinash va tahlil qilish: tamoyillar va usullar hamda sifat menejmenti — sinov tsikllari, kod ko'rib chiqish, sinov rejalari, asboblar va sifat ko'rsatkichlari.",
+          ru: "Глубокое тестирование и анализ программного обеспечения: принципы и методики, управление качеством — циклы тестирования, код-ревью, тест-планы, инструментарий и метрики качества.",
+        },
+      },
+      {
+        name: "Distributed Systems and Cloud Computing",
+        description: {
+          en: "How systems scale beyond a single machine: distributed-systems concepts and cloud infrastructure — directly relevant to the multi-tenant platforms I build.",
+          uz: "Tizimlar bitta mashinadan tashqariga qanday miqyoslanishi: taqsimlangan tizimlar tushunchalari va bulut infratuzilmasi — men qurayotgan ko'p ijarali platformalarga to'g'ridan-to'g'ri tegishli.",
+          ru: "Как системы масштабируются за пределы одной машины: концепции распределённых систем и облачная инфраструктура — напрямую применимо к мультитенантным платформам, которые я создаю.",
+        },
+      },
+      {
+        name: "Cybersecurity",
+        description: {
+          en: "Core security: the threat landscape and attack types, security policies, governance and risk, basics of cryptography and network security, and secure software development.",
+          uz: "Asosiy xavfsizlik: tahdid manzarasi va hujum turlari, xavfsizlik siyosatlari, boshqaruv va xavf, kriptografiya va tarmoq xavfsizligi asoslari, hamda xavfsiz dasturiy ta'minot ishlab chiqish.",
+          ru: "Основы безопасности: ландшафт угроз и типы атак, политики безопасности, управление и риски, основы криптографии и сетевой безопасности, а также безопасная разработка программного обеспечения.",
+        },
+      },
     ],
   },
   {
@@ -170,11 +226,46 @@ export const EDUCATION: EducationItem[] = [
       },
     ],
     modules: [
-      "Academic Communication Skills",
-      "Critical Thinking and Research Skills",
-      "Introduction to Computing",
-      "Mathematics for Computing",
-      "Business and Economics Fundamentals",
+      {
+        name: "Academic Communication Skills",
+        description: {
+          en: "Developing the academic writing and communication skills — argumentation, citation, and formal register — needed to succeed in UK higher education.",
+          uz: "Britaniya oliy ta'limida muvaffaqiyatga erishish uchun zarur akademik yozuv va muloqot ko'nikmalari — dalillash, iqtibos keltirish va rasmiy uslubni rivojlantirish.",
+          ru: "Развитие навыков академического письма и коммуникации — аргументации, цитирования и формального стиля — необходимых для успешного обучения в британских университетах.",
+        },
+      },
+      {
+        name: "Critical Thinking and Research Skills",
+        description: {
+          en: "Learning to evaluate sources, question assumptions, and construct evidence-based arguments — the analytical foundation for degree-level study.",
+          uz: "Manbalarni baholash, taxminlarni so'roq qilish va dalillarga asoslangan argumentlar tuzishni o'rganish — daraja darajasidagi o'qish uchun tahliliy asos.",
+          ru: "Обучение оценке источников, постановке под сомнение предположений и построению аргументов, основанных на фактах — аналитический фундамент для обучения на уровне бакалавриата.",
+        },
+      },
+      {
+        name: "Introduction to Computing",
+        description: {
+          en: "A grounding in core computing concepts and practical programming skills that prepared the way for the full BSc Computer Science programme.",
+          uz: "BSc Kompyuter fanlari dasturiga yo'l ochgan asosiy hisoblash tushunchalari va amaliy dasturlash ko'nikmalarida mustahkam poydevor.",
+          ru: "Основа ключевых концепций вычислений и практических навыков программирования, подготовившая к полноценной программе BSc по компьютерным наукам.",
+        },
+      },
+      {
+        name: "Mathematics for Computing",
+        description: {
+          en: "The mathematical groundwork — logic, sets, and quantitative reasoning — that underpins algorithm design, data analysis, and computer science theory.",
+          uz: "Algoritm dizayni, ma'lumotlar tahlili va kompyuter fanlari nazariyasining asosini tashkil etuvchi matematik poydevor — mantiq, to'plamlar va miqdoriy fikrlash.",
+          ru: "Математическая основа — логика, множества и количественное мышление — лежащая в основе проектирования алгоритмов, анализа данных и теории компьютерных наук.",
+        },
+      },
+      {
+        name: "Business and Economics Fundamentals",
+        description: {
+          en: "An introduction to business and economics concepts that broadened perspective and provided context for technology work in commercial environments.",
+          uz: "Biznes va iqtisodiyot tushunchalariga kirish, bu esa nuqtai nazarni kengaytirdi va tijorat muhitida texnologiya ishi uchun kontekst berdi.",
+          ru: "Введение в концепции бизнеса и экономики, расширившее кругозор и обеспечившее контекст для работы с технологиями в коммерческих условиях.",
+        },
+      },
     ],
   },
 ];

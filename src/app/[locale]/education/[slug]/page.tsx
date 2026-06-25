@@ -155,16 +155,14 @@ export default async function EducationDetailPage({
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
               {dict.educationPage.modules}
             </h2>
-            <ul className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {item.modules.map((mod) => (
-                <li
-                  key={mod}
-                  className="rounded-full bg-white px-4 py-2 text-sm font-medium text-[var(--color-ink)] shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
-                >
-                  {mod}
-                </li>
+                <div key={mod.name} className="rounded-2xl bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                  <h3 className="text-lg font-semibold text-[var(--color-ink)]">{mod.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[var(--color-muted)] md:text-base">{mod.description[l]}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </Reveal>
         </Section>
       </div>
