@@ -110,23 +110,25 @@ export default async function ProjectDetailPage({
         </Reveal>
       </Section>
 
-      {/* ── Screenshot band — only when image exists ── */}
+      {/* ── Screenshot band — screenshot floating on a gradient stage ── */}
       {project.image && (
-        <div className="bg-[var(--color-bg-alt)]">
-          <Section className="py-10 md:py-14">
-            <BrowserFrame
-              url={project.url}
-              className="rounded-[16px] border border-[var(--color-line)] shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
-            >
-              <div className="aspect-[16/10] w-full overflow-hidden bg-white">
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  loading="lazy"
-                  className="h-full w-full object-cover object-top"
-                />
-              </div>
-            </BrowserFrame>
+        <div className="bg-white">
+          <Section className="pb-12 pt-2 md:pb-20 md:pt-4">
+            <div className="rounded-[28px] bg-[linear-gradient(135deg,#5b6cff_0%,#a855f7_48%,#ec4899_100%)] p-4 sm:p-8 md:p-14 lg:p-20">
+              <BrowserFrame
+                url={project.url}
+                className="mx-auto max-w-4xl rounded-[14px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.45)] ring-1 ring-black/5"
+              >
+                <div className="aspect-[16/10] w-full overflow-hidden bg-white">
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
+              </BrowserFrame>
+            </div>
           </Section>
         </div>
       )}
