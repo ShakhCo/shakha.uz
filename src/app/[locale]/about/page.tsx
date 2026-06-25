@@ -3,10 +3,11 @@ import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { buildMetadata } from "@/lib/seo";
-import { EXPERIENCE, EDUCATION } from "@/lib/data/experience";
+import { EXPERIENCE } from "@/lib/data/experience";
 import { Section } from "@/components/Section";
 import { ExperienceItemRow } from "@/components/ExperienceItem";
 import { SkillGroupList } from "@/components/SkillGroupList";
+import { EducationCard } from "@/components/EducationCard";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -63,14 +64,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
             {dict.sections.education}
           </h2>
-          <div className="mt-12 border-t border-[var(--color-line)] pt-8">
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 className="text-2xl font-semibold tracking-[-0.01em] text-[var(--color-ink)] md:text-3xl">
-                {EDUCATION.degree[l]}
-              </h3>
-              <span className="text-sm text-[var(--color-muted)]">{EDUCATION.period}</span>
-            </div>
-            <p className="mt-1 text-sm text-[var(--color-muted)]">{EDUCATION.school}</p>
+          <div className="mt-12">
+            <EducationCard locale={l} />
           </div>
         </Section>
       </div>
