@@ -21,12 +21,17 @@ export function ProjectCard({
       {/* Thumbnail — bright screenshot in a browser-window frame (or fallback) */}
       <BrowserFrame url={project.url}>
         {project.image ? (
-          <div className="aspect-[16/10] w-full overflow-hidden bg-white">
+          <div className="relative aspect-[16/10] w-full overflow-hidden bg-white">
             <img
               src={project.image}
               alt={project.name}
               loading="lazy"
               className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            {/* Soft bottom fade so the screenshot dissolves instead of hard-cropping */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-b from-transparent to-white"
             />
           </div>
         ) : (
