@@ -7,11 +7,13 @@ import { buildMetadata } from "@/lib/seo";
 import { CV_PATH } from "@/lib/site";
 import { PROJECTS } from "@/lib/data/projects";
 import { SKILLS } from "@/lib/data/skills";
+import { EXPERIENCE, EDUCATION } from "@/lib/data/experience";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { StatStrip } from "@/components/StatStrip";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SkillTile } from "@/components/SkillTile";
+import { ExperienceItemRow } from "@/components/ExperienceItem";
 
 export async function generateMetadata({
   params,
@@ -122,6 +124,44 @@ export default async function Home({
             {SKILLS.flatMap((g) => g.items).map((s) => (
               <SkillTile key={s} name={s} label={s} />
             ))}
+          </div>
+        </Section>
+      </div>
+
+      {/* Experience — white band */}
+      <div className="bg-[var(--color-bg)]">
+        <Section className="py-24 md:py-32">
+          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
+            {dict.sections.experience}
+          </h2>
+          <div className="mt-12">
+            {EXPERIENCE.map((e, i) => (
+              <Reveal key={i}>
+                <ExperienceItemRow item={e} locale={l} index={i} />
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+      </div>
+
+      {/* Education — alt band */}
+      <div className="bg-[var(--color-bg-alt)]">
+        <Section className="py-24 md:py-32">
+          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
+            {dict.sections.education}
+          </h2>
+          <div className="mt-12 border-t border-[var(--color-line)] pt-8">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 className="text-2xl font-semibold tracking-[-0.01em] text-[var(--color-ink)] md:text-3xl">
+                {EDUCATION.degree[l]}
+              </h3>
+              <span className="text-sm text-[var(--color-muted)]">
+                {EDUCATION.period}
+              </span>
+            </div>
+            <p className="mt-1 text-sm text-[var(--color-muted)]">
+              {EDUCATION.school}
+            </p>
           </div>
         </Section>
       </div>
