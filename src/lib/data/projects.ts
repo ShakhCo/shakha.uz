@@ -494,7 +494,7 @@ export const PROJECTS: Project[] = [
     },
     year: null,
     github: null,
-    image: null,
+    image: "/projects/baxtiyor-oila.jpg",
     overview: {
       en: "Baxtiyor Oila is a matchmaking service for the Uzbek community in Germany, delivered entirely through Telegram Mini Apps. It pairs a user-facing app and an admin app with a profile-matching algorithm.",
       uz: "Baxtiyor Oila — Germaniyadagi o'zbek jamoasi uchun to'liq Telegram Mini Ilovalar orqali taqdim etiladigan tanishuv xizmati. Foydalanuvchilarga mo'ljallangan ilova va admin ilova profil moslashtirish algoritmi bilan birlashtirilgan.",
