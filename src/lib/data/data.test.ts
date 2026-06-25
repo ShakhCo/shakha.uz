@@ -98,9 +98,9 @@ describe("data integrity", () => {
     }
   });
 
-  it("POSTS has 3 items with unique slugs", () => {
-    expect(POSTS).toHaveLength(3);
-    expect(new Set(POSTS.map((p) => p.slug)).size).toBe(3);
+  it("POSTS has 7 items with unique slugs", () => {
+    expect(POSTS).toHaveLength(7);
+    expect(new Set(POSTS.map((p) => p.slug)).size).toBe(7);
   });
 
   it("every post has localized title, excerpt, and content (all non-empty)", () => {

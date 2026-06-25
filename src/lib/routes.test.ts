@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { allUrls } from "./routes";
 
 describe("routes", () => {
-  it("produces 57 urls (3 locales × 5 static pages + 3 locales × 9 projects + 3 locales × 2 education + 3 locales × 3 blog posts)", () => {
-    expect(allUrls()).toHaveLength(57);
+  it("produces 69 urls (3 locales × 5 static pages + 3 locales × 9 projects + 3 locales × 2 education + 3 locales × 7 blog posts)", () => {
+    expect(allUrls()).toHaveLength(69);
   });
   it("includes localized home and contact", () => {
     const urls = allUrls();
