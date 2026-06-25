@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { isLocale, LOCALES, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
@@ -87,7 +86,7 @@ export default async function EducationDetailPage({
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute right-5 top-5 rounded-full bg-white/95 px-5 py-2.5 text-sm font-medium text-[var(--color-ink)] shadow-lg backdrop-blur transition-all duration-300 hover:bg-white md:opacity-0 md:group-hover:opacity-100"
+                  className="absolute right-5 top-5 rounded-full bg-white/95 px-5 py-2.5 text-sm font-medium text-[var(--color-ink)] shadow-lg backdrop-blur transition-colors duration-300 hover:bg-white"
                 >
                   {dict.educationPage.visit} ↗
                 </a>
@@ -166,20 +165,6 @@ export default async function EducationDetailPage({
                 </li>
               ))}
             </ul>
-          </Reveal>
-        </Section>
-      </div>
-
-      {/* ── Back link band — white ── */}
-      <div className="bg-white">
-        <Section className="py-12 md:py-16">
-          <Reveal>
-            <Link
-              href={`/${l}/`}
-              className="text-sm font-medium text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-hover)]"
-            >
-              ← {dict.nav.home}
-            </Link>
           </Reveal>
         </Section>
       </div>
