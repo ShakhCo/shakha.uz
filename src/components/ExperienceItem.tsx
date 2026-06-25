@@ -10,7 +10,7 @@ export function ExperienceItemRow({
   index: number;
 }) {
   return (
-    <div className="relative pb-12 pl-8 last:pb-0 md:pl-10">
+    <div className="relative pb-16 pl-8 last:pb-0 md:pb-20 md:pl-10">
       {/* Vertical rail */}
       <div
         aria-hidden="true"
