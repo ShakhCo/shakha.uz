@@ -4,10 +4,11 @@ import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { buildMetadata } from "@/lib/seo";
 import { EXPERIENCE, EDUCATION } from "@/lib/data/experience";
+import { SKILLS } from "@/lib/data/skills";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { ExperienceItemRow } from "@/components/ExperienceItem";
-import { SkillGroupList } from "@/components/SkillGroupList";
+import { SkillTile } from "@/components/SkillTile";
 import { EducationCard } from "@/components/EducationCard";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -35,26 +36,28 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </p>
       </Section>
 
-      {/* Skills band — bg-alt */}
+      {/* Experience band — bg-alt */}
       <div className="bg-[var(--color-bg-alt)]">
         <Section className="py-24 md:py-32">
           <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
-            {dict.sections.skills}
+            {dict.sections.experience}
           </h2>
           <div className="mt-12">
-            <SkillGroupList locale={l} />
+            {EXPERIENCE.map((e, i) => (
+              <ExperienceItemRow key={i} item={e} locale={l} index={i} />
+            ))}
           </div>
         </Section>
       </div>
 
-      {/* Experience band — white */}
+      {/* Tech stack band — white (logo tiles, like home) */}
       <Section className="py-24 md:py-32">
         <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
-          {dict.sections.experience}
+          {dict.sections.skills}
         </h2>
-        <div className="mt-12">
-          {EXPERIENCE.map((e, i) => (
-            <ExperienceItemRow key={i} item={e} locale={l} index={i} />
+        <div className="mt-12 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+          {SKILLS.flatMap((g) => g.items).map((s) => (
+            <SkillTile key={s} name={s} label={s} />
           ))}
         </div>
       </Section>
