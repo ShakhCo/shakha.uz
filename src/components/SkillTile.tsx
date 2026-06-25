@@ -16,7 +16,7 @@ export function SkillTile({ name, label }: SkillTileProps) {
   const Icon = getSkillIcon(name);
   const color = getSkillColor(name);
   return (
-    <div className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-[var(--color-line)] bg-white px-3 py-6 text-center transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+    <div className="group flex flex-col items-center justify-center gap-3 rounded-2xl bg-white px-3 py-6 text-center shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)]">
       <span className="flex h-8 items-center justify-center">
         {image ? (
           // eslint-disable-next-line @next/next/no-img-element

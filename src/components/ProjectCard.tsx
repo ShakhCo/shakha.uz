@@ -61,7 +61,7 @@ export function ProjectCard({
           {project.tags.map((t) => (
             <li
               key={t}
-              className="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-line)] bg-white px-3 py-1 text-sm text-[var(--color-muted)]"
+              className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-sm text-[var(--color-muted)] shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
             >
               <TechIcon name={t} />
               {t}
