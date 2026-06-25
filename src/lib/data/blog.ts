@@ -394,6 +394,11 @@ The honest answer: because I kept using WebSockets without really understanding 
 
 So I built noServer: a zero-dependency Node.js web framework on raw TCP, including a full WebSocket implementation. Here's what I learned.
 
+\`\`\`bash
+node server.js
+# WebSocket server listening on :3000
+\`\`\`
+
 ## The foundation: raw TCP in Node.js
 
 Node.js gives you \`net.createServer()\`, which hands you a \`Socket\` object for each connection. That socket is a readable/writable stream of bytes. No HTTP, no WebSocket — just bytes. This is your starting point.
@@ -479,6 +484,11 @@ Halol javob: chunki men WebSocket-lardan foydalanib kelar edim, lekin ularni haq
 
 Shuning uchun men noServer-ni qurdim: xom TCP-da noldan WebSocket ilovasi bilan. Mana nima o'rgandim.
 
+\`\`\`bash
+node server.js
+# WebSocket serveri :3000-da tinglayapti
+\`\`\`
+
 ## Asos: Node.js-da xom TCP
 
 Node.js \`net.createServer()\`-ni beradi va har bir ulanish uchun \`Socket\` obyektini taqdim etadi. Bu soket baytlarning o'qilishi/yozilishi oqimidir. HTTP yo'q, WebSocket yo'q — faqat baytlar.
@@ -549,6 +559,11 @@ noServer-ni qurish yillar davomida qilgan eng ta'limli loyiham bo'ldi. WebSocket
 Честный ответ: потому что я постоянно использовал WebSocket, не понимая его по-настоящему. Я знал API — \`new WebSocket(url)\`, \`socket.onmessage\`, \`socket.send()\` — но у меня не было ментальной модели того, что происходит между клиентом и сервером. Что такое "фрейм"? Почему требуется маскирование?
 
 Поэтому я построил noServer: веб-фреймворк на Node.js без зависимостей на сырых TCP-сокетах, включая полную реализацию WebSocket. Вот что я узнал.
+
+\`\`\`bash
+node server.js
+# WebSocket-сервер слушает на порту :3000
+\`\`\`
 
 ## Основа: сырой TCP в Node.js
 

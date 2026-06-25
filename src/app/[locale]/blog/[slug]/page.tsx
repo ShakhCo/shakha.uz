@@ -9,6 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import { POSTS } from "@/lib/data/blog";
 import { Section } from "@/components/Section";
+import { CodeBlock, InlineCode } from "@/components/ui/code-block";
 
 export function generateStaticParams(): { locale: string; slug: string }[] {
   const params: { locale: string; slug: string }[] = [];
@@ -154,7 +155,25 @@ export default async function BlogPostPage({
                 prose-blockquote:border-[var(--color-accent)] prose-blockquote:text-[var(--color-muted)]
                 prose-hr:border-[var(--color-line)]"
             >
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  pre: ({ children }) => <CodeBlock>{children}</CodeBlock>,
+                  code: ({ node: _node, className, children, ...rest }) => {
+                    // Fenced code blocks are handled by `pre` above.
+                    // This handles only inline code (no className).
+                    if (!className) {
+                      return <InlineCode {...rest}>{children}</InlineCode>;
+                    }
+                    // Inside a pre — return as-is; CodeBlock reads it directly.
+                    return (
+                      <code className={className} {...rest}>
+                        {children}
+                      </code>
+                    );
+                  },
+                }}
+              >
                 {post.content[l]}
               </ReactMarkdown>
             </div>
