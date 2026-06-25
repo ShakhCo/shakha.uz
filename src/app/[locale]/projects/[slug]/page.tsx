@@ -246,17 +246,20 @@ export default async function ProjectDetailPage({
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
               {dict.projectPage.builtWith}
             </h2>
-            <div className="mt-8 space-y-8">
+            <div className="mt-10 border-t border-[var(--color-line)]">
               {project.stackGroups.map((group, gi) => (
-                <div key={gi}>
-                  <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)]">
+                <div
+                  key={gi}
+                  className="grid gap-3 border-b border-[var(--color-line)] py-6 md:grid-cols-[240px_1fr] md:gap-8"
+                >
+                  <p className="text-sm font-medium text-[var(--color-muted)] md:pt-1.5">
                     {group.label[l]}
                   </p>
-                  <ul className="flex flex-wrap gap-2">
+                  <ul className="flex flex-wrap gap-2.5">
                     {group.items.map((item) => (
                       <li
                         key={item}
-                        className="rounded-full border border-[var(--color-line)] bg-white px-4 py-1.5 text-sm text-[var(--color-ink)]"
+                        className="rounded-lg border border-[var(--color-line)] bg-white px-3.5 py-1.5 text-sm font-medium text-[var(--color-ink)] shadow-[0_1px_2px_rgba(0,0,0,0.03)]"
                       >
                         {item}
                       </li>
