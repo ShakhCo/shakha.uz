@@ -11,6 +11,7 @@ import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { StatStrip } from "@/components/StatStrip";
 import { ProjectCard } from "@/components/ProjectCard";
+import { SkillPill } from "@/components/SkillPill";
 
 export async function generateMetadata({
   params,
@@ -119,12 +120,7 @@ export default async function Home({
           </h2>
           <div className="mt-10 flex flex-wrap gap-2">
             {SKILLS.flatMap((g) => g.items).map((s) => (
-              <span
-                key={s}
-                className="rounded-full border border-[var(--color-line)] px-3.5 py-1.5 text-sm text-[var(--color-ink)]"
-              >
-                {s}
-              </span>
+              <SkillPill key={s} name={s} label={s} />
             ))}
           </div>
         </Section>
