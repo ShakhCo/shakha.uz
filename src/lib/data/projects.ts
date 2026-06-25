@@ -416,7 +416,7 @@ export const PROJECTS: Project[] = [
     },
     year: null,
     github: null,
-    image: null,
+    image: "/projects/dombirobod-city.jpg",
     overview: {
       en: "A professional enterprise landing page for a local real-estate developer, designed to showcase apartments and drive inquiries. It features interactive apartment floor plans, virtual tours, and a price calculator, built from Figma prototypes.",
       uz: "Mahalliy ko'chmas mulk ishlab chiqaruvchisi uchun professional landing sahifa — kvartiralarni namoyish etish va so'rovlarni rag'batlantirish uchun mo'ljallangan. Figma prototiplari asosida qurilgan interaktiv kvartira rejalari, virtual sayohatlar va narx kalkulyatorini o'z ichiga oladi.",
