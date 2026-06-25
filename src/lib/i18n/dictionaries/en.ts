@@ -41,7 +41,9 @@ export const en = {
   projectPage: {
     back: "All projects",
     overview: "Overview",
-    highlights: "Highlights",
+    whatIBuilt: "What I built",
+    architecture: "Architecture",
+    underTheHood: "Under the hood",
     builtWith: "Built with",
     role: "Role",
     visit: "Visit site",

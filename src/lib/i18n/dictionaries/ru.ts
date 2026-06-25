@@ -43,7 +43,9 @@ export const ru: Dictionary = {
   projectPage: {
     back: "Все проекты",
     overview: "Обзор",
-    highlights: "Ключевые моменты",
+    whatIBuilt: "Что я сделал",
+    architecture: "Архитектура",
+    underTheHood: "Под капотом",
     builtWith: "Технологии",
     role: "Роль",
     visit: "Открыть сайт",

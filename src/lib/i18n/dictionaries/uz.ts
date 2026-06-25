@@ -43,7 +43,9 @@ export const uz: Dictionary = {
   projectPage: {
     back: "Barcha loyihalar",
     overview: "Umumiy ma'lumot",
-    highlights: "Asosiy jihatlar",
+    whatIBuilt: "Men nima qildim",
+    architecture: "Arxitektura",
+    underTheHood: "Ichki tuzilishi",
     builtWith: "Texnologiyalar",
     role: "Rol",
     visit: "Saytga o'tish",

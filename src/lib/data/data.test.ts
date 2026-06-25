@@ -22,13 +22,33 @@ describe("data integrity", () => {
     }
   });
 
-  it("every project has fully localized category, overview, and highlights", () => {
+  it("every project has fully localized category, overview, and architecture", () => {
     for (const p of PROJECTS) {
       expect(hasAllLocales(p.category), `${p.slug} category`).toBe(true);
       expect(hasAllLocales(p.overview), `${p.slug} overview`).toBe(true);
-      expect(p.highlights.length, `${p.slug} highlights non-empty`).toBeGreaterThan(0);
-      for (const h of p.highlights) {
-        expect(hasAllLocales(h), `${p.slug} highlight bullet`).toBe(true);
+      expect(hasAllLocales(p.architecture), `${p.slug} architecture`).toBe(true);
+    }
+  });
+
+  it("every project responsibilities and engineering are non-empty and fully localized", () => {
+    for (const p of PROJECTS) {
+      expect(p.responsibilities.length, `${p.slug} responsibilities non-empty`).toBeGreaterThan(0);
+      for (const r of p.responsibilities) {
+        expect(hasAllLocales(r), `${p.slug} responsibility bullet`).toBe(true);
+      }
+      expect(p.engineering.length, `${p.slug} engineering non-empty`).toBeGreaterThan(0);
+      for (const e of p.engineering) {
+        expect(hasAllLocales(e), `${p.slug} engineering bullet`).toBe(true);
+      }
+    }
+  });
+
+  it("every project stackGroups are non-empty with fully localized labels and non-empty items", () => {
+    for (const p of PROJECTS) {
+      expect(p.stackGroups.length, `${p.slug} stackGroups non-empty`).toBeGreaterThan(0);
+      for (const g of p.stackGroups) {
+        expect(hasAllLocales(g.label), `${p.slug} stackGroup label`).toBe(true);
+        expect(g.items.length, `${p.slug} stackGroup items non-empty`).toBeGreaterThan(0);
       }
     }
   });
