@@ -66,47 +66,53 @@ export default async function ProjectDetailPage({
             ← {dict.projectPage.back}
           </Link>
 
-          {/* Category label */}
-          <p className="mt-10 text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]">
-            {project.category[l]}
-          </p>
+          {/* Two-column hero: eyebrow + title (left) · description + actions (right) */}
+          <div className="mt-10 grid gap-8 md:mt-12 md:grid-cols-2 md:gap-12 lg:gap-16">
+            {/* Left — eyebrow + big title + description */}
+            <div>
+              <p className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]">
+                {project.category[l]}
+              </p>
+              <h1 className="mt-3 text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
+                {project.name}
+              </h1>
+              <p className="mt-5 text-lg leading-relaxed text-[var(--color-muted)]">
+                {project.description[l]}
+              </p>
+            </div>
 
-          {/* Project name */}
-          <h1 className="mt-3 text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
-            {project.name}
-          </h1>
-
-          {/* Role · Year */}
-          <p className="mt-4 text-base text-[var(--color-muted)] md:text-lg">
-            {project.role[l]}
-            {project.year ? ` · ${project.year}` : ""}
-          </p>
-
-          {/* Action pills */}
-          {(project.url || project.github) && (
-            <div className="mt-8 flex flex-wrap gap-3">
-              {project.url && (
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full bg-[var(--color-accent)] px-7 py-3.5 text-base font-medium text-white transition-colors hover:bg-[var(--color-accent-hover)]"
-                >
-                  {dict.projectPage.visit} ↗
-                </a>
-              )}
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full border border-[var(--color-line)] px-7 py-3.5 text-base font-medium text-[var(--color-ink)] transition-colors hover:bg-[var(--color-bg-alt)]"
-                >
-                  {dict.projectPage.viewCode} ↗
-                </a>
+            {/* Right — role/year + action buttons */}
+            <div className="flex flex-col justify-center">
+              <p className="text-sm text-[var(--color-muted)]">
+                {project.role[l]}
+                {project.year ? ` · ${project.year}` : ""}
+              </p>
+              {(project.url || project.github) && (
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {project.url && (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full bg-[var(--color-accent)] px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[var(--color-accent-hover)]"
+                    >
+                      {dict.projectPage.visit} ↗
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full border border-[var(--color-line)] px-6 py-3 text-base font-medium text-[var(--color-ink)] transition-colors hover:bg-[var(--color-bg-alt)]"
+                    >
+                      {dict.projectPage.viewCode} ↗
+                    </a>
+                  )}
+                </div>
               )}
             </div>
-          )}
+          </div>
         </Reveal>
       </Section>
 
