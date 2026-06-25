@@ -5,17 +5,34 @@ interface SkillTileProps {
   label: string;
 }
 
-/** A logo tile: large brand-colored icon over a small name label. */
+/** Skills whose real brand mark is an image rather than an icon font. */
+const SKILL_IMAGE_MAP: Record<string, string> = {
+  Payme: "/brand/payme.png",
+};
+
+/** A logo tile: large brand-colored icon (or brand image) over a name label. */
 export function SkillTile({ name, label }: SkillTileProps) {
+  const image = SKILL_IMAGE_MAP[name];
   const Icon = getSkillIcon(name);
   const color = getSkillColor(name);
   return (
     <div className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-[var(--color-line)] bg-white px-3 py-6 text-center transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
-      <Icon
-        className={`h-8 w-8 shrink-0 transition-transform duration-300 group-hover:scale-110${color ? "" : " text-[var(--color-muted)]"}`}
-        style={color ? { color } : undefined}
-        aria-hidden
-      />
+      <span className="flex h-8 items-center justify-center">
+        {image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={image}
+            alt={label}
+            className="h-6 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+          />
+        ) : (
+          <Icon
+            className={`h-8 w-8 shrink-0 transition-transform duration-300 group-hover:scale-110${color ? "" : " text-[var(--color-muted)]"}`}
+            style={color ? { color } : undefined}
+            aria-hidden
+          />
+        )}
+      </span>
       <span className="text-xs font-medium leading-tight text-[var(--color-ink)]">
         {label}
       </span>
