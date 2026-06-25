@@ -3,9 +3,9 @@ export const en = {
   metaBar: { role: "Full-Stack Engineer", availability: "Open to work" },
   meta: {
     home: {
-      title: "Shakhzodbek Sharipov — Full-Stack Developer",
+      title: "Shakhzodbek Sharipov — Full-Stack Software Developer",
       description:
-        "Full-stack developer building multi-tenant SaaS, marketplaces, and ERP systems with Next.js, NestJS, and PostgreSQL.",
+        "Full-Stack Software Developer from Tashkent, Uzbekistan. Building multi-tenant SaaS, marketplaces, and ERP systems with Next.js, NestJS, React, and PostgreSQL.",
     },
     projects: {
       title: "Projects — Shakhzodbek Sharipov",

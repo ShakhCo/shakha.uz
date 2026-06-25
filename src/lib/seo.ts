@@ -13,8 +13,9 @@ export function buildMetadata(opts: {
   path: string;
   title: string;
   description: string;
+  keywords?: string[];
 }): Metadata {
-  const { locale, path, title, description } = opts;
+  const { locale, path, title, description, keywords } = opts;
   const canonical = `${SITE_URL}${localizedPath(locale, path)}`;
   const languages: Record<string, string> = {};
   for (const l of LOCALES) languages[l] = `${SITE_URL}${localizedPath(l, path)}`;
@@ -23,6 +24,23 @@ export function buildMetadata(opts: {
   return {
     title,
     description,
+    ...(keywords && keywords.length > 0 ? { keywords } : {}),
+    authors: [{ name: "Shakhzodbek Sharipov", url: SITE_URL }],
+    creator: "Shakhzodbek Sharipov",
+    publisher: "Shakhzodbek Sharipov",
+    category: "technology",
+    referrer: "origin-when-cross-origin",
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     alternates: { canonical, languages },
     openGraph: {
       title,

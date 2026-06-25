@@ -29,6 +29,17 @@ export async function generateMetadata({
     path: "",
     title: dict.meta.home.title,
     description: dict.meta.home.description,
+    keywords: [
+      "Shakhzodbek Sharipov",
+      "Full-Stack Developer",
+      "Software Engineer",
+      "Software Developer Tashkent",
+      "Software Developer Uzbekistan",
+      "Next.js developer",
+      "NestJS developer",
+      "React developer",
+      "multi-tenant SaaS",
+    ],
   });
 }
 

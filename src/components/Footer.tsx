@@ -30,12 +30,12 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </Link>
           </li>
           <li>
-            <a href={SOCIALS.github} className="transition-colors hover:text-[var(--color-ink)]">
+            <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[var(--color-ink)]">
               GitHub
             </a>
           </li>
           <li>
-            <a href={SOCIALS.linkedin} className="transition-colors hover:text-[var(--color-ink)]">
+            <a href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[var(--color-ink)]">
               LinkedIn
             </a>
           </li>

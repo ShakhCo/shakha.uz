@@ -30,13 +30,57 @@ export default async function LocaleLayout({
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Shakhzodbek Sharipov",
-    url: SITE_URL,
-    jobTitle: "Full-Stack Developer",
-    email: CONTACT.email,
-    address: { "@type": "PostalAddress", addressLocality: "Tashkent", addressCountry: "UZ" },
-    sameAs: [SOCIALS.linkedin, SOCIALS.github],
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${SITE_URL}/#person`,
+        name: "Shakhzodbek Sharipov",
+        alternateName: "Shakhzodbek",
+        url: SITE_URL,
+        jobTitle: "Full-Stack Software Developer",
+        description:
+          "Full-Stack Software Developer from Tashkent, Uzbekistan, specialising in multi-tenant SaaS, marketplaces, and ERP systems.",
+        email: CONTACT.email,
+        image: `${SITE_URL}/icon.svg`,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Tashkent",
+          addressCountry: "UZ",
+        },
+        sameAs: [SOCIALS.linkedin, SOCIALS.github],
+        knowsAbout: [
+          "TypeScript",
+          "JavaScript",
+          "Python",
+          "Next.js",
+          "React",
+          "Vue",
+          "NestJS",
+          "FastAPI",
+          "Django",
+          "PostgreSQL",
+          "Redis",
+          "Docker",
+          "multi-tenant SaaS",
+          "REST APIs",
+          "WebSocket",
+          "Telegram Mini Apps",
+        ],
+        alumniOf: {
+          "@type": "CollegeOrUniversity",
+          name: "Westminster International University in Tashkent",
+          sameAs: "https://wiut.uz",
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        name: "Shakhzodbek Sharipov",
+        url: SITE_URL,
+        inLanguage: ["en", "uz", "ru"],
+        author: { "@id": `${SITE_URL}/#person` },
+      },
+    ],
   };
 
   return (

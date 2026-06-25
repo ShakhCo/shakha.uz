@@ -5,9 +5,9 @@ export const uz: Dictionary = {
   metaBar: { role: "Full-Stack muhandis", availability: "Ishga tayyor" },
   meta: {
     home: {
-      title: "Shakhzodbek Sharipov — Full-Stack dasturchi",
+      title: "Shakhzodbek Sharipov — Full-Stack dasturchi | Toshkent",
       description:
-        "Next.js, NestJS va PostgreSQL yordamida ko'p ijarali SaaS, marketpleyslar va ERP tizimlarini yaratuvchi full-stack dasturchi.",
+        "Toshkentlik Full-Stack dasturchi. Next.js, NestJS, React va PostgreSQL yordamida ko'p ijarali SaaS, marketpleyslar va ERP tizimlarini yaratadi.",
     },
     projects: {
       title: "Loyihalar — Shakhzodbek Sharipov",
