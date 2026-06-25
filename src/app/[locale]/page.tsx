@@ -136,9 +136,7 @@ export default async function Home({
           </h2>
           <div className="mt-12">
             {EXPERIENCE.map((e, i) => (
-              <Reveal key={i}>
-                <ExperienceItemRow item={e} locale={l} index={i} />
-              </Reveal>
+              <ExperienceItemRow key={i} item={e} locale={l} index={i} />
             ))}
           </div>
         </Section>
