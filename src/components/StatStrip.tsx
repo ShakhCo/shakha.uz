@@ -7,16 +7,16 @@ export function StatStrip({ dict }: { dict: Dictionary }) {
       {STATS.map((s, i) => (
         <div
           key={s.key}
-          className={`flex flex-col items-center gap-1 text-center${
+          className={`flex flex-col items-center gap-1 px-3 text-center sm:px-6${
             i < STATS.length - 1
               ? " border-r border-[var(--color-line)]"
               : ""
           }`}
         >
-          <dt className="text-4xl font-semibold leading-none tracking-tight text-[var(--color-ink)] md:text-6xl">
+          <dt className="text-3xl font-semibold leading-none tracking-tight text-[var(--color-ink)] sm:text-4xl md:text-6xl">
             {s.value}
           </dt>
-          <dd className="text-sm text-[var(--color-muted)] md:text-base">
+          <dd className="mt-1 text-xs text-[var(--color-muted)] sm:text-sm md:text-base">
             {dict.stats[s.key]}
           </dd>
         </div>

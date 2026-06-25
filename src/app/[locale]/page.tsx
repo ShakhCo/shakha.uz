@@ -105,13 +105,13 @@ export default async function Home({
       {/* Featured projects — white band */}
       <div className="bg-[var(--color-bg)]">
         <Section className="py-16 sm:py-24 md:py-32">
-          <div className="flex items-baseline justify-between">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
               {dict.sections.featured}
             </h2>
             <Link
               href={`/${l}/projects/`}
-              className="text-sm font-medium text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-hover)]"
+              className="shrink-0 text-sm font-medium text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-hover)]"
             >
               {dict.sections.featuredViewAll} →
             </Link>
