@@ -19,12 +19,17 @@ export function ProjectCard({
     >
       {/* Thumbnail — image or tasteful fallback */}
       {project.image ? (
-        <div className="aspect-[16/10] w-full overflow-hidden rounded-t-[14px]">
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-t-[14px]">
           <img
             src={project.image}
             alt={project.name}
             loading="lazy"
-            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+            className="h-full w-full object-cover object-top transition-all duration-500 [filter:saturate(0.8)_brightness(0.93)] group-hover:scale-[1.02] group-hover:[filter:saturate(1)_brightness(1)]"
+          />
+          {/* Rest-dim overlay that clears on hover */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[var(--color-ink)]/[0.12] transition-opacity duration-500 group-hover:opacity-0"
           />
         </div>
       ) : (
