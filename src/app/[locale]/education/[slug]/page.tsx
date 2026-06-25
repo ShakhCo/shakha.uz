@@ -63,47 +63,56 @@ export default async function EducationDetailPage({
           <p className="mt-4 text-lg text-[var(--color-muted)]">
             {item.period}
           </p>
-          {item.url && (
-            <div className="mt-8">
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full border border-[var(--color-line)] px-6 py-3 text-base font-medium text-[var(--color-ink)] transition-colors hover:bg-[var(--color-bg-alt)]"
-              >
-                {dict.educationPage.visit} ↗
-              </a>
-            </div>
-          )}
         </Reveal>
       </Section>
 
-      {/* ── Logo card band — alt ── */}
-      <div className="bg-[var(--color-bg-alt)]">
-        <Section className="py-12 md:py-16">
+      {/* ── Hero cover image ── */}
+      <div className="bg-white">
+        <Section className="pb-6 pt-2 md:pb-10 md:pt-4">
           <Reveal>
-            <div className="inline-flex items-center gap-5 rounded-2xl bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)] md:gap-6 md:p-8">
+            <div className="group relative overflow-hidden rounded-[24px] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.4)] ring-1 ring-black/5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={item.logo}
+                src={item.cover}
                 alt={item.school}
-                className="h-16 w-16 rounded-xl"
+                className="aspect-[16/9] w-full object-cover md:aspect-[16/6]"
               />
-              <div>
-                <p className="text-lg font-semibold text-[var(--color-ink)]">
-                  {item.school}
-                </p>
-                <p className="mt-0.5 text-sm text-[var(--color-muted)]">
-                  {item.period}
-                </p>
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"
+              />
+              {/* Visit programme — top right, on hover (always visible on mobile) */}
+              {item.url && (
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute right-5 top-5 rounded-full bg-white/95 px-5 py-2.5 text-sm font-medium text-[var(--color-ink)] shadow-lg backdrop-blur transition-all duration-300 hover:bg-white md:opacity-0 md:group-hover:opacity-100"
+                >
+                  {dict.educationPage.visit} ↗
+                </a>
+              )}
+              <div className="absolute inset-x-0 bottom-0 flex items-center gap-4 p-6 md:p-8">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.logo}
+                  alt={item.school}
+                  className="h-14 w-14 shrink-0 rounded-xl ring-2 ring-white/80 md:h-16 md:w-16"
+                />
+                <div className="min-w-0 text-white">
+                  <p className="truncate text-base font-semibold md:text-lg">
+                    {item.school}
+                  </p>
+                  <p className="text-sm text-white/80">{item.period}</p>
+                </div>
               </div>
             </div>
           </Reveal>
         </Section>
       </div>
 
-      {/* ── Overview band — white ── */}
-      <div className="bg-white">
+      {/* ── Overview band — alt ── */}
+      <div className="bg-[var(--color-bg-alt)]">
         <Section className="py-24 md:py-32">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
@@ -116,8 +125,8 @@ export default async function EducationDetailPage({
         </Section>
       </div>
 
-      {/* ── What I learned band — alt ── */}
-      <div className="bg-[var(--color-bg-alt)]">
+      {/* ── What I learned band — white ── */}
+      <div className="bg-white">
         <Section className="py-24 md:py-32">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
@@ -140,8 +149,8 @@ export default async function EducationDetailPage({
         </Section>
       </div>
 
-      {/* ── Key modules band — white ── */}
-      <div className="bg-white">
+      {/* ── Key modules band — alt ── */}
+      <div className="bg-[var(--color-bg-alt)]">
         <Section className="py-24 md:py-32">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-4xl">
@@ -161,8 +170,8 @@ export default async function EducationDetailPage({
         </Section>
       </div>
 
-      {/* ── Back link band — alt ── */}
-      <div className="bg-[var(--color-bg-alt)]">
+      {/* ── Back link band — white ── */}
+      <div className="bg-white">
         <Section className="py-12 md:py-16">
           <Reveal>
             <Link

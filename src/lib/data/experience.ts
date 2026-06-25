@@ -78,6 +78,7 @@ export type EducationItem = {
   period: string;
   url: string | null;
   logo: string;
+  cover: string;
   overview: Localized;
   learned: Localized[];
   modules: string[];
@@ -95,6 +96,7 @@ export const EDUCATION: EducationItem[] = [
     period: "2021 — 2024",
     url: "https://wiut.uz/bsc-hons-in-computer-science",
     logo: "/brand/wiut.png",
+    cover: "/brand/edu-bsc.jpg",
     overview: {
       en: "I joined the BSc (Hons) in Computer Science at WIUT in 2021, building on my foundation year. The three-year programme — validated by the University of Westminster — covers the full breadth of computing: from algorithms and operating systems to software engineering, databases, and cybersecurity. It is designed to produce independent thinkers who can analyse complex problems and communicate solutions with clarity and confidence.",
       uz: "Men 2021-yilda WIUT'ning BSc (Hons) Kompyuter fanlari dasturiga qo'shildim va fondament yilimni davom ettirib. Vestminster universiteti tomonidan tasdiqlangan uch yillik dastur algoritmlardan tortib, operatsion tizimlar, dasturiy ta'minot muhandisligi, ma'lumotlar bazalari va kiberxavfsizlikkacha hisoblash sohalarining barcha qirralarini qamrab oladi. Dastur mustaqil fikrlovchi, murakkab muammolarni tahlil qila oladigan va yechimlarni aniq ifodalay oladigan mutaxassislarni tayyorlash uchun mo'ljallangan.",
@@ -144,6 +146,7 @@ export const EDUCATION: EducationItem[] = [
     period: "2020 — 2021",
     url: "https://wiut.uz/certificate-international-foundation-studies",
     logo: "/brand/wiut.png",
+    cover: "/brand/edu-ifs.jpg",
     overview: {
       en: "I began my academic journey at WIUT in 2020 with the Certificate in International Foundation Studies — a one-year, two-semester programme validated by the University of Westminster. The Foundation is designed as the first step into higher education, preparing students for degree-level study through a combination of academic skills, critical thinking, and subject knowledge. As a UK university award, it is also recognised as an entry qualification for degree courses at universities around the world.",
       uz: "Men 2020-yilda WIUT'da akademik yo'limni Xalqaro fondament ta'lim sertifikati bilan boshladim — Vestminster universiteti tomonidan tasdiqlangan bir yillik, ikki semestrli dastur. Fondament oliy ta'limga birinchi qadam sifatida tuzilgan bo'lib, talabalarni akademik ko'nikmalar, tanqidiy fikrlash va fan bilimlari orqali daraja darajasidagi o'qishga tayyorlaydi. Britaniya universiteti mukofoti sifatida u butun dunyo universitetlarida daraja kurslariga kirish malakasi sifatida ham tan olinadi.",
