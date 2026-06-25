@@ -1,13 +1,13 @@
 import type { Dictionary } from "./en";
 
 export const uz: Dictionary = {
-  nav: { home: "Bosh sahifa", projects: "Loyihalar", about: "Men haqimda", contact: "Aloqa" },
+  nav: { home: "Bosh sahifa", projects: "Loyihalar", blog: "Blog", about: "Men haqimda", contact: "Aloqa" },
   metaBar: { role: "Full-Stack muhandis", availability: "Ishga tayyor" },
   meta: {
     home: {
-      title: "Shakhzodbek Sharipov — Full-Stack dasturchi",
+      title: "Shakhzodbek Sharipov — Full-Stack dasturchi | Toshkent",
       description:
-        "Next.js, NestJS va PostgreSQL yordamida ko'p ijarali SaaS, marketpleyslar va ERP tizimlarini yaratuvchi full-stack dasturchi.",
+        "Toshkentlik Full-Stack dasturchi. Next.js, NestJS, React va PostgreSQL yordamida ko'p ijarali SaaS, marketpleyslar va ERP tizimlarini yaratadi.",
     },
     projects: {
       title: "Loyihalar — Shakhzodbek Sharipov",
@@ -20,6 +20,10 @@ export const uz: Dictionary = {
     contact: {
       title: "Aloqa — Shakhzodbek Sharipov",
       description: "Shakhzodbek Sharipov bilan bog'laning.",
+    },
+    blog: {
+      title: "Blog — Shakhzodbek Sharipov",
+      description: "Dasturiy ta'minot yaratish bo'yicha eslatmalar — arxitektura, to'lovlar va haqiqiy mahsulotlarni yetkazib berish saboqlari.",
     },
   },
   hero: {
@@ -40,6 +44,33 @@ export const uz: Dictionary = {
     letsTalk: "Keling, nimadir yarataylik",
   },
   projects: { role: "Rol", stack: "Texnologiyalar", visit: "Saytga o'tish" },
+  projectPage: {
+    back: "Barcha loyihalar",
+    overview: "Umumiy ma'lumot",
+    whatIBuilt: "Men nima qildim",
+    architecture: "Arxitektura",
+    underTheHood: "Ichki tuzilishi",
+    learnings: "Men nimani o'rgandim",
+    builtWith: "Texnologiyalar",
+    role: "Rol",
+    visit: "Saytga o'tish",
+    viewCode: "Kodni ko'rish",
+    next: "Keyingi loyiha",
+  },
+  blogPage: {
+    title: "Blog",
+    lede: "Dasturiy ta'minot yaratish bo'yicha eslatmalar — arxitektura, to'lovlar va haqiqiy mahsulotlarni yetkazib berish saboqlari.",
+    readingTime: "daqiqa o'qish",
+    backToBlog: "Barcha maqolalar",
+    postedOn: "Nashr etilgan",
+  },
+  educationPage: {
+    overview: "Umumiy ma'lumot",
+    whatILearned: "Men nimani o'rgandim",
+    modules: "Asosiy fanlar",
+    visit: "Dasturni ko'rish",
+    more: "Batafsil",
+  },
   contact: {
     title: "Keling, gaplashaylik",
     intro: "Minglab bizneslar ishonadigan mahsulotlarni yaratayotgan ambitsiyali jamoa qidiryapman. Quyidagi har qanday kanal orqali bog'laning.",

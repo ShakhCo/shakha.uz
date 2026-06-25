@@ -1,17 +1,9 @@
-/**
- * ProjectCard — Flat surface+hairline card for a project.
- * Per design-system §5:
- *   - bg-[--color-surface] + 1px --color-line border at rest
- *   - Hover: border→ink, translateY(-2px)
- *   - font-display project name
- *   - mono `visit ↗` link in signal
- *   - mono uppercase text-[10px] muted role
- *   - Stack tags as mono chips: hairline border, text-[11px], rounded-sm (NOT pill)
- */
-
+import Link from "next/link";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import type { Locale } from "@/lib/i18n/config";
 import type { Project } from "@/lib/data/projects";
+import { BrowserFrame } from "./BrowserFrame";
+import { TechIcon } from "@/lib/skill-icons";
 
 export function ProjectCard({
   project,
@@ -23,48 +15,67 @@ export function ProjectCard({
   dict: Dictionary;
 }) {
   return (
-    <article
-      className="group flex h-full flex-col border border-[var(--color-line)] bg-[var(--color-surface)] p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-ink)]"
-      style={{ borderRadius: 0 }}
+    <Link
+      href={`/${locale}/projects/${project.slug}/`}
+      className="group flex h-full flex-col rounded-[20px] bg-[var(--color-bg-alt)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] overflow-hidden"
     >
-      {/* Top row: project name + visit link */}
-      <div className="flex items-baseline justify-between gap-3">
-        <h3 className="font-display text-xl font-semibold leading-snug text-[var(--color-ink)]">
+      {/* Thumbnail — bright screenshot in a browser-window frame (or fallback) */}
+      <BrowserFrame url={project.url}>
+        {project.image ? (
+          <div className="aspect-[16/10] w-full overflow-hidden bg-white">
+            <img
+              src={project.image}
+              alt={project.name}
+              loading="lazy"
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+          </div>
+        ) : (
+          <div className="flex aspect-[16/10] w-full items-center justify-center bg-[var(--color-bg)]">
+            <span className="px-6 text-center text-base font-semibold leading-snug text-[var(--color-muted)]">
+              {project.name}
+            </span>
+          </div>
+        )}
+      </BrowserFrame>
+
+      {/* Card body */}
+      <div className="flex flex-1 flex-col p-5 sm:p-7 md:p-10">
+        {/* Role */}
+        <p className="text-sm text-[var(--color-muted)]">
+          {project.role[locale]}
+        </p>
+
+        {/* Project name */}
+        <h3 className="mt-2 text-2xl font-semibold tracking-[-0.01em] text-[var(--color-ink)] md:text-3xl">
           {project.name}
         </h3>
-        {project.url && (
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 font-mono text-[11px] text-[var(--color-signal)] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-signal)]"
-          >
-            {dict.projects.visit} ↗
-          </a>
-        )}
+
+        {/* Description */}
+        <p className="mt-3 flex-1 text-base leading-relaxed text-[var(--color-ink)] md:text-lg">
+          {project.description[locale]}
+        </p>
+
+        {/* Stack tag pills */}
+        <ul className="mt-6 flex flex-wrap gap-2">
+          {project.tags.map((t) => (
+            <li
+              key={t}
+              className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-sm text-[var(--color-muted)] shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
+            >
+              <TechIcon name={t} />
+              {t}
+            </li>
+          ))}
+        </ul>
+
+        {/* Navigate affordance */}
+        <div className="mt-6">
+          <span className="text-sm font-medium text-[var(--color-accent)]">
+            {dict.projects.visit} →
+          </span>
+        </div>
       </div>
-
-      {/* Role */}
-      <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-muted)]">
-        {project.role[locale]}
-      </p>
-
-      {/* Description */}
-      <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--color-ink)]">
-        {project.description[locale]}
-      </p>
-
-      {/* Stack chips — mono, rounded-sm, hairline border */}
-      <ul className="mt-4 flex flex-wrap gap-1.5">
-        {project.tags.map((t) => (
-          <li
-            key={t}
-            className="rounded-sm border border-[var(--color-line)] px-2 py-0.5 font-mono text-[11px] text-[var(--color-muted)]"
-          >
-            {t}
-          </li>
-        ))}
-      </ul>
-    </article>
+    </Link>
   );
 }

@@ -1,29 +1,15 @@
 import { notFound } from "next/navigation";
-import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Onest } from "next/font/google";
 import { LOCALES, isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { SITE_URL, SOCIALS, CONTACT } from "@/lib/site";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const sans = IBM_Plex_Sans({
+const sans = Onest({
   subsets: ["latin", "latin-ext", "cyrillic"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
-  display: "swap",
-});
-
-const mono = IBM_Plex_Mono({
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
   display: "swap",
 });
 
@@ -44,18 +30,62 @@ export default async function LocaleLayout({
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Shakhzodbek Sharipov",
-    url: SITE_URL,
-    jobTitle: "Full-Stack Developer",
-    email: CONTACT.email,
-    address: { "@type": "PostalAddress", addressLocality: "Tashkent", addressCountry: "UZ" },
-    sameAs: [SOCIALS.linkedin, SOCIALS.github],
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${SITE_URL}/#person`,
+        name: "Shakhzodbek Sharipov",
+        alternateName: "Shakhzodbek",
+        url: SITE_URL,
+        jobTitle: "Full-Stack Software Developer",
+        description:
+          "Full-Stack Software Developer from Tashkent, Uzbekistan, specialising in multi-tenant SaaS, marketplaces, and ERP systems.",
+        email: CONTACT.email,
+        image: `${SITE_URL}/icon.svg`,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Tashkent",
+          addressCountry: "UZ",
+        },
+        sameAs: [SOCIALS.linkedin, SOCIALS.github],
+        knowsAbout: [
+          "TypeScript",
+          "JavaScript",
+          "Python",
+          "Next.js",
+          "React",
+          "Vue",
+          "NestJS",
+          "FastAPI",
+          "Django",
+          "PostgreSQL",
+          "Redis",
+          "Docker",
+          "multi-tenant SaaS",
+          "REST APIs",
+          "WebSocket",
+          "Telegram Mini Apps",
+        ],
+        alumniOf: {
+          "@type": "CollegeOrUniversity",
+          name: "Westminster International University in Tashkent",
+          sameAs: "https://wiut.uz",
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        name: "Shakhzodbek Sharipov",
+        url: SITE_URL,
+        inLanguage: ["en", "uz", "ru"],
+        author: { "@id": `${SITE_URL}/#person` },
+      },
+    ],
   };
 
   return (
-    <html lang={locale} className={`${display.variable} ${sans.variable} ${mono.variable}`}>
-      <body>
+    <html lang={locale} className={sans.variable}>
+      <body className="overflow-x-hidden">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

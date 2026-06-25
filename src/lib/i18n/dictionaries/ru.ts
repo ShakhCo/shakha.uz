@@ -1,13 +1,13 @@
 import type { Dictionary } from "./en";
 
 export const ru: Dictionary = {
-  nav: { home: "Главная", projects: "Проекты", about: "Обо мне", contact: "Контакты" },
+  nav: { home: "Главная", projects: "Проекты", blog: "Блог", about: "Обо мне", contact: "Контакты" },
   metaBar: { role: "Full-Stack инженер", availability: "Открыт к работе" },
   meta: {
     home: {
-      title: "Шахзодбек Шарипов — Full-Stack разработчик",
+      title: "Шахзодбек Шарипов — Full-Stack разработчик | Ташкент",
       description:
-        "Full-stack разработчик, создающий мультитенантные SaaS, маркетплейсы и ERP-системы на Next.js, NestJS и PostgreSQL.",
+        "Full-Stack разработчик из Ташкента, Узбекистан. Создаёт мультитенантные SaaS, маркетплейсы и ERP-системы на Next.js, NestJS, React и PostgreSQL.",
     },
     projects: {
       title: "Проекты — Шахзодбек Шарипов",
@@ -20,6 +20,10 @@ export const ru: Dictionary = {
     contact: {
       title: "Контакты — Шахзодбек Шарипов",
       description: "Свяжитесь с Шахзодбеком Шариповым.",
+    },
+    blog: {
+      title: "Блог — Шахзодбек Шарипов",
+      description: "Заметки о разработке — архитектура, платежи и уроки из реальных проектов.",
     },
   },
   hero: {
@@ -40,6 +44,33 @@ export const ru: Dictionary = {
     letsTalk: "Давайте что-нибудь создадим",
   },
   projects: { role: "Роль", stack: "Стек", visit: "Открыть сайт" },
+  projectPage: {
+    back: "Все проекты",
+    overview: "Обзор",
+    whatIBuilt: "Что я сделал",
+    architecture: "Архитектура",
+    underTheHood: "Под капотом",
+    learnings: "Чему я научился",
+    builtWith: "Технологии",
+    role: "Роль",
+    visit: "Открыть сайт",
+    viewCode: "Посмотреть код",
+    next: "Следующий проект",
+  },
+  blogPage: {
+    title: "Блог",
+    lede: "Заметки о разработке программного обеспечения — архитектура, платежи и уроки из реальных проектов.",
+    readingTime: "мин чтения",
+    backToBlog: "Все посты",
+    postedOn: "Опубликовано",
+  },
+  educationPage: {
+    overview: "Обзор",
+    whatILearned: "Чему я научился",
+    modules: "Ключевые предметы",
+    visit: "Открыть программу",
+    more: "Подробнее",
+  },
   contact: {
     title: "Давайте поговорим",
     intro: "Ищу амбициозную команду, создающую продукты, на которые полагаются тысячи компаний. Свяжитесь любым удобным способом ниже.",

@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "Shakhzodbek",
     start_url: "/en/",
     display: "standalone",
-    background_color: "#f1f0eb",
-    theme_color: "#17171b",
+    background_color: "#ffffff",
+    theme_color: "#1d1d1f",
     icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" }],
   };
 }

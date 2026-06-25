@@ -5,6 +5,9 @@ import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { buildMetadata } from "@/lib/seo";
 import { CONTACT, SOCIALS } from "@/lib/site";
 import { Section } from "@/components/Section";
+import { SiTelegram } from "react-icons/si";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { LuMail } from "react-icons/lu";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -20,30 +23,40 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
   const tgHandle = CONTACT.telegram.replace(/^@/, "");
   const cards = [
-    { label: dict.contact.email, value: CONTACT.email, href: `mailto:${CONTACT.email}` },
-    { label: dict.contact.telegram, value: CONTACT.telegram, href: `https://t.me/${tgHandle}` },
-    { label: dict.contact.linkedin, value: "shakhzodbek-sharipov", href: SOCIALS.linkedin },
-    { label: dict.contact.github, value: "ShakhCo", href: SOCIALS.github },
+    { label: dict.contact.email, value: CONTACT.email, href: `mailto:${CONTACT.email}`, Icon: LuMail, color: "#0071e3" },
+    { label: dict.contact.telegram, value: CONTACT.telegram, href: `https://t.me/${tgHandle}`, Icon: SiTelegram, color: "#26A5E4" },
+    { label: dict.contact.linkedin, value: "shakhzodbek-sharipov", href: SOCIALS.linkedin, Icon: FaLinkedin, color: "#0A66C2" },
+    { label: dict.contact.github, value: "ShakhCo", href: SOCIALS.github, Icon: FaGithub, color: "#1d1d1f" },
   ];
 
   return (
-    <Section className="py-16 md:py-24">
-      <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-signal)]">▦ {dict.contact.title}</span>
-      <h1 className="mt-3 font-display text-4xl font-semibold md:text-6xl">{dict.contact.title}</h1>
-      <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]">{dict.contact.intro}</p>
-      <div className="mt-12 grid gap-4 sm:grid-cols-2">
+    <Section className="py-16 sm:py-24 md:py-32">
+      <div className="max-w-2xl">
+        <h1 className="text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
+          {dict.contact.title}
+        </h1>
+        <p className="mt-6 text-xl leading-relaxed text-[var(--color-muted)] md:text-2xl">
+          {dict.contact.intro}
+        </p>
+      </div>
+      <div className="mt-16 grid gap-4 sm:grid-cols-2">
         {cards.map((c) => (
           <a
             key={c.label}
             href={c.href}
             target={c.href.startsWith("http") ? "_blank" : undefined}
             rel="noopener noreferrer"
-            className="group rounded-md border border-[var(--color-line)] bg-[var(--color-surface)] p-6 transition-transform hover:-translate-y-0.5 hover:border-[var(--color-ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-signal)]"
+            className="group flex min-w-0 items-center gap-5 overflow-hidden rounded-[20px] bg-[var(--color-bg-alt)] p-5 transition-shadow hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] sm:p-8"
           >
-            <p className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-muted)]">{c.label}</p>
-            <p className="mt-2 font-display text-lg font-semibold text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-signal)]">
-              {c.value} ↗
-            </p>
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+              <c.Icon className="h-6 w-6" style={{ color: c.color }} aria-hidden />
+            </span>
+            <div className="min-w-0">
+              <p className="text-sm font-medium text-[var(--color-muted)]">{c.label}</p>
+              <p className="mt-1 truncate text-base font-semibold text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-xl">
+                {c.value}
+              </p>
+            </div>
           </a>
         ))}
       </div>

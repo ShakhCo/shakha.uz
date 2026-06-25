@@ -4,9 +4,12 @@ import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { buildMetadata } from "@/lib/seo";
 import { EXPERIENCE, EDUCATION } from "@/lib/data/experience";
+import { SKILLS } from "@/lib/data/skills";
 import { Section } from "@/components/Section";
+import { Reveal } from "@/components/Reveal";
 import { ExperienceItemRow } from "@/components/ExperienceItem";
-import { SkillGroupList } from "@/components/SkillGroupList";
+import { SkillTile } from "@/components/SkillTile";
+import { EducationCard } from "@/components/EducationCard";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -22,43 +25,58 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const dict = getDictionary(l);
 
   return (
-    <Section className="py-16 md:py-24">
-      <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-signal)]">▦ {dict.nav.about}</span>
-      <h1 className="mt-3 font-display text-4xl font-semibold md:text-6xl">{dict.nav.about}</h1>
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]">{dict.hero.subtitle}</p>
+    <>
+      {/* Hero band — white */}
+      <Section className="py-16 sm:py-24 md:py-32">
+        <h1 className="text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
+          {dict.nav.about}
+        </h1>
+        <p className="mt-6 max-w-2xl text-xl leading-relaxed text-[var(--color-muted)] md:text-2xl">
+          {dict.hero.subtitle}
+        </p>
+      </Section>
 
-      {/* Skills */}
-      <div className="mt-16 border-t border-[var(--color-line)] pt-10">
-        <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-signal)]">▦ {dict.sections.skills}</span>
-        <h2 className="mt-3 font-display text-2xl font-semibold md:text-[2rem]">{dict.sections.skills}</h2>
-        <div className="mt-8">
-          <SkillGroupList locale={l} />
-        </div>
+      {/* Tech stack band — bg-alt (logo tiles, white tiles pop on gray) */}
+      <div className="bg-[var(--color-bg-alt)]">
+        <Section className="py-16 sm:py-24 md:py-32">
+          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
+            {dict.sections.skills}
+          </h2>
+          <div className="mt-12 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+            {SKILLS.flatMap((g) => g.items).map((s) => (
+              <SkillTile key={s} name={s} label={s} />
+            ))}
+          </div>
+        </Section>
       </div>
 
-      {/* Experience */}
-      <div className="mt-16 border-t border-[var(--color-line)] pt-10">
-        <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-signal)]">▦ {dict.sections.experience}</span>
-        <h2 className="mt-3 font-display text-2xl font-semibold md:text-[2rem]">{dict.sections.experience}</h2>
-        <div className="mt-8">
+      {/* Experience band — white */}
+      <Section className="py-16 sm:py-24 md:py-32">
+        <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
+          {dict.sections.experience}
+        </h2>
+        <div className="mt-12">
           {EXPERIENCE.map((e, i) => (
             <ExperienceItemRow key={i} item={e} locale={l} index={i} />
           ))}
         </div>
-      </div>
+      </Section>
 
-      {/* Education */}
-      <div className="mt-16 border-t border-[var(--color-line)] pt-10">
-        <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-signal)]">▦ {dict.sections.education}</span>
-        <h2 className="mt-3 font-display text-2xl font-semibold md:text-[2rem]">{dict.sections.education}</h2>
-        <div className="mt-6">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 className="font-display text-xl font-semibold">{EDUCATION.degree[l]}</h3>
-            <span className="font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-muted)]">{EDUCATION.period}</span>
+      {/* Education band — bg-alt */}
+      <div className="bg-[var(--color-bg-alt)]">
+        <Section className="py-16 sm:py-24 md:py-32">
+          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
+            {dict.sections.education}
+          </h2>
+          <div className="mt-12 space-y-4">
+            {EDUCATION.map((item) => (
+              <Reveal key={item.slug}>
+                <EducationCard item={item} locale={l} />
+              </Reveal>
+            ))}
           </div>
-          <p className="mt-1 font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-signal)]">{EDUCATION.school}</p>
-        </div>
+        </Section>
       </div>
-    </Section>
+    </>
   );
 }

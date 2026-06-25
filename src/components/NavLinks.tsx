@@ -20,8 +20,8 @@ export function NavLinks({ links }: { links: NavLink[] }) {
               href={l.href}
               className={
                 isActive
-                  ? "border-b border-[var(--color-signal)] pb-0.5 font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-ink)]"
-                  : "font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-muted)] transition-colors hover:text-[var(--color-ink)]"
+                  ? "text-sm font-medium text-[var(--color-ink)]"
+                  : "text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-ink)]"
               }
             >
               {l.label}

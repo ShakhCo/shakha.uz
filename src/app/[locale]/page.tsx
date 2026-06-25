@@ -7,11 +7,14 @@ import { buildMetadata } from "@/lib/seo";
 import { CV_PATH } from "@/lib/site";
 import { PROJECTS } from "@/lib/data/projects";
 import { SKILLS } from "@/lib/data/skills";
+import { EXPERIENCE, EDUCATION } from "@/lib/data/experience";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { StatStrip } from "@/components/StatStrip";
 import { ProjectCard } from "@/components/ProjectCard";
-import { Schematic } from "@/components/Schematic";
+import { SkillTile } from "@/components/SkillTile";
+import { ExperienceItemRow } from "@/components/ExperienceItem";
+import { EducationCard } from "@/components/EducationCard";
 
 export async function generateMetadata({
   params,
@@ -26,6 +29,17 @@ export async function generateMetadata({
     path: "",
     title: dict.meta.home.title,
     description: dict.meta.home.description,
+    keywords: [
+      "Shakhzodbek Sharipov",
+      "Full-Stack Developer",
+      "Software Engineer",
+      "Software Developer Tashkent",
+      "Software Developer Uzbekistan",
+      "Next.js developer",
+      "NestJS developer",
+      "React developer",
+      "multi-tenant SaaS",
+    ],
   });
 }
 
@@ -38,108 +52,123 @@ export default async function Home({
   if (!isLocale(locale)) notFound();
   const l = locale as Locale;
   const dict = getDictionary(l);
-  const featured = PROJECTS.slice(0, 3);
+  const featured = PROJECTS.slice(0, 4);
 
   return (
     <>
-      {/* Top meta-bar — §3: mono, muted, hairline-bottom */}
-      <div className="border-b border-[var(--color-line)] bg-[var(--color-paper)]">
-        <div className="mx-auto flex w-full max-w-5xl items-center px-6 py-2 md:px-8">
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-muted)]">
-            TASHKENT, UZ · UTC+5 · {dict.metaBar.role.toUpperCase()} ·{" "}
-            {dict.metaBar.availability.toUpperCase()}
-          </p>
-        </div>
-      </div>
-
-      {/* Hero — two columns on desktop, single column on mobile */}
-      <Section className="pt-14 pb-10 md:pt-20 md:pb-16">
-        <div className="md:grid md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-12">
-          {/* Left column: eyebrow, h1, lede, CTAs */}
-          <div>
-            {/* Mono eyebrow */}
-            <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-signal)]">
-              ▦ {dict.hero.eyebrow}
-            </span>
+      {/* Hero — centered, spacious */}
+      <div className="bg-[var(--color-bg)]">
+        <Section className="pb-16 pt-16 sm:pb-24 sm:pt-24 md:pb-32 md:pt-32">
+          <div className="mx-auto max-w-3xl text-center">
+            {/* Role label */}
+            <p className="text-sm font-medium text-[var(--color-muted)]">
+              {dict.hero.eyebrow}
+            </p>
 
             {/* Hero h1 */}
-            <h1 className="mt-4 font-display text-[2.5rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--color-ink)] md:text-[4.5rem]">
+            <h1 className="mt-6 break-words text-4xl font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--color-ink)] sm:text-5xl md:text-7xl lg:text-[5.25rem]">
               {dict.hero.title}
             </h1>
 
             {/* Lede */}
-            <p className="mt-6 text-lg leading-relaxed text-[var(--color-muted)] md:text-xl">
+            <p className="mx-auto mt-8 max-w-2xl text-xl leading-relaxed text-[var(--color-muted)] md:text-2xl">
               {dict.hero.subtitle}
             </p>
 
-            {/* CTAs — primary signal-filled rounded-md, secondary ghost ink-hairline rounded-md */}
-            <div className="mt-8 flex flex-wrap gap-4">
+            {/* CTAs */}
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link
                 href={`/${l}/contact/`}
-                className="rounded-md bg-[var(--color-signal)] px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-signal)]"
+                className="rounded-full bg-[var(--color-accent)] px-7 py-3.5 text-base font-medium text-white transition-colors hover:bg-[var(--color-accent-hover)]"
               >
                 {dict.hero.ctaContact}
               </Link>
               <a
                 href={CV_PATH}
                 download
-                className="rounded-md border border-[var(--color-ink)] px-6 py-3 text-sm font-medium text-[var(--color-ink)] transition-colors hover:bg-[var(--color-ink)] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-signal)]"
+                className="rounded-full border border-[var(--color-line)] px-7 py-3.5 text-base font-medium text-[var(--color-ink)] transition-colors hover:bg-[var(--color-bg-alt)]"
               >
                 {dict.hero.ctaCv}
               </a>
             </div>
           </div>
+        </Section>
+      </div>
 
-          {/* Right column: Schematic — below text on mobile, right column on desktop */}
-          <div className="mt-12 md:mt-0">
-            <Schematic />
-          </div>
-        </div>
-      </Section>
+      {/* StatStrip — alt band */}
+      <div className="bg-[var(--color-bg-alt)]">
+        <Section className="py-12 md:py-20">
+          <StatStrip dict={dict} />
+        </Section>
+      </div>
 
-      {/* StatStrip */}
-      <Section className="py-4">
-        <StatStrip dict={dict} />
-      </Section>
-
-      {/* Featured projects */}
-      <Section className="py-16">
-        <div className="flex items-baseline justify-between">
-          <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-signal)]">
-            ▦ {dict.sections.featured}
-          </span>
-          <Link
-            href={`/${l}/projects/`}
-            className="font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-signal)] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-signal)]"
-          >
-            {dict.sections.featuredViewAll} →
-          </Link>
-        </div>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {featured.map((p) => (
-            <Reveal key={p.slug}>
-              <ProjectCard project={p} locale={l} dict={dict} />
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      {/* Skills snapshot */}
-      <Section className="border-t border-[var(--color-line)] py-16">
-        <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-signal)]">
-          ▦ {dict.sections.skills}
-        </span>
-        <div className="mt-6 flex flex-wrap gap-2">
-          {SKILLS.flatMap((g) => g.items).map((s) => (
-            <span
-              key={s}
-              className="rounded-sm border border-[var(--color-line)] bg-[var(--color-surface)] px-3 py-1 font-mono text-xs text-[var(--color-ink)]"
+      {/* Featured projects — white band */}
+      <div className="bg-[var(--color-bg)]">
+        <Section className="py-16 sm:py-24 md:py-32">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
+              {dict.sections.featured}
+            </h2>
+            <Link
+              href={`/${l}/projects/`}
+              className="text-sm font-medium text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-hover)]"
             >
-              {s}
-            </span>
-          ))}
-        </div>
-      </Section>
+              {dict.sections.featuredViewAll} →
+            </Link>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 md:gap-8">
+            {featured.map((p) => (
+              <Reveal key={p.slug}>
+                <ProjectCard project={p} locale={l} dict={dict} />
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+      </div>
+
+      {/* Skills snapshot — alt band */}
+      <div className="bg-[var(--color-bg-alt)]">
+        <Section className="py-16 sm:py-24 md:py-32">
+          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
+            {dict.sections.skills}
+          </h2>
+          <div className="mt-10 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+            {SKILLS.flatMap((g) => g.items).map((s) => (
+              <SkillTile key={s} name={s} label={s} />
+            ))}
+          </div>
+        </Section>
+      </div>
+
+      {/* Experience — white band */}
+      <div className="bg-[var(--color-bg)]">
+        <Section className="py-16 sm:py-24 md:py-32">
+          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
+            {dict.sections.experience}
+          </h2>
+          <div className="mt-12">
+            {EXPERIENCE.map((e, i) => (
+              <ExperienceItemRow key={i} item={e} locale={l} index={i} />
+            ))}
+          </div>
+        </Section>
+      </div>
+
+      {/* Education — alt band */}
+      <div className="bg-[var(--color-bg-alt)]">
+        <Section className="py-16 sm:py-24 md:py-32">
+          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
+            {dict.sections.education}
+          </h2>
+          <div className="mt-12 space-y-4">
+            {EDUCATION.map((item) => (
+              <Reveal key={item.slug}>
+                <EducationCard item={item} locale={l} />
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+      </div>
     </>
   );
 }
