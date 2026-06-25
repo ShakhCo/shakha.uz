@@ -2,7 +2,7 @@ export const SITE_URL = "https://shakha.uz";
 
 export const CONTACT = {
   email: "shakhzodbek.me@gmail.com",
-  telegram: "@PLACEHOLDER",
+  telegram: "@ShakhCo",
 } as const;
 
 export const SOCIALS = {
