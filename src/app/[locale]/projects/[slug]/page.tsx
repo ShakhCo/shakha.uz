@@ -272,18 +272,47 @@ export default async function ProjectDetailPage({
         </Section>
       </div>
 
-      {/* ── Next project band — white ── */}
-      <div className={project.image ? "bg-[var(--color-bg-alt)]" : "bg-white"}>
-        <Section className="py-24 md:py-32">
+      {/* ── Next project band — contrasting card ── */}
+      <div className={project.image ? "bg-white" : "bg-[var(--color-bg-alt)]"}>
+        <Section className="py-16 md:py-24">
           <Reveal>
-            <p className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]">
-              {dict.projectPage.next}
-            </p>
             <Link
               href={`/${l}/projects/${nextProject.slug}/`}
-              className="mt-4 inline-block text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] transition-colors hover:text-[var(--color-accent)] md:text-5xl"
+              className="group block rounded-[24px] border border-[var(--color-line)] bg-[var(--color-bg-alt)] p-8 transition-all duration-300 hover:border-[var(--color-ink)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.07)] md:p-12"
             >
-              {nextProject.name} →
+              <div className="flex items-center justify-between gap-6">
+                <div className="min-w-0">
+                  <p className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]">
+                    {dict.projectPage.next}
+                  </p>
+                  <h2 className="mt-3 truncate text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
+                    {nextProject.name}
+                  </h2>
+                  <p className="mt-2 text-sm text-[var(--color-muted)] md:text-base">
+                    {nextProject.category[l]}
+                  </p>
+                </div>
+                <div className="flex shrink-0 items-center gap-6">
+                  {nextProject.image && (
+                    <div className="hidden w-48 overflow-hidden rounded-xl border border-[var(--color-line)] shadow-sm lg:block">
+                      <div className="aspect-[16/10] w-full bg-white">
+                        <img
+                          src={nextProject.image}
+                          alt={nextProject.name}
+                          loading="lazy"
+                          className="h-full w-full object-cover object-top"
+                        />
+                      </div>
+                    </div>
+                  )}
+                  <span
+                    aria-hidden="true"
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[var(--color-line)] text-xl text-[var(--color-ink)] transition-all duration-300 group-hover:translate-x-1 group-hover:border-[var(--color-ink)] group-hover:bg-[var(--color-ink)] group-hover:text-white"
+                  >
+                    →
+                  </span>
+                </div>
+              </div>
             </Link>
           </Reveal>
         </Section>
