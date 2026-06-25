@@ -103,12 +103,12 @@ export default async function BlogPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
 
-      <div className="bg-[var(--color-bg-alt)]">
-        <Section className="pb-12 pt-16 md:pt-24">
+      <div className="relative" style={{ backgroundImage: post.gradient }}>
+        <Section className="pb-14 pt-16 md:pb-20 md:pt-24">
           {/* Back link */}
           <Link
             href={`/${l}/blog/`}
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-ink)]"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-white/80 transition-colors hover:text-white"
           >
             <span aria-hidden="true">←</span>
             {dict.blogPage.backToBlog}
@@ -119,7 +119,7 @@ export default async function BlogPostPage({
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center rounded-full border border-[var(--color-line)] bg-white px-3 py-1 text-xs font-medium text-[var(--color-muted)]"
+                className="inline-flex items-center rounded-full bg-white/20 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm"
               >
                 {tag}
               </span>
@@ -127,12 +127,12 @@ export default async function BlogPostPage({
           </div>
 
           {/* Title */}
-          <h1 className="mt-6 text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-5xl lg:text-6xl">
+          <h1 className="mt-6 max-w-3xl text-4xl font-semibold tracking-[-0.025em] text-white md:text-5xl lg:text-6xl">
             {post.title[l]}
           </h1>
 
           {/* Meta line */}
-          <p className="mt-4 text-sm text-[var(--color-muted)]">
+          <p className="mt-4 text-sm text-white/80">
             {dict.blogPage.postedOn} {formatDate(post.date, l)} · {post.readingMinutes} {dict.blogPage.readingTime}
           </p>
         </Section>

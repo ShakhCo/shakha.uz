@@ -53,47 +53,53 @@ export default async function BlogIndexPage({
         </p>
       </Reveal>
 
-      <div className="mt-16 flex flex-col gap-6">
-        {POSTS.map((post) => (
-          <Reveal key={post.slug}>
-            <Link
-              href={`/${l}/blog/${post.slug}/`}
-              className="group block rounded-2xl border border-[var(--color-line)] bg-white p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-ink)]/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.06)] md:p-10"
-            >
-              {/* Tags */}
-              <div className="mb-4 flex flex-wrap gap-2">
-                {post.tags.slice(0, 3).map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-flex items-center rounded-full bg-[var(--color-bg-alt)] px-3 py-1 text-xs font-medium text-[var(--color-muted)]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+      <div
+        className="mt-16 rounded-[28px] p-5 sm:p-8 md:p-10"
+        style={{ backgroundImage: "linear-gradient(135deg, #5b6cff 0%, #a855f7 50%, #ec4899 100%)" }}
+      >
+        <div className="flex flex-col gap-5">
+          {POSTS.map((post) => (
+            <Reveal key={post.slug}>
+              <Link
+                href={`/${l}/blog/${post.slug}/`}
+                className="group block rounded-[18px] bg-white p-7 shadow-[0_6px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_rgba(0,0,0,0.2)] md:p-9"
+              >
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center rounded-full bg-[var(--color-bg-alt)] px-3 py-1 text-xs font-medium text-[var(--color-muted)]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
 
-              {/* Title */}
-              <h2 className="text-2xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] md:text-3xl">
-                {post.title[l]}
-              </h2>
+                {/* Title */}
+                <h2 className="mt-4 text-2xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] md:text-3xl">
+                  {post.title[l]}
+                </h2>
 
-              {/* Meta: date · reading time */}
-              <p className="mt-3 text-sm text-[var(--color-muted)]">
-                {formatDate(post.date, l)} · {post.readingMinutes} {dict.blogPage.readingTime}
-              </p>
+                {/* Meta: date · reading time */}
+                <p className="mt-3 text-sm text-[var(--color-muted)]">
+                  {formatDate(post.date, l)} · {post.readingMinutes}{" "}
+                  {dict.blogPage.readingTime}
+                </p>
 
-              {/* Excerpt */}
-              <p className="mt-4 max-w-3xl text-base leading-relaxed text-[var(--color-muted)] md:text-lg">
-                {post.excerpt[l]}
-              </p>
+                {/* Excerpt */}
+                <p className="mt-4 max-w-3xl text-base leading-relaxed text-[var(--color-muted)] md:text-lg">
+                  {post.excerpt[l]}
+                </p>
 
-              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-accent)] transition-all group-hover:gap-2.5">
-                Read more
-                <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
-              </span>
-            </Link>
-          </Reveal>
-        ))}
+                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-accent)] transition-all group-hover:gap-2.5">
+                  Read more
+                  <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </Section>
   );

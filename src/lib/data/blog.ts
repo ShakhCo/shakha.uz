@@ -5,6 +5,7 @@ export type BlogPost = {
   date: string;
   tags: string[];
   readingMinutes: number;
+  gradient: string;
   title: Localized;
   excerpt: Localized;
   content: Localized;
@@ -13,6 +14,7 @@ export type BlogPost = {
 export const POSTS: BlogPost[] = [
   {
     slug: "designing-multi-tenant-saas",
+    gradient: "linear-gradient(135deg, #5b6cff 0%, #a855f7 50%, #ec4899 100%)",
     date: "2025-09-12",
     tags: ["SaaS", "Architecture", "Multi-tenancy", "Next.js"],
     readingMinutes: 6,
@@ -173,6 +175,7 @@ if (slug && slug !== 'www') {
   },
   {
     slug: "prepaid-wallet-billing-with-payme",
+    gradient: "linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #8b5cf6 100%)",
     date: "2025-08-20",
     tags: ["Payments", "Billing", "Payme", "NestJS"],
     readingMinutes: 5,
@@ -370,6 +373,7 @@ Payme использует callback-based поток: ваш backend откры�
   },
   {
     slug: "zero-dependency-websocket-server",
+    gradient: "linear-gradient(135deg, #10b981 0%, #0ea5e9 50%, #6366f1 100%)",
     date: "2025-07-30",
     tags: ["Node.js", "WebSocket", "Networking", "From scratch"],
     readingMinutes: 7,
