@@ -56,6 +56,7 @@ export const en = {
     whatILearned: "What I learned",
     modules: "Key modules",
     visit: "Visit programme",
+    more: "Learn more",
   },
   contact: {
     title: "Let's talk",

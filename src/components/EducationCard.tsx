@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n/config";
 import type { EducationItem } from "@/lib/data/experience";
+import { getDictionary } from "@/lib/i18n/get-dictionary";
 
 export function EducationCard({
   item,
@@ -9,6 +10,7 @@ export function EducationCard({
   item: EducationItem;
   locale: Locale;
 }) {
+  const dict = getDictionary(locale);
   return (
     <Link
       href={`/${locale}/education/${item.slug}/`}
@@ -33,11 +35,9 @@ export function EducationCard({
           {item.school}
         </p>
       </div>
-      <span
-        aria-hidden="true"
-        className="shrink-0 text-[var(--color-accent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-      >
-        →
+      <span className="hidden shrink-0 items-center gap-1.5 text-sm font-medium text-[var(--color-accent)] transition-transform duration-300 group-hover:translate-x-0.5 sm:inline-flex">
+        {dict.educationPage.more}
+        <span aria-hidden="true">→</span>
       </span>
     </Link>
   );

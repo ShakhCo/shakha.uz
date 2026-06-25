@@ -58,6 +58,7 @@ export const uz: Dictionary = {
     whatILearned: "Men nimani o'rgandim",
     modules: "Asosiy fanlar",
     visit: "Dasturni ko'rish",
+    more: "Batafsil",
   },
   contact: {
     title: "Keling, gaplashaylik",

@@ -58,6 +58,7 @@ export const ru: Dictionary = {
     whatILearned: "Чему я научился",
     modules: "Ключевые предметы",
     visit: "Открыть программу",
+    more: "Подробнее",
   },
   contact: {
     title: "Давайте поговорим",
