@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo";
 import { CV_PATH } from "@/lib/site";
 import { PROJECTS } from "@/lib/data/projects";
 import { SKILLS } from "@/lib/data/skills";
-import { EXPERIENCE } from "@/lib/data/experience";
+import { EXPERIENCE, EDUCATION } from "@/lib/data/experience";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { StatStrip } from "@/components/StatStrip";
@@ -149,8 +149,12 @@ export default async function Home({
           <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
             {dict.sections.education}
           </h2>
-          <div className="mt-12">
-            <EducationCard locale={l} />
+          <div className="mt-12 space-y-4">
+            {EDUCATION.map((item) => (
+              <Reveal key={item.slug}>
+                <EducationCard item={item} locale={l} />
+              </Reveal>
+            ))}
           </div>
         </Section>
       </div>

@@ -53,6 +53,12 @@ export const uz: Dictionary = {
     viewCode: "Kodni ko'rish",
     next: "Keyingi loyiha",
   },
+  educationPage: {
+    overview: "Umumiy ma'lumot",
+    whatILearned: "Men nimani o'rgandim",
+    modules: "Asosiy fanlar",
+    visit: "Dasturni ko'rish",
+  },
   contact: {
     title: "Keling, gaplashaylik",
     intro: "Minglab bizneslar ishonadigan mahsulotlarni yaratayotgan ambitsiyali jamoa qidiryapman. Quyidagi har qanday kanal orqali bog'laning.",

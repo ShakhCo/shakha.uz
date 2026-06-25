@@ -51,6 +51,12 @@ export const en = {
     viewCode: "View code",
     next: "Next project",
   },
+  educationPage: {
+    overview: "Overview",
+    whatILearned: "What I learned",
+    modules: "Key modules",
+    visit: "Visit programme",
+  },
   contact: {
     title: "Let's talk",
     intro: "Looking for an ambitious team building products thousands of businesses depend on. Reach out through any channel below.",

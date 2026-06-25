@@ -67,7 +67,23 @@ describe("data integrity", () => {
       expect(hasAllLocales(e.role), e.org).toBe(true);
       for (const b of e.bullets) expect(hasAllLocales(b)).toBe(true);
     }
-    expect(hasAllLocales(EDUCATION.degree)).toBe(true);
+  });
+
+  it("EDUCATION has 2 items with unique slugs", () => {
+    expect(EDUCATION).toHaveLength(2);
+    expect(new Set(EDUCATION.map((e) => e.slug)).size).toBe(2);
+  });
+
+  it("every education item has localized degree, overview, non-empty localized learned bullets, and non-empty modules", () => {
+    for (const item of EDUCATION) {
+      expect(hasAllLocales(item.degree), `${item.slug} degree`).toBe(true);
+      expect(hasAllLocales(item.overview), `${item.slug} overview`).toBe(true);
+      expect(item.learned.length, `${item.slug} learned non-empty`).toBeGreaterThan(0);
+      for (const bullet of item.learned) {
+        expect(hasAllLocales(bullet), `${item.slug} learned bullet`).toBe(true);
+      }
+      expect(item.modules.length, `${item.slug} modules non-empty`).toBeGreaterThan(0);
+    }
   });
 
   it("every skill group label is fully localized", () => {

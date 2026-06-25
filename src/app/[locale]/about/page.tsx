@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { buildMetadata } from "@/lib/seo";
-import { EXPERIENCE } from "@/lib/data/experience";
+import { EXPERIENCE, EDUCATION } from "@/lib/data/experience";
 import { Section } from "@/components/Section";
+import { Reveal } from "@/components/Reveal";
 import { ExperienceItemRow } from "@/components/ExperienceItem";
 import { SkillGroupList } from "@/components/SkillGroupList";
 import { EducationCard } from "@/components/EducationCard";
@@ -64,8 +65,12 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
             {dict.sections.education}
           </h2>
-          <div className="mt-12">
-            <EducationCard locale={l} />
+          <div className="mt-12 space-y-4">
+            {EDUCATION.map((item) => (
+              <Reveal key={item.slug}>
+                <EducationCard item={item} locale={l} />
+              </Reveal>
+            ))}
           </div>
         </Section>
       </div>

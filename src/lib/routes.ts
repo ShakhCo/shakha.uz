@@ -2,6 +2,7 @@ import { LOCALES } from "@/lib/i18n/config";
 import { SITE_URL } from "@/lib/site";
 import { localizedPath } from "@/lib/seo";
 import { PROJECTS } from "@/lib/data/projects";
+import { EDUCATION } from "@/lib/data/experience";
 
 export const ROUTE_PATHS = ["", "projects", "about", "contact"] as const;
 
@@ -15,6 +16,11 @@ export function allUrls(): string[] {
   for (const locale of LOCALES) {
     for (const project of PROJECTS) {
       urls.push(`${SITE_URL}${localizedPath(locale, `projects/${project.slug}`)}`);
+    }
+  }
+  for (const locale of LOCALES) {
+    for (const item of EDUCATION) {
+      urls.push(`${SITE_URL}${localizedPath(locale, `education/${item.slug}`)}`);
     }
   }
   return urls;
