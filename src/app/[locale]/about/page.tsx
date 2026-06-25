@@ -4,10 +4,11 @@ import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { buildMetadata } from "@/lib/seo";
 import { EXPERIENCE, EDUCATION } from "@/lib/data/experience";
+import { SKILLS } from "@/lib/data/skills";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { ExperienceItemRow } from "@/components/ExperienceItem";
-import { SkillTiles } from "@/components/SkillTiles";
+import { SkillTile } from "@/components/SkillTile";
 import { EducationCard } from "@/components/EducationCard";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -54,8 +55,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:text-5xl">
           {dict.sections.skills}
         </h2>
-        <div className="mt-12">
-          <SkillTiles />
+        <div className="mt-12 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+          {SKILLS.flatMap((g) => g.items).map((s) => (
+            <SkillTile key={s} name={s} label={s} />
+          ))}
         </div>
       </Section>
 
