@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Onest } from "next/font/google";
 import { LOCALES, isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
-import { SITE_URL, SOCIALS, CONTACT, CF_BEACON_TOKEN } from "@/lib/site";
+import { SITE_URL, SOCIALS, CONTACT } from "@/lib/site";
 import { localizedPath } from "@/lib/seo";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -107,13 +107,6 @@ export default async function LocaleLayout({
         <Nav locale={locale} dict={dict} />
         <main id="main">{children}</main>
         <Footer locale={locale} dict={dict} />
-        {CF_BEACON_TOKEN && (
-          <script
-            defer
-            src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon={JSON.stringify({ token: CF_BEACON_TOKEN })}
-          />
-        )}
       </body>
     </html>
   );
