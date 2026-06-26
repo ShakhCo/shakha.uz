@@ -5,10 +5,11 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { isLocale, LOCALES, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import { POSTS } from "@/lib/data/blog";
 import { Section } from "@/components/Section";
+import { JsonLd } from "@/components/JsonLd";
 import { CodeBlock, InlineCode } from "@/components/ui/code-block";
 
 export function generateStaticParams(): { locale: string; slug: string }[] {
@@ -102,6 +103,13 @@ export default async function BlogPostPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd(l, [
+          { name: dict.nav.home, path: "" },
+          { name: dict.nav.blog, path: "blog" },
+          { name: post.title[l], path: `blog/${post.slug}` },
+        ])}
       />
 
       <Section className="pb-8 pt-16 md:pb-10 md:pt-24">

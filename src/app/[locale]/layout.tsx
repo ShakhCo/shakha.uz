@@ -3,6 +3,7 @@ import { Onest } from "next/font/google";
 import { LOCALES, isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { SITE_URL, SOCIALS, CONTACT } from "@/lib/site";
+import { localizedPath } from "@/lib/seo";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
@@ -27,6 +28,14 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
+
+  const navItems = [
+    { label: dict.nav.home, path: "" },
+    { label: dict.nav.projects, path: "projects" },
+    { label: dict.nav.blog, path: "blog" },
+    { label: dict.nav.about, path: "about" },
+    { label: dict.nav.contact, path: "contact" },
+  ];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -80,6 +89,11 @@ export default async function LocaleLayout({
         inLanguage: ["en", "uz", "ru"],
         author: { "@id": `${SITE_URL}/#person` },
       },
+      ...navItems.map((item) => ({
+        "@type": "SiteNavigationElement",
+        name: item.label,
+        url: `${SITE_URL}${localizedPath(locale, item.path)}`,
+      })),
     ],
   };
 

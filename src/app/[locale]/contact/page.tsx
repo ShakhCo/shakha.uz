@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { CONTACT, SOCIALS } from "@/lib/site";
 import { Section } from "@/components/Section";
+import { JsonLd } from "@/components/JsonLd";
 import { SiTelegram } from "react-icons/si";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { LuMail } from "react-icons/lu";
@@ -19,7 +20,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const dict = getDictionary(locale as Locale);
+  const l = locale as Locale;
+  const dict = getDictionary(l);
 
   const tgHandle = CONTACT.telegram.replace(/^@/, "");
   const cards = [
@@ -31,6 +33,12 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
   return (
     <Section className="py-16 sm:py-24 md:py-32">
+      <JsonLd
+        data={breadcrumbJsonLd(l, [
+          { name: dict.nav.home, path: "" },
+          { name: dict.nav.contact, path: "contact" },
+        ])}
+      />
       <div className="max-w-2xl">
         <h1 className="text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
           {dict.contact.title}

@@ -3,9 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { isLocale, LOCALES, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { PROJECTS } from "@/lib/data/projects";
 import { Section } from "@/components/Section";
+import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
 import { BrowserFrame } from "@/components/BrowserFrame";
 import { TechIcon } from "@/lib/skill-icons";
@@ -56,6 +57,13 @@ export default async function ProjectDetailPage({
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd(l, [
+          { name: dict.nav.home, path: "" },
+          { name: dict.nav.projects, path: "projects" },
+          { name: project.name, path: `projects/${project.slug}` },
+        ])}
+      />
       {/* ── Header band — white ── */}
       <Section className="pb-8 pt-20 md:pb-10 md:pt-28">
         <Reveal>

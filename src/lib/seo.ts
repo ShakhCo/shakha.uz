@@ -8,6 +8,25 @@ export function localizedPath(locale: Locale, path: string): string {
   return clean ? `/${locale}/${clean}/` : `/${locale}/`;
 }
 
+// Builds BreadcrumbList JSON-LD. `crumbs` are ordered from the locale home
+// down to (but not including) the current page is fine too — include the
+// current page as the last crumb for a complete trail.
+export function breadcrumbJsonLd(
+  locale: Locale,
+  crumbs: { name: string; path: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.name,
+      item: `${SITE_URL}${localizedPath(locale, c.path)}`,
+    })),
+  };
+}
+
 export function buildMetadata(opts: {
   locale: Locale;
   path: string;

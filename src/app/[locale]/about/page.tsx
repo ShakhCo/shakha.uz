@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
 import { EXPERIENCE, EDUCATION } from "@/lib/data/experience";
 import { SKILLS } from "@/lib/data/skills";
 import { Section } from "@/components/Section";
@@ -26,6 +27,12 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd(l, [
+          { name: dict.nav.home, path: "" },
+          { name: dict.nav.about, path: "about" },
+        ])}
+      />
       {/* Hero band — white */}
       <Section className="py-16 sm:py-24 md:py-32">
         <h1 className="text-4xl font-semibold tracking-[-0.025em] text-[var(--color-ink)] md:text-6xl">
