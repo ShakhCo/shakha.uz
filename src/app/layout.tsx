@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: "Shakhzodbek Sharipov",
   referrer: "origin-when-cross-origin",
+  alternates: {
+    types: {
+      "application/rss+xml": [
+        { url: `${SITE_URL}/feed.xml`, title: "Shakhzodbek Sharipov — Blog" },
+      ],
+    },
+  },
 };
 
 export const viewport: Viewport = {

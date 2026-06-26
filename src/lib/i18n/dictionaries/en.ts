@@ -61,6 +61,15 @@ export const en = {
     readingTime: "min read",
     backToBlog: "All posts",
     postedOn: "Published",
+    onThisPage: "On this page",
+    relatedPosts: "Related posts",
+    taggedHeading: "Posts tagged",
+    taggedLede: "All posts about",
+  },
+  notFound: {
+    title: "Page not found",
+    message: "The page you're looking for doesn't exist or may have moved.",
+    backHome: "Back to home",
   },
   educationPage: {
     overview: "Overview",

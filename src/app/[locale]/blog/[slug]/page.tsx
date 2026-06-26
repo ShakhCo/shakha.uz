@@ -7,9 +7,11 @@ import { isLocale, LOCALES, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
-import { POSTS } from "@/lib/data/blog";
+import { POSTS, tagSlug, relatedPosts } from "@/lib/data/blog";
+import { extractHeadings, headingSlug } from "@/lib/toc";
 import { Section } from "@/components/Section";
 import { JsonLd } from "@/components/JsonLd";
+import { ReadingProgress } from "@/components/ReadingProgress";
 import { CodeBlock, InlineCode } from "@/components/ui/code-block";
 
 export function generateStaticParams(): { locale: string; slug: string }[] {
@@ -57,6 +59,18 @@ function formatDate(iso: string, locale: Locale): string {
   );
 }
 
+// Flatten a React markdown heading's children into plain text so we can
+// derive the same anchor id the table of contents links to.
+function childrenToText(node: React.ReactNode): string {
+  if (node == null || node === false) return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(childrenToText).join("");
+  if (typeof node === "object" && "props" in node) {
+    return childrenToText((node as { props: { children?: React.ReactNode } }).props.children);
+  }
+  return "";
+}
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -70,6 +84,9 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const dict = getDictionary(l);
+
+  const headings = extractHeadings(post.content[l]);
+  const related = relatedPosts(post.slug);
 
   const canonical = `${SITE_URL}/${l}/blog/${post.slug}/`;
 
@@ -99,6 +116,7 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <ReadingProgress />
       {/* Article JSON-LD */}
       <script
         type="application/ld+json"
@@ -126,12 +144,13 @@ export default async function BlogPostPage({
           {/* Tags */}
           <div className="mt-8 flex flex-wrap gap-2">
             {post.tags.map((tag) => (
-              <span
+              <Link
                 key={tag}
-                className="inline-flex items-center rounded-full border border-black/[0.04] bg-[var(--color-bg-alt)] px-3 py-1 text-xs font-medium text-[var(--color-muted)] shadow-[0_1px_2px_rgba(0,0,0,0.06)]"
+                href={`/${l}/blog/tag/${tagSlug(tag)}/`}
+                className="inline-flex items-center rounded-full border border-black/[0.04] bg-[var(--color-bg-alt)] px-3 py-1 text-xs font-medium text-[var(--color-muted)] shadow-[0_1px_2px_rgba(0,0,0,0.06)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
               >
                 {tag}
-              </span>
+              </Link>
             ))}
           </div>
 
@@ -151,6 +170,29 @@ export default async function BlogPostPage({
       <div className="bg-white">
         <Section className="pb-16 pt-4 md:pb-24 md:pt-6">
           <div className="mx-auto max-w-3xl">
+            {/* Table of contents */}
+            {headings.length >= 3 && (
+              <nav
+                aria-label={dict.blogPage.onThisPage}
+                className="mb-12 rounded-2xl border border-[var(--color-line)] bg-[var(--color-bg-alt)] p-5 sm:p-6"
+              >
+                <p className="text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)]">
+                  {dict.blogPage.onThisPage}
+                </p>
+                <ul className="mt-4 space-y-2">
+                  {headings.map((h) => (
+                    <li key={h.id} className={h.level === 3 ? "ml-4" : ""}>
+                      <a
+                        href={`#${h.id}`}
+                        className="text-sm leading-relaxed text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent)]"
+                      >
+                        {h.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
             <div
               className="prose prose-neutral max-w-none
                 prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-[var(--color-ink)]
@@ -166,6 +208,16 @@ export default async function BlogPostPage({
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
+                  h2: ({ children }) => (
+                    <h2 id={headingSlug(childrenToText(children))} className="scroll-mt-24">
+                      {children}
+                    </h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 id={headingSlug(childrenToText(children))} className="scroll-mt-24">
+                      {children}
+                    </h3>
+                  ),
                   pre: ({ children }) => <CodeBlock>{children}</CodeBlock>,
                   code: ({ node: _node, className, children, ...rest }) => {
                     // Fenced code blocks are handled by `pre` above.
@@ -186,8 +238,33 @@ export default async function BlogPostPage({
               </ReactMarkdown>
             </div>
 
+            {/* Related posts */}
+            {related.length > 0 && (
+              <div className="mt-16 border-t border-[var(--color-line)] pt-10">
+                <h2 className="text-2xl font-semibold tracking-[-0.02em] text-[var(--color-ink)]">
+                  {dict.blogPage.relatedPosts}
+                </h2>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {related.map((rp) => (
+                    <Link
+                      key={rp.slug}
+                      href={`/${l}/blog/${rp.slug}/`}
+                      className="group block rounded-2xl border border-[var(--color-line)] bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-ink)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
+                    >
+                      <h3 className="text-lg font-semibold tracking-[-0.01em] text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                        {rp.title[l]}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">
+                        {rp.excerpt[l]}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Back link at bottom */}
-            <div className="mt-16 border-t border-[var(--color-line)] pt-10">
+            <div className="mt-12 border-t border-[var(--color-line)] pt-10">
               <Link
                 href={`/${l}/blog/`}
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-ink)]"

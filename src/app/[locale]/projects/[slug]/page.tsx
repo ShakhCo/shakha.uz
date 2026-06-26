@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { isLocale, LOCALES, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import { PROJECTS } from "@/lib/data/projects";
 import { Section } from "@/components/Section";
 import { JsonLd } from "@/components/JsonLd";
@@ -55,8 +56,25 @@ export default async function ProjectDetailPage({
   const currentIndex = PROJECTS.indexOf(project);
   const nextProject = PROJECTS[(currentIndex + 1) % PROJECTS.length];
 
+  const createdYear = project.year?.match(/\d{4}/)?.[0];
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@type": project.url ? "WebApplication" : "CreativeWork",
+    name: project.name,
+    description: project.description[l],
+    inLanguage: l,
+    url: `${SITE_URL}/${l}/projects/${project.slug}/`,
+    keywords: project.tags.join(", "),
+    author: { "@type": "Person", name: "Shakhzodbek Sharipov", url: SITE_URL },
+    ...(project.url ? { applicationCategory: "BusinessApplication", offers: { "@type": "Offer", url: project.url } } : {}),
+    ...(project.image ? { image: `${SITE_URL}${project.image}` } : {}),
+    ...(project.github ? { codeRepository: project.github } : {}),
+    ...(createdYear ? { dateCreated: createdYear } : {}),
+  };
+
   return (
     <>
+      <JsonLd data={projectJsonLd} />
       <JsonLd
         data={breadcrumbJsonLd(l, [
           { name: dict.nav.home, path: "" },

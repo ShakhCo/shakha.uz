@@ -3,7 +3,7 @@ import { SITE_URL } from "@/lib/site";
 import { localizedPath } from "@/lib/seo";
 import { PROJECTS } from "@/lib/data/projects";
 import { EDUCATION } from "@/lib/data/experience";
-import { POSTS } from "@/lib/data/blog";
+import { POSTS, allTags, tagSlug } from "@/lib/data/blog";
 
 export const ROUTE_PATHS = ["", "projects", "blog", "about", "contact"] as const;
 
@@ -27,6 +27,11 @@ export function allUrls(): string[] {
   for (const locale of LOCALES) {
     for (const post of POSTS) {
       urls.push(`${SITE_URL}${localizedPath(locale, `blog/${post.slug}`)}`);
+    }
+  }
+  for (const locale of LOCALES) {
+    for (const tag of allTags()) {
+      urls.push(`${SITE_URL}${localizedPath(locale, `blog/tag/${tagSlug(tag)}`)}`);
     }
   }
   return urls;

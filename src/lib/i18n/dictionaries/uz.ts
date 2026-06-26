@@ -63,6 +63,15 @@ export const uz: Dictionary = {
     readingTime: "daqiqa o'qish",
     backToBlog: "Barcha maqolalar",
     postedOn: "Nashr etilgan",
+    onThisPage: "Ushbu sahifada",
+    relatedPosts: "O'xshash maqolalar",
+    taggedHeading: "Teg bo'yicha maqolalar",
+    taggedLede: "Barcha maqolalar mavzusi",
+  },
+  notFound: {
+    title: "Sahifa topilmadi",
+    message: "Siz qidirayotgan sahifa mavjud emas yoki ko'chirilgan bo'lishi mumkin.",
+    backHome: "Bosh sahifaga",
   },
   educationPage: {
     overview: "Umumiy ma'lumot",

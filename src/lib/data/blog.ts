@@ -1560,3 +1560,49 @@ function unmask(payload: Buffer, mask: Buffer): Buffer {
     },
   },
 ];
+
+// URL-safe slug for a tag, e.g. "Claude Code" -> "claude-code".
+export function tagSlug(tag: string): string {
+  return tag
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+// Unique tags across all posts, preserving their original display casing,
+// sorted alphabetically.
+export function allTags(): string[] {
+  const bySlug = new Map<string, string>();
+  for (const post of POSTS) {
+    for (const tag of post.tags) bySlug.set(tagSlug(tag), tag);
+  }
+  return [...bySlug.values()].sort((a, b) => a.localeCompare(b));
+}
+
+// Resolve a tag slug back to its display label + matching posts (newest first).
+export function postsForTagSlug(
+  slug: string,
+): { tag: string; posts: BlogPost[] } | null {
+  const tag = allTags().find((t) => tagSlug(t) === slug);
+  if (!tag) return null;
+  const posts = POSTS.filter((p) => p.tags.some((t) => tagSlug(t) === slug)).sort(
+    (a, b) => (a.date < b.date ? 1 : -1),
+  );
+  return { tag, posts };
+}
+
+// Other posts sharing the most tags with the given post (newest first).
+export function relatedPosts(slug: string, limit = 3): BlogPost[] {
+  const current = POSTS.find((p) => p.slug === slug);
+  if (!current) return [];
+  const tagSet = new Set(current.tags.map(tagSlug));
+  return POSTS.filter((p) => p.slug !== slug)
+    .map((p) => ({
+      post: p,
+      shared: p.tags.filter((t) => tagSet.has(tagSlug(t))).length,
+    }))
+    .filter((x) => x.shared > 0)
+    .sort((a, b) => b.shared - a.shared || (a.post.date < b.post.date ? 1 : -1))
+    .slice(0, limit)
+    .map((x) => x.post);
+}

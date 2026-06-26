@@ -60,7 +60,15 @@ export function buildMetadata(opts: {
         "max-snippet": -1,
       },
     },
-    alternates: { canonical, languages },
+    alternates: {
+      canonical,
+      languages,
+      types: {
+        "application/rss+xml": [
+          { url: `${SITE_URL}/feed.xml`, title: "Shakhzodbek Sharipov — Blog" },
+        ],
+      },
+    },
     openGraph: {
       title,
       description,

@@ -63,6 +63,15 @@ export const ru: Dictionary = {
     readingTime: "мин чтения",
     backToBlog: "Все посты",
     postedOn: "Опубликовано",
+    onThisPage: "На этой странице",
+    relatedPosts: "Похожие посты",
+    taggedHeading: "Посты с тегом",
+    taggedLede: "Все посты о",
+  },
+  notFound: {
+    title: "Страница не найдена",
+    message: "Страница, которую вы ищете, не существует или была перемещена.",
+    backHome: "На главную",
   },
   educationPage: {
     overview: "Обзор",
