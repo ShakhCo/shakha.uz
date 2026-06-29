@@ -13,6 +13,237 @@ export type BlogPost = {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: "ai-agents-demystified",
+    gradient: "linear-gradient(135deg, #14b8a6 0%, #6366f1 50%, #a855f7 100%)",
+    date: "2026-06-29",
+    tags: ["AI", "Agents", "LangGraph", "Python"],
+    readingMinutes: 6,
+    title: {
+      en: "What I learned building my first AI agent",
+      uz: "Birinchi AI agentimni qurganimda nimalarni o'rgandim",
+      ru: "Чему я научился, создавая своего первого AI-агента",
+    },
+    excerpt: {
+      en: "I built a small research agent — it searches the web on its own and answers with citations. Building it made the buzzwords click: what an agent actually is, what LangGraph and Tavily really do, and the honest answer to 'why not just Next.js and OpenAI?'",
+      uz: "Men kichik bir tadqiqot agenti yasadim — u o'zi internetda qidiradi va manbalar ko'rsatib javob beradi. Uni qurish jarayonida ko'p atama nihoyat o'z o'rnini topdi: agent nima ekanligini, LangGraph va Tavily aslida nima qilishini, va \"nima uchun shunchaki Next.js va OpenAI ishlatmaslik\" savoliga halol javobni.",
+      ru: "Я собрал небольшого исследовательского агента — он сам ищет в интернете и отвечает со ссылками. В процессе сборки многие buzzword-ы наконец встали на место: что такое агент на самом деле, что реально делают LangGraph и Tavily, и честный ответ на вопрос «почему не просто Next.js и OpenAI?»",
+    },
+    content: {
+      en: `## I built a tiny AI agent this week
+
+Not a chatbot — an *agent*. You ask it a question, it searches the web on its own, reads what it finds, decides whether it needs to search again, and then writes you a cited answer. Maybe 300 lines of Python. Building it finally made a few buzzwords click for me, so here's the honest version — what an "agent" actually is, what the moving parts do, and the question I kept asking myself: *why not just build this with the tools I already know?*
+
+## An agent is just a loop
+
+Strip away the hype and an agent is a loop around a language model:
+
+1. Send the model the question, and tell it which tools it's allowed to use.
+2. The model replies with one of two things: "call this tool with these arguments" or "here's the final answer."
+3. If it asked for a tool, you run the tool, hand the result back, and go to step 1.
+4. If it gave an answer, you're done.
+
+That's it. The "intelligence" is the model deciding, each time around, whether it has enough to answer or needs to reach for a tool. When I watched mine run, it searched **twice** on a hard question and **once** on an easy one — nobody told it how many times to search. That decision *is* the agent.
+
+## Why it needs a search tool at all
+
+Here's a thing people miss: the OpenAI API can't browse the web. The model has a training cutoff and no internet. Ask it about something that happened last month and it'll either shrug or guess.
+
+So the agent needs a tool that fetches live information. I used **Tavily** — a search engine built for LLMs. You send it a query, it returns clean, ranked results (title, snippet, link) as plain text the model can actually read. Regular Google would hand you an HTML page full of ads and markup; Tavily hands you the answer-shaped text. That's the only reason my agent could tell me who won the 2024 Nobel Prize — it searched, got fresh text, and summarized it. Swap Tavily for Bing or DuckDuckGo and nothing else changes; it's just "the thing that fetches reality."
+
+## So what does LangGraph actually do?
+
+This is where I had to be honest with myself. **LangGraph** manages that loop — but as a *graph*. You define nodes (an "agent" node that calls the model, a "tools" node that runs the search) and edges between them, including a conditional edge that says "after the agent speaks, if it asked for a tool, go to the tools node and come back; otherwise, stop." Run it, and you get the search-decide-search-answer cycle, plus each step streamed out so the UI can show progress live.
+
+But here's the thing I couldn't ignore: that loop, in plain code, is about fifteen lines.
+
+\`\`\`js
+let messages = [systemPrompt, userQuestion]
+while (true) {
+  const reply = await openai.chat(messages, { tools: [search] })
+  messages.push(reply)
+  if (reply.toolCalls) {
+    for (const call of reply.toolCalls)
+      messages.push(await runSearch(call))   // search, feed results back
+  } else {
+    return reply.content                      // model is done
+  }
+}
+\`\`\`
+
+For one tool and a simple loop, that plain \`while\` is honestly fine — lighter than pulling in a framework.
+
+## "Why not just Next.js and OpenAI?"
+
+I kept asking this, and it's the right question — with one trap in it. Next.js and LangGraph aren't competitors. They live on different layers:
+
+- **Next.js** is the app — the UI and the server. It replaces the FastAPI + HTML I used, not LangGraph.
+- **OpenAI** is the brain.
+- **Tavily** is the live-web tool — you'd still need it.
+- **LangGraph** is the loop — the part you'd otherwise hand-write.
+
+So "Next.js + OpenAI" really means *Next.js for the app, OpenAI for the brain, and you write the loop yourself.* For my little demo, that would've worked and been simpler. I'm not going to pretend otherwise.
+
+## Where the framework earns its place
+
+LangGraph starts paying off on the *second* and *third* feature, not the first — when the loop stops being simple:
+
+- **Multiple tools with branching** — "if it's a math question route here, if it's a search route there." That's a clean edge in a graph and a pile of nested \`if\`s in a hand-rolled loop.
+- **Memory that survives restarts** — checkpoint the state to a database, pause mid-run for a human to approve something, resume later. This is the big one; hand-rolling persistence gets ugly fast.
+- **Streaming each step** — I got the \`searching → reading → answer\` progress events almost for free.
+- **Multiple agents** — a researcher handing off to a writer, each its own graph.
+
+The honest summary: for a single tool and a straight loop, reach for the \`while\` loop. The day a client asks for "an agent that uses these five tools, remembers the conversation, and pauses for approval before it does anything expensive" — that's when the hand-rolled version turns to spaghetti and the graph stays readable.
+
+## Why I learned it on something this small
+
+I could've waited until a project forced me into agents. I didn't, on purpose. Learning a pattern on an easy problem means it's already familiar when the hard one shows up — and on Upwork, "build me an AI agent that does X, Y, and Z" is a request I see more every month. Now when it lands, I won't be learning the tool and the problem at the same time.
+
+That's the whole point of a weekend demo: pay the learning cost when the stakes are zero.`,
+
+      uz: `## Bu hafta men kichkina bir AI agenti qurdim
+
+Chatbot emas — *agent*. Unga savol berasan, u o'zi internetda qidiradi, topganlarini o'qiydi, yana qidirish kerakmi yoki yo'qligini hal qiladi, keyin esa manbalar ko'rsatib javob yozadi. Taxminan 300 qator Python. Uni qurish jarayonida bir nechta atama nihoyat o'z o'rnini topdi — shuning uchun mana shu "agent" aslida nima ekanligini, tarkibiy qismlar nima qilishini va o'zimga doim bergan savolimga — *nima uchun men allaqachon biladigan vositalar bilan qurmadim?* — halol javobni yozmoqchiman.
+
+## Agent — shunchaki tsikl
+
+Barcha shovqin-suronni chetlab qo'ysak, agent — bu til modeli atrofidagi tsikl:
+
+1. Modelga savol yubor va qaysi toollardan foydalana olishini ayt.
+2. Model ikki narsadan birini qaytaradi: "shu tool-ni shu argumentlar bilan chaqir" yoki "mana yakuniy javob."
+3. Agar tool so'ragan bo'lsa — tool-ni ishga tushir, natijani qaytarib ber va 1-bosqichga o't.
+4. Agar javob bergan bo'lsa — tamom.
+
+Hammasi shu. "Intellekt" — modelning har tsiklda yetarli ma'lumot bor-yo'qligini yoki tool kerak-kerakmasligini hal qilishidir. Mening agentim qiyin savolda **ikki marta**, oson savolda **bir marta** qidirdi — hech kim necha marta qidirish kerakligini aytmagan edi. Ana o'sha qaror *agentning o'zi*.
+
+## Nima uchun unga qidiruv tool-i kerak
+
+Ko'pchilik e'tibor bermagan bir narsa: OpenAI API internet bilan ishlay olmaydi. Modelning ma'lumotlari ma'lum sanagacha, internetga ulanishi yo'q. O'tgan oy bo'lgan narsa haqida so'rasang — u ya yelka qisadi yoki taxmin qiladi.
+
+Shuning uchun agentga jonli ma'lumot olib keladigan tool kerak. Men **Tavily**-dan foydalandim — LLM-lar uchun yaratilgan qidiruv tizimi. Unga so'rov yuborasan, u model o'qiy oladigan toza, tartibli natijalar qaytaradi (sarlavha, parcha, havola) — oddiy matn ko'rinishida. Oddiy Google sanga reklamalar va markup to'la HTML sahifa beradi; Tavily esa javobga tayyor matnni beradi. Shuning uchun mening agentim 2024 Nobel mukofoti g'olibini aytib bera oldi — u qidirdi, yangi matn oldi va uni xulosalab berdi. Tavily-ni Bing yoki DuckDuckGo-ga almashtirsang boshqa hech narsa o'zgarmaydi; u shunchaki "voqelikni olib keladigan narsa."
+
+## Xo'sh, LangGraph aslida nima qiladi?
+
+Bu yerda o'zim bilan halol bo'lishim kerak edi. **LangGraph** ana shu tsiklni boshqaradi — lekin *graf* sifatida. Nodelar belgilaysan (modelni chaqiradigan "agent" node, qidiruvni ishga tushiradigan "tools" node) va ular orasidagi edgelarni, jumladan shartli edge-ni: "agent gaplagandan so'ng, agar tool so'ragan bo'lsa — tools node-ga o't va qaytib kel; aks holda to'xta." Ishga tushirasan — qidirish-qaror-qidirish-javob tsikli paydo bo'ladi, plus har bir qadam stream qilinadi, UI esa jonli holda jarayonni ko'rsata oladi.
+
+Lekin men e'tiborsiz qoldira olmaydigan narsa bor edi: bu tsikl oddiy kodda taxminan o'n besh qator.
+
+\`\`\`js
+let messages = [systemPrompt, userQuestion]
+while (true) {
+  const reply = await openai.chat(messages, { tools: [search] })
+  messages.push(reply)
+  if (reply.toolCalls) {
+    for (const call of reply.toolCalls)
+      messages.push(await runSearch(call))   // qidirish, natijalarni qaytarish
+  } else {
+    return reply.content                      // model tugatdi
+  }
+}
+\`\`\`
+
+Bitta tool va oddiy tsikl uchun oddiy \`while\` to'liq yetarli — framework ulashdan ancha yengil.
+
+## "Nima uchun shunchaki Next.js va OpenAI ishlatmaslik?"
+
+Men buni o'zimga doim so'rab yurdim va bu to'g'ri savol — ichida bitta tuzoq bilan. Next.js va LangGraph raqobatchi emas. Ular turli qatlamlarda joylashgan:
+
+- **Next.js** — ilova: UI va server. U men ishlatgan FastAPI + HTML-ni almashtiradi, LangGraph-ni emas.
+- **OpenAI** — miya.
+- **Tavily** — jonli web tool, baribir kerak bo'ladi.
+- **LangGraph** — tsikl, aks holda o'zing yozgan bo'larding.
+
+Demak "Next.js + OpenAI" aslida shuni anglatadi: *ilova uchun Next.js, miya uchun OpenAI, tsiklni esa o'zing yozasan.* Mening kichkina demom uchun bu ishlagan bo'lar edi va ancha sodda bo'lar edi. Buning aksini da'vo qilmayman.
+
+## Framework o'z o'rnini qayerda oqlaydi
+
+LangGraph birinchi feature-da emas, *ikkinchi* va *uchinchi*-da o'zini oqlaydi — tsikl sodda bo'lmaganda:
+
+- **Ko'p tool-lar va tarmoqlanish** — "matematika savoli bo'lsa bu yerga, qidiruv bo'lsa u yerga." Bu grafda toza edge, qo'lda yozilgan tsiklda esa bir-biriga kirgan \`if\`-lar to'dasi.
+- **Qayta ishga tushgandan keyin ham saqlanadigan xotira** — holatni ma'lumotlar bazasiga checkpoint qil, inson biror narsani tasdiqlashi uchun to'xtat, keyin davom ettir. Bu eng muhim qismi; qo'lda persistence yozish tezda xunukka aylanadi.
+- **Har bir qadamning stream qilinishi** — \`qidiryapti → o'qiyapti → javob\` jarayon hodisalarini deyarli tekin oldim.
+- **Ko'p agentlar** — yozuvchiga topshiradigan tadqiqotchi, har biri o'z grafi bilan.
+
+Halol xulosa: bitta tool va to'g'ri tsikl uchun — \`while\` tsikliga yur. Mijoz "beshta tool ishlatadigan, suhbatni eslaydigan va qimmat biror narsa qilishdan oldin tasdiqlash kutadigan agent yasab ber" degan kun keladi — o'shanda qo'lda yozilgan variant spaghetti-ga aylanadi, graf esa o'qilishi mumkin bo'lib qoladi.
+
+## Nima uchun buni shu darajada kichkina narsada o'rgandim
+
+Men loyiha majburlagunicha kutishim mumkin edi. Ataylab kutmadim. Bir pattern-ni oson muammoda o'rganish uni qiyin muammo paydo bo'lganda allaqachon tanish qiladi — va Upwork-da "menga X, Y va Z qiladigan AI agent qur" so'rovi har oy ko'payib bormoqda. Endi u kelib tushganda — tool-ni ham, muammoni ham bir vaqtda o'rganmaymen.
+
+Dam olish kuni demosi-ning butun mohiyati shu: bahsiz paytda o'rganish narxini to'la.`,
+
+      ru: `## На этой неделе я собрал маленького AI-агента
+
+Не чатбот — *агент*. Задаёшь ему вопрос, он сам ищет в интернете, читает найденное, решает, нужно ли искать ещё, и пишет ответ со ссылками. Строк триста на Python. В процессе сборки несколько buzzword-ов наконец встали на место — поэтому вот честная версия: что такое «агент» на самом деле, что делают отдельные части, и вопрос, который я постоянно задавал себе: *почему не собрать это на инструментах, которые я уже знаю?*
+
+## Агент — это просто цикл
+
+Уберём весь хайп — агент это цикл вокруг языковой модели:
+
+1. Отправляем модели вопрос и говорим, какими тулами она может пользоваться.
+2. Модель отвечает одним из двух: «вызови этот тул с этими аргументами» или «вот финальный ответ».
+3. Если попросила тул — запускаем его, отдаём результат обратно и идём к шагу 1.
+4. Если дала ответ — всё.
+
+Вот и всё. «Интеллект» — это то, что модель каждый раз решает: хватает ли данных для ответа или нужно потянуться к тулу. Когда я смотрел, как мой агент работает, на сложном вопросе он искал **дважды**, на простом — **один раз**. Никто не говорил ему, сколько раз искать. Вот это решение *и есть* агент.
+
+## Зачем вообще нужен тул для поиска
+
+Вот что многие упускают: OpenAI API не умеет лазить в интернет. У модели есть дата среза обучения — интернета нет. Спроси про что-то, что случилось в прошлом месяце — она либо пожмёт плечами, либо угадает.
+
+Поэтому агенту нужен тул, который достаёт живую информацию. Я использовал **Tavily** — поисковик, заточенный под LLM-ы. Отправляешь запрос, он возвращает чистые, ранжированные результаты (заголовок, сниппет, ссылка) в виде обычного текста, который модель реально может прочитать. Обычный Google выдаст тебе HTML-страницу, набитую рекламой и разметкой; Tavily отдаёт текст в форме ответа. Именно поэтому мой агент смог назвать лауреата Нобелевской премии 2024 года — нашёл, получил свежий текст, суммаризировал. Заменишь Tavily на Bing или DuckDuckGo — ничего больше не изменится; это просто «штука, которая достаёт реальность».
+
+## Так что же реально делает LangGraph?
+
+Вот здесь мне пришлось быть честным с собой. **LangGraph** управляет этим циклом — но как *граф*. Определяешь ноды (нода «агент», которая вызывает модель; нода «тулы», которая запускает поиск) и рёбра между ними, включая условное ребро: «после того как агент ответил — если попросил тул, иди к ноде тулов и возвращайся; иначе остановись». Запускаешь — и получаешь цикл поиск-решение-поиск-ответ, плюс каждый шаг стримится, чтобы UI мог показывать прогресс вживую.
+
+Но было кое-что, что я не мог игнорировать: этот цикл на обычном коде — примерно пятнадцать строк.
+
+\`\`\`js
+let messages = [systemPrompt, userQuestion]
+while (true) {
+  const reply = await openai.chat(messages, { tools: [search] })
+  messages.push(reply)
+  if (reply.toolCalls) {
+    for (const call of reply.toolCalls)
+      messages.push(await runSearch(call))   // поиск, передаём результаты обратно
+  } else {
+    return reply.content                      // модель завершила работу
+  }
+}
+\`\`\`
+
+Для одного тула и простого цикла обычный \`while\` — честно говоря, нормально. Легче, чем тащить фреймворк.
+
+## «Почему не просто Next.js и OpenAI?»
+
+Я постоянно задавал себе этот вопрос, и он правильный — с одной ловушкой внутри. Next.js и LangGraph — не конкуренты. Они живут на разных слоях:
+
+- **Next.js** — это приложение: UI и сервер. Он заменяет FastAPI + HTML, которые использовал я, а не LangGraph.
+- **OpenAI** — мозг.
+- **Tavily** — тул для живого веба, он тебе всё равно понадобится.
+- **LangGraph** — цикл, та часть, которую иначе пришлось бы писать вручную.
+
+Так что «Next.js + OpenAI» на самом деле означает: *Next.js для приложения, OpenAI для мозга, а цикл пишешь сам.* Для моего маленького демо это сработало бы и было бы проще. Не буду делать вид, что иначе.
+
+## Где фреймворк оправдывает своё место
+
+LangGraph начинает окупаться на *второй* и *третьей* фиче, не на первой — когда цикл перестаёт быть простым:
+
+- **Несколько тулов с ветвлением** — «математический вопрос — сюда, поиск — туда». В графе это чистое ребро, в рукописном цикле — куча вложенных \`if\`-ов.
+- **Память, которая переживает рестарты** — чекпойним состояние в базу данных, останавливаем посередине, чтобы человек что-то подтвердил, потом продолжаем. Это самое важное; ручная реализация персистентности быстро превращается в кашу.
+- **Стриминг каждого шага** — события \`ищет → читает → отвечает\` достались мне почти бесплатно.
+- **Несколько агентов** — исследователь передаёт работу писателю, у каждого свой граф.
+
+Честное резюме: для одного тула и прямого цикла — берёшь \`while\`. Когда клиент попросит «агента, который использует пять тулов, помнит разговор и перед чем-то дорогим ждёт подтверждения» — вот тогда рукописная версия превращается в спагетти, а граф остаётся читаемым.
+
+## Почему я учился на чём-то настолько маленьком
+
+Я мог подождать, пока проект не загонит меня в агентов. Не стал — специально. Изучить паттерн на простой задаче значит, что он уже знаком, когда появится сложная — а на Upwork запрос «собери мне AI-агента, который делает X, Y и Z» попадается всё чаще каждый месяц. Теперь, когда он придёт, я не буду одновременно разбираться в инструменте и в задаче.
+
+В этом весь смысл демо на выходных: заплатить за обучение, когда ставки нулевые.`,
+    },
+  },
+  {
     slug: "shipping-with-ai",
     gradient: "linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%)",
     date: "2026-05-12",
