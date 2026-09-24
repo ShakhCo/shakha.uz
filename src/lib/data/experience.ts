@@ -2,6 +2,7 @@ import type { Localized } from "./projects";
 
 export type ExperienceItem = {
   org: Localized;
+  logo: string;
   period: string;
   role: Localized;
   bullets: Localized[];
@@ -14,6 +15,7 @@ export const EXPERIENCE: ExperienceItem[] = [
       uz: "O'zbekiston Respublikasi Prezidenti huzuridagi Ijtimoiy himoya milliy agentligi huzuridagi Ijtimoiy inspeksiya",
       ru: "Социальная инспекция при Национальном агентстве социальной защиты при Президенте Республики Узбекистан",
     },
+    logo: "/brand/ihma.svg",
     period: "Aug 2026 — Present",
     role: { en: "Chief Specialist for Digitalization", uz: "Raqamlashtirish bo'yicha bosh mutaxassis", ru: "Главный специалист по цифровизации" },
     bullets: [
@@ -40,6 +42,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     ],
   },
   {
+    logo: "/brand/bookup.png",
     org: { en: "BookUp (bookup.uz)", uz: "BookUp (bookup.uz)", ru: "BookUp (bookup.uz)" },
     period: "Jun 2025 — Present",
     role: { en: "Founder & Full-Stack Developer", uz: "Asoschi va Full-Stack dasturchi", ru: "Основатель и Full-Stack разработчик" },
@@ -62,6 +65,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     ],
   },
   {
+    logo: "/brand/interrail.png",
     org: { en: "InterRail Central Asia", uz: "InterRail Central Asia", ru: "InterRail Central Asia" },
     period: "Jan 2022 — Aug 2026",
     role: { en: "Full-Stack Developer", uz: "Full-Stack dasturchi", ru: "Full-Stack разработчик" },
@@ -84,6 +88,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     ],
   },
   {
+    logo: "/brand/interrail.png",
     org: { en: "InterRail Central Asia", uz: "InterRail Central Asia", ru: "InterRail Central Asia" },
     period: "Feb 2022 — Aug 2022",
     role: { en: "Backend Developer Intern", uz: "Backend dasturchi (intern)", ru: "Backend разработчик (стажёр)" },

@@ -36,13 +36,26 @@ export function ExperienceItemRow({
         )}
       </span>
 
-      {/* Role + company */}
-      <h3 className="mt-4 text-2xl font-semibold tracking-[-0.01em] text-[var(--color-ink)] md:text-3xl">
-        {item.role[locale]}
-      </h3>
-      <p className="mt-1.5 text-base font-medium text-[var(--color-accent)] md:text-lg">
-        {item.org[locale]}
-      </p>
+      {/* Logo + role + company */}
+      <div className="mt-4 flex items-start gap-4">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={item.logo}
+          alt=""
+          width={56}
+          height={56}
+          loading="lazy"
+          className="h-12 w-12 shrink-0 rounded-xl bg-white object-contain p-1.5 ring-1 ring-[var(--color-line)] md:h-14 md:w-14"
+        />
+        <div className="min-w-0">
+          <h3 className="text-2xl font-semibold tracking-[-0.01em] text-[var(--color-ink)] md:text-3xl">
+            {item.role[locale]}
+          </h3>
+          <p className="mt-1.5 text-base font-medium text-[var(--color-accent)] md:text-lg">
+            {item.org[locale]}
+          </p>
+        </div>
+      </div>
 
       {/* Bullets */}
       <ul className="mt-5 space-y-3">
