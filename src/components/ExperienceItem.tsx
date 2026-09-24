@@ -1,5 +1,6 @@
 import type { Locale } from "@/lib/i18n/config";
 import type { ExperienceItem } from "@/lib/data/experience";
+import { periodMonths, formatDuration } from "@/lib/duration";
 
 export function ExperienceItemRow({
   item,
@@ -9,6 +10,8 @@ export function ExperienceItemRow({
   locale: Locale;
   index: number;
 }) {
+  const months = periodMonths(item.period);
+
   return (
     <div className="relative pb-12 pl-8 last:pb-0 md:pb-14 md:pl-10">
       {/* Vertical rail */}
@@ -23,8 +26,14 @@ export function ExperienceItemRow({
       />
 
       {/* Period pill */}
-      <span className="inline-block rounded-full bg-[var(--color-bg-alt)] px-3 py-1 text-xs font-medium text-[var(--color-muted)]">
+      <span className="inline-flex flex-wrap items-center gap-x-2 rounded-full border border-[var(--color-line)] bg-[var(--color-bg-alt)] px-3 py-1 text-sm font-medium text-[var(--color-ink)]">
         {item.period}
+        {months !== null && (
+          <>
+            <span aria-hidden="true" className="text-[var(--color-muted)]">·</span>
+            <span className="text-[var(--color-muted)]">{formatDuration(months, locale)}</span>
+          </>
+        )}
       </span>
 
       {/* Role + company */}
