@@ -31,7 +31,7 @@ export function ExperienceItemRow({
       <h3 className="mt-4 text-2xl font-semibold tracking-[-0.01em] text-[var(--color-ink)] md:text-3xl">
         {item.role[locale]}
       </h3>
-      <p className="mt-1 text-sm font-medium text-[var(--color-accent)]">
+      <p className="mt-1.5 text-base font-medium text-[var(--color-accent)] md:text-lg">
         {item.org[locale]}
       </p>
 
