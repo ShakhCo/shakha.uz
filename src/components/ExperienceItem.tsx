@@ -1,6 +1,6 @@
 import type { Locale } from "@/lib/i18n/config";
 import type { ExperienceItem } from "@/lib/data/experience";
-import { periodMonths, formatDuration } from "@/lib/duration";
+import { periodMonths, formatDuration, formatPeriod } from "@/lib/duration";
 
 export function ExperienceItemRow({
   item,
@@ -27,7 +27,7 @@ export function ExperienceItemRow({
 
       {/* Period pill */}
       <span className="inline-flex flex-wrap items-center gap-x-2 rounded-full border border-[var(--color-line)] bg-[var(--color-bg-alt)] px-3 py-1 text-sm font-medium text-[var(--color-ink)]">
-        {item.period}
+        {formatPeriod(item.period, locale)}
         {months !== null && (
           <>
             <span aria-hidden="true" className="text-[var(--color-muted)]">·</span>

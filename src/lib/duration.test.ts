@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { periodMonths, formatDuration } from "./duration";
+import { periodMonths, formatDuration, formatPeriod } from "./duration";
 
 describe("periodMonths", () => {
   const now = new Date(2026, 8, 24); // Sep 2026
@@ -25,5 +25,17 @@ describe("formatDuration", () => {
     expect(formatDuration(1, "en")).toBe("1 mo");
     expect(formatDuration(56, "uz")).toBe("4 yil 8 oy");
     expect(formatDuration(56, "ru")).toBe("4 г. 8 мес.");
+  });
+});
+
+describe("formatPeriod", () => {
+  it("localizes month names and Present", () => {
+    expect(formatPeriod("Jan 2022 — Aug 2026", "en")).toBe("Jan 2022 — Aug 2026");
+    expect(formatPeriod("Aug 2026 — Present", "uz")).toBe("avg. 2026 — hozirgacha");
+    expect(formatPeriod("Feb 2022 — Aug 2022", "ru")).toBe("февр. 2022 — авг. 2022");
+  });
+
+  it("leaves unrecognized parts untouched", () => {
+    expect(formatPeriod("2021 — 2024", "ru")).toBe("2021 — 2024");
   });
 });
