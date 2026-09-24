@@ -59,7 +59,7 @@ export default async function Home({
       {/* Hero — centered, spacious */}
       <div className="bg-[var(--color-bg)]">
         <Section className="pb-16 pt-16 sm:pb-24 sm:pt-24 md:pb-32 md:pt-32">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-4xl text-center">
             {/* Role label */}
             <p className="text-sm font-medium text-[var(--color-muted)]">
               {dict.hero.eyebrow}
