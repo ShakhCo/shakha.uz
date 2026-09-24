@@ -65,7 +65,8 @@ describe("data integrity", () => {
 
   it("every experience item and its bullets are fully localized", () => {
     for (const e of EXPERIENCE) {
-      expect(hasAllLocales(e.role), e.org).toBe(true);
+      expect(hasAllLocales(e.org), e.org.en).toBe(true);
+      expect(hasAllLocales(e.role), e.org.en).toBe(true);
       for (const b of e.bullets) expect(hasAllLocales(b)).toBe(true);
     }
   });

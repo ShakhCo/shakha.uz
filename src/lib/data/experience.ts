@@ -1,7 +1,7 @@
 import type { Localized } from "./projects";
 
 export type ExperienceItem = {
-  org: string;
+  org: Localized;
   period: string;
   role: Localized;
   bullets: Localized[];
@@ -9,7 +9,38 @@ export type ExperienceItem = {
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
-    org: "BookUp (bookup.uz)",
+    org: {
+      en: "Social Inspection under the National Agency for Social Protection under the President of the Republic of Uzbekistan",
+      uz: "O'zbekiston Respublikasi Prezidenti huzuridagi Ijtimoiy himoya milliy agentligi huzuridagi Ijtimoiy inspeksiya",
+      ru: "Социальная инспекция при Национальном агентстве социальной защиты при Президенте Республики Узбекистан",
+    },
+    period: "Aug 2026 — Present",
+    role: { en: "Chief Specialist for Digitalization", uz: "Raqamlashtirish bo'yicha bosh mutaxassis", ru: "Главный специалист по цифровизации" },
+    bullets: [
+      {
+        en: "Develop integrations with 40+ government digital platforms and services, including MyGov, DMED, IHMA, and other national information systems, enabling automated data exchange and streamlined organizational workflows.",
+        uz: "MyGov, DMED, IHMA va boshqa milliy axborot tizimlari kabi 40+ davlat raqamli platformalari va xizmatlari bilan integratsiyalarni ishlab chiqaman — ma'lumotlar almashinuvini avtomatlashtirib, tashkilot ish jarayonlarini soddalashtiraman.",
+        ru: "Разрабатываю интеграции с 40+ государственными цифровыми платформами и сервисами, включая MyGov, DMED, IHMA и другие национальные информационные системы, обеспечивая автоматизированный обмен данными и оптимизацию рабочих процессов организации.",
+      },
+      {
+        en: "Manage the organization's Android tablets through Headwind MDM, including application deployment, device configuration, security policies, monitoring, and usage analysis.",
+        uz: "Tashkilotning Android planshetlarini Headwind MDM orqali boshqaraman: ilovalarni o'rnatish, qurilmalarni sozlash, xavfsizlik siyosatlari, monitoring va foydalanish tahlili.",
+        ru: "Управляю Android-планшетами организации через Headwind MDM: развёртывание приложений, настройка устройств, политики безопасности, мониторинг и анализ использования.",
+      },
+      {
+        en: "Work with Linux servers, databases, Docker, and data analytics to develop, deploy, and maintain reliable digital solutions.",
+        uz: "Ishonchli raqamli yechimlarni ishlab chiqish, joylashtirish va qo'llab-quvvatlash uchun Linux serverlari, ma'lumotlar bazalari, Docker va ma'lumotlar tahlili bilan ishlayman.",
+        ru: "Работаю с Linux-серверами, базами данных, Docker и аналитикой данных для разработки, развёртывания и поддержки надёжных цифровых решений.",
+      },
+      {
+        en: "Develop software solutions and system integrations using Python, JavaScript, APIs, and webhooks, while maintaining and improving automations built with Node-RED and Baserow.",
+        uz: "Python, JavaScript, API va webhook'lar yordamida dasturiy yechimlar va tizim integratsiyalarini ishlab chiqaman, Node-RED va Baserow'da qurilgan avtomatlashtirishlarni qo'llab-quvvatlab, takomillashtiraman.",
+        ru: "Разрабатываю программные решения и системные интеграции на Python, JavaScript, API и вебхуках, а также поддерживаю и улучшаю автоматизации на Node-RED и Baserow.",
+      },
+    ],
+  },
+  {
+    org: { en: "BookUp (bookup.uz)", uz: "BookUp (bookup.uz)", ru: "BookUp (bookup.uz)" },
     period: "Jun 2025 — Present",
     role: { en: "Founder & Full-Stack Developer", uz: "Asoschi va Full-Stack dasturchi", ru: "Основатель и Full-Stack разработчик" },
     bullets: [
@@ -31,8 +62,8 @@ export const EXPERIENCE: ExperienceItem[] = [
     ],
   },
   {
-    org: "InterRail Central Asia",
-    period: "Jan 2022 — Present",
+    org: { en: "InterRail Central Asia", uz: "InterRail Central Asia", ru: "InterRail Central Asia" },
+    period: "Jan 2022 — Aug 2026",
     role: { en: "Full-Stack Developer", uz: "Full-Stack dasturchi", ru: "Full-Stack разработчик" },
     bullets: [
       {
@@ -53,7 +84,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     ],
   },
   {
-    org: "InterRail Central Asia",
+    org: { en: "InterRail Central Asia", uz: "InterRail Central Asia", ru: "InterRail Central Asia" },
     period: "Feb 2022 — Aug 2022",
     role: { en: "Backend Developer Intern", uz: "Backend dasturchi (intern)", ru: "Backend разработчик (стажёр)" },
     bullets: [

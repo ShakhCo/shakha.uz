@@ -32,7 +32,7 @@ export function ExperienceItemRow({
         {item.role[locale]}
       </h3>
       <p className="mt-1 text-sm font-medium text-[var(--color-accent)]">
-        {item.org}
+        {item.org[locale]}
       </p>
 
       {/* Bullets */}
