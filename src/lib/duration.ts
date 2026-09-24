@@ -36,13 +36,13 @@ export function formatDuration(months: number, locale: Locale): string {
 
 const MONTH_NAMES: Record<Locale, string[]> = {
   en: MONTHS,
-  uz: ["yan.", "fev.", "mar.", "apr.", "may", "iyun", "iyul", "avg.", "sen.", "okt.", "noy.", "dek."],
-  ru: ["янв.", "февр.", "март", "апр.", "май", "июнь", "июль", "авг.", "сент.", "окт.", "нояб.", "дек."],
+  uz: ["Yan", "Fev", "Mar", "Apr", "May", "Iyun", "Iyul", "Avg", "Sen", "Okt", "Noy", "Dek"],
+  ru: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
 };
 
 const PRESENT: Record<Locale, string> = { en: "Present", uz: "hozirgacha", ru: "наст. время" };
 
-// "Aug 2026 — Present" → "авг. 2026 — наст. время". Unrecognized parts pass through as-is.
+// "Aug 2026 — Present" → "Авг 2026 — наст. время". Unrecognized parts pass through as-is.
 export function formatPeriod(period: string, locale: Locale): string {
   return period
     .split("—")

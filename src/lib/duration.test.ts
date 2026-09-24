@@ -31,8 +31,8 @@ describe("formatDuration", () => {
 describe("formatPeriod", () => {
   it("localizes month names and Present", () => {
     expect(formatPeriod("Jan 2022 — Aug 2026", "en")).toBe("Jan 2022 — Aug 2026");
-    expect(formatPeriod("Aug 2026 — Present", "uz")).toBe("avg. 2026 — hozirgacha");
-    expect(formatPeriod("Feb 2022 — Aug 2022", "ru")).toBe("февр. 2022 — авг. 2022");
+    expect(formatPeriod("Aug 2026 — Present", "uz")).toBe("Avg 2026 — hozirgacha");
+    expect(formatPeriod("Feb 2022 — Aug 2022", "ru")).toBe("Фев 2022 — Авг 2022");
   });
 
   it("leaves unrecognized parts untouched", () => {
