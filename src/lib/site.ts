@@ -18,9 +18,8 @@ export function cvPath(locale: Locale): string {
 }
 
 // Real headshot used for the Person ImageObject + on-page photo.
-// Drop a square JPG (>=1000x1000) at public/shakhzodbek-sharipov.jpg.
 export const PROFILE_IMAGE = {
   path: "/shakhzodbek-sharipov.jpg",
-  width: 1200,
-  height: 1200,
+  width: 500,
+  height: 500,
 } as const;
