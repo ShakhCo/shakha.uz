@@ -13,6 +13,201 @@ export type BlogPost = {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: "tablets-door-controllers-and-an-erp",
+    gradient: "linear-gradient(135deg, #22c55e 0%, #0ea5e9 50%, #6366f1 100%)",
+    date: "2026-09-27",
+    tags: ["Career", "ERP", "Internal tools", "MDM", "Android"],
+    readingMinutes: 6,
+    title: {
+      en: "New job: tablets, door controllers, and an ERP 150 people open every day",
+      uz: "Yangi ish: planshetlar, eshik kontrollerlari va har kuni 150 kishi ochadigan ERP",
+      ru: "Новая работа: планшеты, контроллеры дверей и ERP, которую каждый день открывают 150 человек",
+    },
+    excerpt: {
+      en: "Two months into my new role as Chief Specialist for Digitalization. Managing Android tablets remotely with Headwind MDM, keeping an ERP running for 150+ daily users, and collecting entry/exit logs from Hikvision door controllers across 13 regions.",
+      uz: "Raqamlashtirish bo'yicha bosh mutaxassis sifatidagi yangi ishimga ikki oy bo'ldi. Headwind MDM orqali Android planshetlarni masofadan boshqarish, har kuni 150+ kishi ishlatadigan ERP'ni ishlatib turish va 13 ta hududdagi Hikvision eshik kontrollerlaridan kirish-chiqish loglarini yig'ish.",
+      ru: "Два месяца на новой должности главного специалиста по цифровизации. Удалённое управление Android-планшетами через Headwind MDM, ERP, которой ежедневно пользуются 150+ человек, и логи входа/выхода с контроллеров Hikvision в 13 регионах.",
+    },
+    content: {
+      en: `## A new job, and a very different kind of work
+
+In August I started a new role: Chief Specialist for Digitalization at the Social Inspection under the National Agency for Social Protection. After years of building products — ERPs at InterRail, BookUp on the side — this is the first time my job is less "ship a feature" and more "keep a whole organization's digital side running."
+
+It's been about two months. I've learned more about devices, networks and people than I expected, so here's what it actually looks like.
+
+## The tablets
+
+A big part of the daily work happens on Android tablets. Which means somebody has to make sure every tablet has the right apps, the right versions and the right settings — and that somebody is now me.
+
+You can't do that by walking around with a USB cable. The tablets are spread out, far from where I sit. So the answer is an MDM — mobile device management. We use **Headwind MDM**, an open-source, self-hosted one.
+
+The idea is simple: every tablet runs the Headwind agent, and the agent listens to the server. On the server you group devices into configurations — which apps they should have, which settings, what's allowed and what's not. Change a configuration, and every tablet in it picks up the change on its own.
+
+In practice that means:
+
+- **Installing apps remotely.** A new app or a new version goes to the server once, and it rolls out to the tablets. Nobody has to touch a device.
+- **Device configuration and security policies.** These are work tools, not personal phones, and the policies keep them that way.
+- **Monitoring.** I can see which devices are online, what they're running, and which ones are behind.
+- **Usage analysis.** Which apps actually get used, and where. Surprisingly useful when you're deciding what to support.
+
+Watching an update land on tablets in places I've never been still feels a little bit like magic.
+
+The lesson: with a fleet of devices, the hard part is never the ones that work. It's the few that are offline, out of storage, or stuck on an old version — and you need to be able to find those fast.
+
+## An ERP that 150+ people open every day
+
+The other big piece is an ERP system that more than 150 people use daily. I've built ERPs before, but there's a difference between building one and being responsible for one that a whole organization depends on every morning.
+
+When 150 people use something every day, small things stop being small:
+
+- A slow page isn't "a bit slow" — it's 150 people waiting.
+- A confusing button produces the same question from ten different people.
+- Downtime isn't a ticket, it's work stopping.
+
+So a lot of my time goes into the boring, important stuff: keeping Linux servers and databases healthy, running services in Docker so deployments are predictable, reading logs, and shipping changes carefully. Around it I build automations with Node-RED and Baserow — small flows that move data between systems so people don't have to retype it.
+
+## Door controllers in 13 regions
+
+This one I didn't see coming. Employee entry and exit is recorded by **Hikvision door controllers** — and there are offices in 13 regions, each with its own controller keeping its own log.
+
+A log sitting on a device in a regional office doesn't help anyone. My job was to manage those controllers and bring the entry/exit logs from all 13 regions into one place, where they can actually be used for attendance and reports.
+
+What I learned:
+
+- **Hardware is slower to fix than software.** If a controller's clock is wrong, every record from it is wrong. Time sync matters more than you'd think.
+- **Regional networks aren't your office network.** Connections drop. Anything that collects data from devices has to handle gaps and catch up later, instead of assuming everything is always online.
+- **Entry/exit logs are personal data.** Who can see them matters just as much as collecting them.
+
+## Integrations everywhere
+
+On top of all that, the job is full of integrations with government platforms — MyGov, DMED, IHMA and 40+ others. Data that used to be requested and copied by hand now moves between systems automatically. It's the same feeling I had with the ERP work at InterRail: nobody will screenshot it, but people's days get shorter.
+
+## What changed for me
+
+Building products, I mostly thought about code. Here I think about the whole chain: the tablet in someone's hands, the network in a regional office, the door controller on the wall, the server behind it all — and the 150 people who just want the ERP to open in the morning.
+
+Two months in, I really like it. It's less glamorous than launching a product, but every fix is felt the next day by real people across the country. More notes soon.`,
+
+      uz: `## Yangi ish va butunlay boshqacha ish turi
+
+Avgust oyida yangi lavozimda ish boshladim: Ijtimoiy himoya milliy agentligi huzuridagi Ijtimoiy inspeksiyada raqamlashtirish bo'yicha bosh mutaxassis. Yillar davomida mahsulot qurganimdan keyin — InterRail'da ERP'lar, yonida BookUp — bu ishimda birinchi marta gap "feature chiqarish"dan ko'ra "butun tashkilotning raqamli tomonini ishlatib turish" haqida.
+
+Ikki oycha bo'ldi. Qurilmalar, tarmoqlar va odamlar haqida kutganimdan ham ko'proq narsa o'rgandim, shuning uchun bu ish aslida qanday ekanini yozib qo'ymoqchiman.
+
+## Planshetlar
+
+Kundalik ishning katta qismi Android planshetlarda bo'ladi. Demak, kimdir har bir planshetda kerakli ilovalar, to'g'ri versiyalar va to'g'ri sozlamalar borligini ta'minlashi kerak — va o'sha kimdir endi men.
+
+Buni USB kabel ko'tarib yurib qilib bo'lmaydi. Planshetlar tarqoq, men o'tirgan joydan uzoqda. Shuning uchun yechim — MDM, ya'ni mobil qurilmalarni boshqarish tizimi. Biz **Headwind MDM**'dan foydalanamiz — ochiq kodli, o'z serverimizda turadigan tizim.
+
+G'oyasi oddiy: har bir planshetda Headwind agenti ishlaydi va u serverni tinglaydi. Serverda qurilmalarni konfiguratsiyalarga guruhlaysiz — qaysi ilovalar bo'lishi kerak, qanday sozlamalar, nimaga ruxsat bor, nimaga yo'q. Konfiguratsiyani o'zgartirasiz — undagi har bir planshet o'zgarishni o'zi oladi.
+
+Amalda bu degani:
+
+- **Ilovalarni masofadan o'rnatish.** Yangi ilova yoki yangi versiya serverga bir marta yuklanadi va planshetlarga o'zi tarqaladi. Hech kim qurilmaga tegishi shart emas.
+- **Qurilma sozlamalari va xavfsizlik siyosatlari.** Bular shaxsiy telefon emas, ish quroli — siyosatlar ularni shunday saqlab turadi.
+- **Monitoring.** Qaysi qurilmalar onlayn, ularda nima ishlayapti va qaysilari orqada qolgan — hammasi ko'rinib turadi.
+- **Foydalanish tahlili.** Qaysi ilovalar haqiqatan ishlatiladi va qayerda. Nimani qo'llab-quvvatlashni hal qilishda juda foydali ekan.
+
+Hech qachon bormagan joylarimdagi planshetlarga yangilanish yetib borganini ko'rish hali ham biroz sehrdek tuyuladi.
+
+Xulosa: qurilmalar ko'p bo'lganda qiyin qismi hech qachon ishlab turganlari emas. Qiyini — oflayn bo'lib qolgan, xotirasi to'lgan yoki eski versiyada qotib qolgan bir nechtasi. Ularni tez topa olishingiz kerak.
+
+## Har kuni 150+ kishi ochadigan ERP
+
+Yana bir katta qism — har kuni 150 dan ortiq kishi foydalanadigan ERP tizimi. Oldin ham ERP qurganman, lekin uni qurish bilan butun tashkilot har tongda unga tayanadigan tizim uchun javobgar bo'lish — boshqa-boshqa narsalar.
+
+150 kishi har kuni ishlatadigan tizimda mayda narsalar mayda bo'lmay qoladi:
+
+- Sekin sahifa "biroz sekin" emas — bu 150 kishining kutishi.
+- Tushunarsiz tugma o'nta turli odamdan bir xil savol keltiradi.
+- To'xtab qolish — shunchaki tiket emas, ishning to'xtashi.
+
+Shuning uchun vaqtimning katta qismi zerikarli, lekin muhim ishlarga ketadi: Linux serverlar va ma'lumotlar bazalarini sog'lom saqlash, deploy'lar oldindan aytib bo'ladigan bo'lishi uchun servislarni Docker'da ishlatish, loglarni o'qish va o'zgarishlarni ehtiyotkorlik bilan chiqarish. Uning atrofida Node-RED va Baserow bilan avtomatlashtirishlar quraman — odamlar ma'lumotni qayta yozmasligi uchun tizimlar orasida ma'lumot tashiydigan kichik oqimlar.
+
+## 13 ta hududdagi eshik kontrollerlari
+
+Buni kutmagandim. Xodimlarning kirishi va chiqishi **Hikvision eshik kontrollerlari** orqali qayd etiladi — 13 ta hududda ofislar bor va har birida o'z logini yuritadigan o'z kontrolleri bor.
+
+Hududdagi ofisda qurilma ichida yotgan log hech kimga foyda bermaydi. Mening vazifam — o'sha kontrollerlarni boshqarish va 13 ta hududning kirish-chiqish loglarini bir joyga yig'ish edi, toki ular davomat va hisobotlar uchun haqiqatan ishlatilsin.
+
+Nimani o'rgandim:
+
+- **Uskunani tuzatish dasturni tuzatishdan sekinroq.** Kontrollerning soati noto'g'ri bo'lsa, undagi har bir yozuv noto'g'ri bo'ladi. Vaqt sinxronizatsiyasi o'ylaganingizdan muhimroq.
+- **Hududlardagi tarmoq — ofisingizdagi tarmoq emas.** Aloqa uziladi. Qurilmalardan ma'lumot yig'adigan har qanday narsa hamma narsa doim onlayn deb o'ylamasdan, uzilishlarni ko'tarishi va keyin yetib olishi kerak.
+- **Kirish-chiqish loglari — shaxsiy ma'lumot.** Ularni kim ko'ra olishi ularni yig'ishning o'zi kabi muhim.
+
+## Hamma joyda integratsiyalar
+
+Bularning ustiga, ish davlat platformalari bilan integratsiyalarga to'la — MyGov, DMED, IHMA va yana 40 dan ortiq tizim. Ilgari qo'lda so'ralib, ko'chirib yozilgan ma'lumotlar endi tizimlar orasida avtomatik yuradi. Bu InterRail'dagi ERP ishidagi hissiyotning xuddi o'zi: buni hech kim screenshot qilmaydi, lekin odamlarning kuni qisqaradi.
+
+## Men uchun nima o'zgardi
+
+Mahsulot qurayotganimda asosan kod haqida o'ylardim. Bu yerda esa butun zanjir haqida o'ylayman: kimningdir qo'lidagi planshet, hududiy ofisdagi tarmoq, devordagi eshik kontrolleri, hammasining ortidagi server — va ertalab shunchaki ERP ochilishini xohlaydigan 150 kishi.
+
+Ikki oy o'tdi va bu ish menga juda yoqyapti. Mahsulot chiqarishdek jozibali emas, lekin har bir tuzatishni ertasi kuni butun mamlakat bo'ylab haqiqiy odamlar sezadi. Yaqinda yana yozaman.`,
+
+      ru: `## Новая работа и совсем другой тип задач
+
+В августе я начал работать на новой должности: главный специалист по цифровизации в Социальной инспекции при Национальном агентстве социальной защиты. После нескольких лет создания продуктов — ERP в InterRail, BookUp параллельно — впервые моя работа не столько «выпустить фичу», сколько «поддерживать цифровую часть целой организации».
+
+Прошло около двух месяцев. Я узнал про устройства, сети и людей больше, чем ожидал, поэтому вот как это выглядит на самом деле.
+
+## Планшеты
+
+Большая часть ежедневной работы происходит на Android-планшетах. А значит, кто-то должен следить, чтобы на каждом планшете были нужные приложения, правильные версии и правильные настройки — и этот кто-то теперь я.
+
+С USB-кабелем в руках это не сделать. Планшеты разбросаны далеко от того места, где я сижу. Поэтому решение — MDM, управление мобильными устройствами. Мы используем **Headwind MDM** — open-source систему, которая работает на нашем собственном сервере.
+
+Идея простая: на каждом планшете работает агент Headwind, и он слушает сервер. На сервере устройства группируются в конфигурации — какие приложения должны стоять, какие настройки, что разрешено, а что нет. Меняешь конфигурацию — и каждый планшет в ней сам подхватывает изменения.
+
+На практике это значит:
+
+- **Удалённая установка приложений.** Новое приложение или новая версия загружается на сервер один раз и сама раскатывается по планшетам. Никому не нужно трогать устройство.
+- **Настройка устройств и политики безопасности.** Это рабочие инструменты, а не личные телефоны, и политики следят, чтобы так и оставалось.
+- **Мониторинг.** Видно, какие устройства онлайн, что на них работает и какие отстают.
+- **Анализ использования.** Какие приложения реально используются и где. Неожиданно полезно, когда решаешь, что поддерживать.
+
+Смотреть, как обновление приходит на планшеты в местах, где я никогда не был, — до сих пор немного похоже на магию.
+
+Вывод: когда устройств много, сложная часть — никогда не те, что работают. Сложность — в тех немногих, что офлайн, с забитой памятью или застряли на старой версии. Их нужно уметь быстро находить.
+
+## ERP, которую каждый день открывают 150+ человек
+
+Вторая большая часть — ERP-система, которой ежедневно пользуются более 150 человек. Я и раньше строил ERP, но построить систему и отвечать за систему, от которой каждое утро зависит целая организация, — это разные вещи.
+
+Когда чем-то каждый день пользуются 150 человек, мелочи перестают быть мелочами:
+
+- Медленная страница — это не «немного медленно», это 150 человек, которые ждут.
+- Непонятная кнопка порождает один и тот же вопрос от десяти разных людей.
+- Простой — это не тикет, это остановка работы.
+
+Поэтому много времени уходит на скучные, но важные вещи: поддерживать Linux-серверы и базы данных в здоровом состоянии, запускать сервисы в Docker, чтобы деплой был предсказуемым, читать логи и аккуратно выкатывать изменения. Вокруг этого я строю автоматизации на Node-RED и Baserow — небольшие потоки, которые переносят данные между системами, чтобы людям не приходилось перепечатывать их вручную.
+
+## Контроллеры дверей в 13 регионах
+
+Этого я не ожидал. Вход и выход сотрудников фиксируют **контроллеры дверей Hikvision** — офисы есть в 13 регионах, и в каждом свой контроллер со своим журналом.
+
+Журнал, который лежит в устройстве в региональном офисе, никому не помогает. Моя задача была управлять этими контроллерами и собрать журналы входа/выхода со всех 13 регионов в одно место, где их реально можно использовать для учёта посещаемости и отчётов.
+
+Что я понял:
+
+- **Железо чинится медленнее, чем софт.** Если у контроллера неправильное время, неправильна каждая запись с него. Синхронизация времени важнее, чем кажется.
+- **Сеть в регионах — это не сеть в твоём офисе.** Связь пропадает. Всё, что собирает данные с устройств, должно переживать разрывы и догонять потом, а не рассчитывать, что всё всегда онлайн.
+- **Журналы входа/выхода — это персональные данные.** Кто может их видеть, так же важно, как и то, как их собирать.
+
+## Интеграции повсюду
+
+Вдобавок ко всему работа полна интеграций с государственными платформами — MyGov, DMED, IHMA и ещё 40+ систем. Данные, которые раньше запрашивали и переписывали вручную, теперь ходят между системами автоматически. То же чувство, что и от ERP-работы в InterRail: никто не будет это скриншотить, но рабочий день у людей становится короче.
+
+## Что изменилось для меня
+
+Когда я строил продукты, я в основном думал о коде. Здесь я думаю обо всей цепочке: планшет в чьих-то руках, сеть в региональном офисе, контроллер на стене, сервер за всем этим — и 150 человек, которые просто хотят, чтобы утром открылась ERP.
+
+Прошло два месяца, и мне правда нравится. Это менее эффектно, чем запуск продукта, но каждое исправление на следующий день чувствуют реальные люди по всей стране. Скоро напишу ещё.`,
+    },
+  },
+  {
     slug: "ai-agents-demystified",
     gradient: "linear-gradient(135deg, #14b8a6 0%, #6366f1 50%, #a855f7 100%)",
     date: "2026-06-29",
