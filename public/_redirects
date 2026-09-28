@@ -1,0 +1,19 @@
+# Cloudflare Workers static-assets redirects.
+# Parsed by Workers at request time; this file is never served as an asset.
+# Redirects are applied even when a matching asset exists, so this wins over out/index.html.
+
+# Bare root -> default locale (previously an Nginx `location = /` rule).
+/    /en/    302
+
+# Locale-less links (typed by hand, shared without /en/) -> English version
+# instead of the 404 page.
+/about        /en/about/          301
+/about/       /en/about/          301
+/contact      /en/contact/        301
+/contact/     /en/contact/        301
+/blog         /en/blog/           301
+/blog/*       /en/blog/:splat     301
+/projects     /en/projects/       301
+/projects/*   /en/projects/:splat 301
+/education    /en/education/      301
+/education/*  /en/education/:splat 301
