@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { buildMetadata } from "@/lib/seo";
-import { CV_PATH } from "@/lib/site";
+import { cvPath } from "@/lib/site";
 import { PROJECTS } from "@/lib/data/projects";
 import { SKILLS } from "@/lib/data/skills";
 import { EXPERIENCE, EDUCATION } from "@/lib/data/experience";
@@ -84,7 +84,7 @@ export default async function Home({
                 {dict.hero.ctaContact}
               </Link>
               <a
-                href={CV_PATH}
+                href={cvPath(l)}
                 download
                 className="rounded-full border border-[var(--color-line)] px-7 py-3.5 text-base font-medium text-[var(--color-ink)] transition-colors hover:bg-[var(--color-bg-alt)]"
               >
